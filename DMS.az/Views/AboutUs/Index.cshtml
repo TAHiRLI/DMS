@@ -1,0 +1,49 @@
+﻿@using DMS.az.ViewModels.AboutUs
+@model AboutUsIndexVM
+
+@section links {
+    <title>@ViewBag.Title - DMS.az</title>
+    <link rel="stylesheet" href="~/Users/assets/css/about/about.css" />
+}
+
+<!-- START MAIN -->
+<main>
+    <section id="about_h">
+        <div class="container">
+            <div class="title"><h2>HAQQIMIZDA</h2></div>
+
+            @foreach (var item in Model.AboutUs)
+            {
+                <div class="images">
+                    <div class="images-teamwork">
+                        <img src="~/Users/images/@item.Photo1" alt="" />
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="about_us">
+                        <h3>Who we are?</h3>
+                        @*<p>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel necessitatibus, illum doloribus omnis beatae rerum et natus officia quam saepe voluptate cupiditate, alias sequi fuga veniam nihil suscipit, nam rem!
+                            Eveniet hic cupiditate adipisci, incidunt beatae enim nesciunt odit veniam voluptas veritatis nemo ipsa dolore atque architecto placeat harum eos blanditiis quis consequatur ad, ullam exercitationem doloremque modi? Quae, voluptas.
+                            Ipsa quisquam rem numquam, id, quis est ipsum voluptatum earum suscipit tenetur dolorem? Nostrum sunt quae quos. Sunt, quidem dolore? Recusandae nemo tempora dolore adipisci molestiae sed labore modi vitae.
+                            Dolorem cumque deserunt tempora mollitia suscipit soluta iste reprehenderit blanditiis sapiente sequi! Cumque ab, id ipsam odit nam nobis earum incidunt, aliquid reprehenderit, ipsa eligendi fugit asperiores qui consequatur fuga.
+                            Distinctio ex dignissimos fugiat non minus nemo qui assumenda incidunt eaque nihil unde, similique dicta hic eveniet at aliquid. Soluta, magnam maxime id quis voluptatum ea aperiam assumenda vero beatae.
+                        </p>
+                        <ul>
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus aspernatur nisi deleniti quasi esse. Ratione alias consequatur sequi atque. Eligendi.</li>
+                            <br>
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus aspernatur nisi deleniti quasi esse. Ratione alias consequatur sequi atque. Eligendi. Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+                            <br>
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus aspernatur nisi deleniti quasi esse. Ratione alias consequatur sequi atque. Eligendi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, consequuntur! Fugiat repudiandae doloribus ab placeat!</li>
+                        </ul>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum eum nisi perspiciatis quaerat nesciunt sunt recusandae, nostrum a cumque harum corrupti. Blanditiis perferendis vel, inventore quod dolores perspiciatis voluptatem iste, maxime architecto officiis nesciunt est explicabo! Rem neque eius sed quod laborum distinctio aut ipsa voluptatum, consequuntur suscipit molestias quia!</p>*@
+                        @Html.Raw(item.Description)
+                    
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</main>
+<!-- END MAIN -->

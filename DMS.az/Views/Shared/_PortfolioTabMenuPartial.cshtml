@@ -1,0 +1,14 @@
+﻿@using DMS.az.Models;
+@model List<Portfolio>
+
+@foreach (var item in Model)
+{
+    <!--  *****  Card 1 Starts  *****  -->
+    <div class="item design">
+        <img src="~/Users/images/@item.Photo">
+        <div class="overlay">
+            <a href="#"><p>@item.ShortDesc</p></a>
+        </div>
+    </div>
+    <!--  *****  Card 1 Ends  *****  -->
+}

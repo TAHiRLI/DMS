@@ -1,0 +1,56 @@
+﻿@using DMS.az.Areas.Admin.ViewModels.Portfolio
+@model PortfolioUpdateVM
+
+<div class="main-panel">
+    <div class="">
+        <div class="card-body">
+            <h4 class="card-title">Portfolio Update</h4>
+
+
+            <form class="forms-sample" enctype="multipart/form-data" asp-action="update" asp-controller="Portfolio" method="post">
+                <div asp-validation-summary="ModelOnly"></div>
+
+                <div class="form-group">
+                    <label asp-for="Photo">Şəkil</label>
+                    <input asp-for="Photo" class="form-control imgInput" id="exampleInputName1" placeholder="Title" />
+                    <span asp-validation-for="Photo"></span>
+
+                    <div id="imgPreview" class="mt-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Title">Başlıq</label>
+                    <input asp-for="Title" type="text" class="form-control" id="exampleInputName1" placeholder="Title" />
+                    <span asp-validation-for="Title"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description">Təsvir</label>
+                    <input asp-for="Description" type="text" class="form-control" id="exampleInputName1" placeholder="Title" />
+                    <span asp-validation-for="Description"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ShortDesc">Qısa Təsvir</label>
+                    <input asp-for="ShortDesc" type="text" class="form-control" id="exampleInputName1" placeholder="Title" />
+                    <span asp-validation-for="ShortDesc"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PortfolioCategoryId">Portfolio Kateqoriya</label>
+                    <select asp-for="PortfolioCategoryId" asp-items="Model.PortfolioCategories" class="form-control" id="exampleFormControlSelect2">
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary mr-2"> Update </button>
+                <a asp-action="index" asp-controller="portfolio" class="btn btn-light">Cancel</a>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    @await Html.PartialAsync("_ImgUploadPartial")
+}

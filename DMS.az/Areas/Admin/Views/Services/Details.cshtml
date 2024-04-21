@@ -1,0 +1,47 @@
+﻿@using DMS.az.Areas.Admin.ViewModels.Services
+@model ServiceDetailsVM
+
+<div class="card-body">
+    <h4 class="card-title">Basic Table</h4>
+    <p class="card-description">
+        Add class <code>.table</code>
+    </p>
+
+
+    <div class="px-4">
+        @if (Model is not null)
+        {
+            <h3 class="">Icon</h3>
+            <span>
+                <img src="~/Users/images/@Model.Icon" style="width: 100px" />
+            </span>
+
+            <h3>Name</h3>
+            <span>@Model.Name</span>
+
+            <h3>Description</h3>
+            <span>@Html.Raw(@Model.Description)</span>
+
+            <h3>Short Description</h3>
+            <span>@Model.ShortDesc</span>
+
+            <h3>Created Time</h3>
+            <span>@Model.CreatedAt</span>
+
+
+            <h3>Modified Time</h3>
+            <span>@Model.ModifiedAt</span>
+        }
+    </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+

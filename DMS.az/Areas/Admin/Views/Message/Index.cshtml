@@ -1,0 +1,59 @@
+﻿@using DMS.az.Areas.Admin.ViewModels.Message
+@model MessageIndexVM
+
+<div class="card-body">
+    <h4 class="card-title">Basic Table</h4>
+    <p class="card-description">
+        Add class
+    </p>
+
+    <form>
+
+        <div class="form-check form-check-flat form-check-primary">
+            <label class="form-check-label">
+                <input type="checkbox" asp-for="IsChecked" class="form-check-input" onchange="this.form.submit()" /> Show only Unread messages
+            </label>
+        </div>
+    </form>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model.Messages is not null)
+                {
+                    @foreach (var message in Model.Messages)
+                    {
+                        <tr>
+
+                            <td>@message.SenderName</td>
+                            <td>@message.SenderEmail</td>
+                            <td>
+                                @if (!message.IsOpened)
+                                {
+                                    <span class="">Unread</span>
+                                }
+                                else
+                                {
+                                    <span class="text-success">Read</span>
+                                }
+                            </td>
+                            <td>
+                                <a asp-action="Details" asp-controller="Message" asp-route-id="@message.Id" class="btn btn-info"><i class="mdi mdi-eye icon-lg"></i></a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

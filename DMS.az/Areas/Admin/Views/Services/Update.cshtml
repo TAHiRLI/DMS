@@ -1,0 +1,59 @@
+﻿@using DMS.az.Areas.Admin.ViewModels.Services
+@model ServiceUpdateVM
+
+<div class="main-panel">
+    <div class="">
+        <div class="card-body">
+            <h4 class="card-title">Service Update</h4>
+
+
+            <form class="forms-sample" enctype="multipart/form-data" asp-action="update" asp-controller="Services" method="post">
+                <div asp-validation-summary="ModelOnly"></div>
+
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" type="text" class="form-control" id="exampleInputName1" placeholder="Title" />
+                    <span asp-validation-for="Name"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Icon"></label>
+                    <input asp-for="Icon" class="form-control imgInput" placeholder="Link" />
+                    <span asp-validation-for="Icon"></span>
+
+                    <div id="imgPreview" class="mt-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <input asp-for="Description" type="text" class="form-control" id="exampleInputName1" placeholder="Title" />
+                    <span asp-validation-for="Description"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ShortDesc"></label>
+                    <input asp-for="ShortDesc" type="text" class="form-control" id="exampleInputName1" placeholder="Title" />
+                    <span asp-validation-for="ShortDesc"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary mr-2"> Update </button>
+                <a asp-action="index" asp-controller="Services" class="btn btn-light">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    @await Html.PartialAsync("_ImgUploadPartial")
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#Description'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}

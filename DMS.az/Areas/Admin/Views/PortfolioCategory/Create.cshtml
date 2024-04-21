@@ -1,0 +1,24 @@
+﻿@using DMS.az.Areas.Admin.ViewModels.PortfolioCategory
+@model PortfolioCategoryCreateVM
+
+<div class="main-panel">
+    <div class="">
+        <div class="card-body">
+            <h4 class="card-title">Portfolio Create</h4>
+
+
+            <form class="forms-sample" enctype="multipart/form-data" asp-action="create" asp-controller="PortfolioCategory" method="post">
+                <div asp-validation-summary="ModelOnly"></div>
+
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" type="text" class="form-control" id="exampleInputName1" placeholder="Title" />
+                    <span asp-validation-for="Name"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary mr-2"> Create </button>
+                <a asp-action="index" asp-controller="PortfolioCategory" class="btn btn-light">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

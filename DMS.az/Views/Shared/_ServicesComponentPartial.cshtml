@@ -1,0 +1,21 @@
+﻿@using DMS.az.ViewModels.Home
+@model HomeLoadMoreVM
+
+@{
+    var i = 2;
+}
+@foreach (var item in Model.Services)
+{
+    <a href="./offers.html" onclick="setSelectedService(@i)">
+        <div class="info">
+            <img src="~/Users/images/@item.Icon" alt="">
+            <h3>@item.Name</h3>
+            <p>
+                @item.ShortDesc
+            </p>
+        </div>
+    </a>
+    i++;
+}
+
+

@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @*<link rel="shortcut icon" href="~/Users/assets/images/index/logo-icon.png" />*@
+    <link rel="icon"
+          href="~/Users/assets/images/index/Artboard 17 1.png"
+          type="image/x-icon" />
+
+    @RenderSection("links", required:false)
+</head>
+<body>
+    <!-- START HEADER -->
+    <header>
+        <section id="navbar_background">
+            <div class="container">
+                <section id="navbar-area">
+
+                    <nav class="navbar">
+                        <!-- LOGO -->
+                        <div class="logo"><img src="~/Users/assets/images/index/logo.png" alt=""></div>
+
+                        <!-- NAVIGATION MENU -->
+                        <ul class="nav-links">
+
+                            <!-- USING CHECKBOX HACK -->
+                            <input type="checkbox" id="checkbox_toggle" />
+                            <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+
+                            <!-- NAVIGATION MENUS -->
+                            <div class="menu">
+                            <li><a asp-action="index" asp-controller="home"><span>Əsas səhifə</span></a></li>
+                            <li><a asp-action="index" asp-controller="aboutus"><span>Haqqımızda</span></a></li>
+                            <li><a asp-action="index" asp-controller="portfolio"><span>Portfolio</span></a></li>
+                            <li><a asp-action="index" asp-controller="services"><span>Xidmətlər</span></a></li>
+                            <li><a href="#"><span>Karyera V2</span></a></li>
+                            <li><a asp-action="index" asp-controller="contact"><span>Əlaqə</span></a></li>
+            </div>
+            </ul>
+            </nav>
+
+        </section>
+        </div>
+    </header>
+
+
+    <!-- END HEADER -->
+    <!-- END HEADER -->
+    @RenderBody()
+
+    <!-- START FOOTER -->
+    <footer>
+        <section id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="#">Landing Page</a></li>
+                            <li><a asp-action="index" asp-controller="aboutus">About us</a></li>
+                            <li><a asp-action="index" asp-controller="services">Services</a></li>
+                            <li><a href="#">Statistic</a></li>
+                            <li><a asp-action="index" asp-controller="portfolio">Portfolio</a></li>
+                            <li><a asp-action="index" asp-controller="contact">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">Digital Marketing</a></li>
+                            <li><a href="#">SMM</a></li>
+                            <li><a href="#">Mobile Development</a></li>
+                            <li><a href="#">Web Development</a></li>
+                            <li><a href="#">UX/UI Designer</a></li>
+                            <li><a href="#">Graphic Designer</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+                        <h4>Collaborators</h4>
+                        <ul>
+                            <li><a href="#">Azerbaijan NOC</a></li>
+                            <li><a href="#">Careers - coming soon</a></li>
+                            <li><a href="#">FAQs coming soon</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-col">
+
+                        <h4>Contact</h4>
+                        <div class="footer-contact">
+                            <ul>
+                                <li>
+                                    <div class="icon"><img src="~/Users/assets/images/index/footer/icon_loc.png" alt=""></div>
+                                    <div class="text">
+                                        <p>4671 Sugar Walley, road. Baku, Az 1126</p>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="icon"><img src="~/Users/assets/images/index/footer/icon_mail.png" alt=""></div>
+                                    <div class="text">
+                                        <p>+984-55-549-19-45</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="social-links">
+                            <h4>Follow us</h4>
+                            <a href="#"><img src="~/Users/assets/images/index/footer/icon_fb.png" alt=""></a>
+                            <a href="#"><img src="~/Users/assets/images/index/footer/icon_insta.png" alt=""></a>
+                            <a href="#"><img src="~/Users/assets/images/index/footer/icon_linkedin.png" alt=""></a>
+                            <a href="#"><img src="~/Users/assets/images/index/footer/icon_telegram.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="footer_part2">
+            <div class="conatiner">
+                <ul>
+                    <li>Privacy Policy</li>
+                    <li>Terms of Use</li>
+                    <li>Sales and Refunds</li>
+                    <li>Legal</li>
+                    <li>Site Map</li>
+                </ul>
+                <p>© 2023 All Rights Reserved</p>
+            </div>
+        </section>
+    </footer>
+    <!-- END FOOTER -->
+
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/Users/assets/slick-1.8.1/slick/slick.min.js"></script>
+    @RenderSection("Scripts", false)
+
+</body>
+</html>

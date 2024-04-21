@@ -1,0 +1,63 @@
+﻿@using DMS.az.ViewModels.Portfolio
+@model PortfolioIndexVM
+
+@section links{
+    <title>@ViewBag.Title - DMS.az</title>
+    <link rel="stylesheet" href="~/Users/assets/css/portfolio/portfolio.css" />
+}
+
+<!-- START MAIN -->
+<main>
+    <section id="portfolio">
+        <div class="container">
+            <div class="title"><h2>HAQQIMIZDA</h2></div>
+
+            <!--  *****  Buttons Section Starts  *****  -->
+            <div class="button-group">
+                <button class="button active tabs all-tab defaultOpen">All</button>
+
+                @foreach (var item in Model.PortfolioCategories)
+                {
+                    <a class="button tabs" asp-action="TabMenu" asp-controller="portfolio" asp-route-id="@item.Id" style="text-decoration:none">@item.Name</a>
+                }
+            </div>
+            <!--  *****  Buttons Section Ends  *****  -->
+
+            <!--  *****  Gallery Section Starts  *****  -->
+            <div class="gallery" id="tab-content">
+
+            </div>
+            <!--  *****  Gallery Section Enda  *****  -->
+
+
+        </div>
+    </section>
+</main>
+<!-- END MAIN -->
+
+
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+
+    <script>
+        $(function () {
+            $('.tabs').on('click', function (e) {
+                e.preventDefault();
+
+                let link = $(this).attr("href");
+
+                if ($(this).hasClass('all-tab')) {
+                    link = '/portfolio/TabMenu/0';
+                }
+
+                fetch(link).then(res => res.text()).then(html => {
+                    let tab_content = document.getElementById('tab-content');
+                    tab_content.innerHTML = html;
+                });
+            });
+
+            document.getElementsByClassName("defaultOpen")[0].click();
+        });
+    </script>
+}

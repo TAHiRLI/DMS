@@ -1,0 +1,29 @@
+﻿@using DMS.az.Areas.Admin.ViewModels.Message
+@model MessageDetailsVM
+
+<div class="card-body">
+    <h4 class="card-title">Basic Table</h4>
+    <p class="card-description">
+        Add class
+    </p>
+
+
+    <div class="px-4">
+        @if (Model is not null)
+        {
+            <h4 style="display:inline">Göndərənin adı:</h4> <span>@Model.SenderName</span> <br /> <br />
+            <h4 style="display:inline; ">Göndərənin Email'i:</h4> <span>@Model.SenderName</span>
+            <br /><br />
+            <h4 style="display:inline">Mesaj:</h4> <span>@Model.Content</span>
+            <br /><br />
+
+            if (Model.CreatedAt.ToString() is not null)
+            {
+                <h3>Göndərilmə tarixi</h3>
+                <span>@Model.CreatedAt</span>
+            }
+        }
+    </div>
+</div>
+
+

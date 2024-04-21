@@ -1,0 +1,32 @@
+﻿@using DMS.az.ViewModels.Services
+@model ServicesIndexVM
+
+@section links{
+    <title>@ViewBag.Title - DMS.az</title>
+    <link rel="stylesheet" href="~/Users/assets/css/offers/offers.css" />
+}
+
+<main>
+    <section id="offers_h">
+        <div class="container">
+            <div class="title"><h2>Xidmətlər</h2></div>
+            <div class="card_offers">
+
+                @foreach (var item in Model.Services)
+                {
+                    <div class="card">
+                        <div class="card_header">
+                            <div class="icon"><img src="~/Users/images/@item.Icon" alt=""></div>
+                            <div class="info_title"><h3>@item.Name</h3></div>
+                        </div>
+                        <div class="card_info">
+                            <p>
+                                @item.Description
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+</main> 

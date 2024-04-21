@@ -1,0 +1,1696 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: Montserrat-Bold;
+  src: url(../../fonts/static/Montserrat-Bold.ttf);
+}
+
+@font-face {
+  font-family: Montserrat-Regular;
+  src: url(../../fonts/static/Montserrat-Regular.ttf);
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #151515;
+
+  .container {
+    max-width: 80%;
+    width: 100%;
+    margin: 0 auto;
+  }
+  // ------------START HEADER------------
+
+  #navbar_background {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+
+    #navbar-area {
+      margin: 0 auto;
+      padding-top: 2.4rem;
+
+      a {
+        text-decoration: none;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        color: #fff;
+        border-radius: 56px;
+        background: linear-gradient(
+          180deg,
+          rgba(82, 82, 82, 0.2) 47.81%,
+          rgba(102, 102, 102, 0.08) 100%
+        );
+        backdrop-filter: blur(50px);
+        font-family: Montserrat-Regular;
+      }
+
+      .nav-links a {
+        color: #fff;
+      }
+
+      /* LOGO */
+      .logo {
+        font-size: 32px;
+
+        img {
+          width: 7rem;
+          display: grid;
+          align-items: center;
+        }
+      }
+
+      /* NAVBAR MENU */
+      .menu {
+        display: flex;
+        gap: 1em;
+        font-size: 18px;
+      }
+
+      .menu li:hover {
+        background-color: rgba(82, 82, 82, 0.2);
+        backdrop-filter: blur(50%);
+        border-radius: 5px;
+        transition: 0.3s ease;
+      }
+
+      .menu li {
+        padding: 5px 14px;
+      }
+
+      /* DROPDOWN MENU */
+      .services {
+        position: relative;
+      }
+
+      .dropdown {
+        background-color: rgb(1, 139, 139);
+        padding: 1em 0;
+        position: absolute;
+        /*WITH RESPECT TO PARENT*/
+        display: none;
+        border-radius: 8px;
+        top: 35px;
+      }
+
+      .dropdown li + li {
+        margin-top: 10px;
+      }
+
+      .dropdown li {
+        padding: 0.5em 1em;
+        width: 8em;
+        text-align: center;
+      }
+
+      .dropdown li:hover {
+        background-color: #4c9e9e;
+      }
+
+      .services:hover .dropdown {
+        display: block;
+      }
+
+      /* RESPONSIVE NAVBAR MENU STARTS */
+
+      /* CHECKBOX HACK */
+
+      input[type="checkbox"] {
+        display: none;
+      }
+
+      /* HAMBURGER MENU */
+      .hamburger {
+        display: none;
+        font-size: 24px;
+        user-select: none;
+      }
+
+      /* APPLYING MEDIA QUERIES */
+      @media (max-width: 1117px) {
+        .menu {
+          display: none;
+          position: absolute;
+          border-radius: 40px;
+          background: rgb(103, 103, 103) 20%;
+          background: linear-gradient(
+            to top,
+            rgb(82 82 82 / 64%) 47.81%,
+            rgb(102 102 102 / 70%) 100%
+          );
+          backdrop-filter: blur(50px);
+          right: 0;
+          left: 0;
+          text-align: center;
+          padding: 16px 0;
+        }
+
+        .menu li:hover {
+          display: inline-block;
+          transition: 0.3s ease;
+        }
+
+        .menu li + li {
+          margin-top: 12px;
+        }
+
+        input[type="checkbox"]:checked ~ .menu {
+          display: block;
+        }
+
+        .hamburger {
+          display: block;
+        }
+
+        .dropdown {
+          left: 50%;
+          top: 30px;
+          transform: translateX(35%);
+        }
+
+        .dropdown li:hover {
+          background: linear-gradient(
+            180deg,
+            rgba(82, 82, 82, 0.2) 47.81%,
+            rgba(102, 102, 102, 0.08) 100%
+          );
+
+          backdrop-filter: blur(50px);
+        }
+      }
+    }
+
+    #nav-title {
+      .nav-title {
+        padding-top: 99px;
+
+        h1 {
+          font-family: Montserrat-Bold;
+          font-size: 117.65px;
+          color: #dddddd;
+          width: 557px;
+        }
+      }
+    }
+
+    /* =======================
+  ******* Mobile Menu ******
+  ========================*/
+
+    /* Mobile to Tablet  */
+    @media (min-width: 320px) and (max-width: 767px) {
+      #navbar_background {
+        #navbar-area {
+          .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            color: #fff;
+            border-radius: 56px;
+            background: linear-gradient(
+              180deg,
+              rgba(82, 82, 82, 0.2) 47.81%,
+              rgba(102, 102, 102, 0.08) 100%
+            );
+            -webkit-backdrop-filter: blur(50px);
+            backdrop-filter: blur(50px);
+            font-family: Montserrat-Regular;
+
+            .logo {
+              img {
+                align-items: center;
+                width: 5rem;
+                display: grid;
+              }
+            }
+          }
+        }
+      }
+
+      #links,
+      .mobile-menu {
+        display: none;
+      }
+    }
+
+    /* Tablet to Desktop */
+    @media (max-width: 768px) {
+      .mobile-menu,
+      .mobile-btn,
+      .fa-bars {
+        display: none;
+      }
+    }
+  }
+
+  @media (min-width: 1106px) and (max-width: 1106px) {
+    #navbar_background {
+      #navbar-area {
+        .navbar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 9px 28px;
+          color: #fff;
+          border-radius: 56px;
+          background: linear-gradient(
+            180deg,
+            rgba(82, 82, 82, 0.2) 47.81%,
+            rgba(102, 102, 102, 0.08) 100%
+          );
+          -webkit-backdrop-filter: blur(50px);
+          backdrop-filter: blur(50px);
+          font-family: Montserrat-Regular;
+
+          .logo {
+            img {
+              align-items: center;
+              width: 5rem;
+              display: grid;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 600px) and (max-width: 1106px) {
+    #navbar_background {
+      #navbar-area {
+        .navbar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 9px 28px;
+          color: #fff;
+          border-radius: 56px;
+          background: linear-gradient(
+            180deg,
+            rgba(82, 82, 82, 0.2) 47.81%,
+            rgba(102, 102, 102, 0.08) 100%
+          );
+          -webkit-backdrop-filter: blur(50px);
+          backdrop-filter: blur(50px);
+          font-family: Montserrat-Regular;
+
+          .logo {
+            img {
+              align-items: center;
+              width: 5rem;
+              display: grid;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 820px) {
+    #nav-title .nav-title h1 {
+      font-size: 88.65px;
+    }
+  }
+
+  @media (min-width: 360px) and (max-width: 600px) {
+    #navbar_background {
+      #navbar-area {
+        .navbar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px;
+          color: #fff;
+          border-radius: 56px;
+          background: linear-gradient(
+            180deg,
+            rgba(82, 82, 82, 0.2) 47.81%,
+            rgba(102, 102, 102, 0.08) 100%
+          );
+          -webkit-backdrop-filter: blur(50px);
+          backdrop-filter: blur(50px);
+          font-family: Montserrat-Regular;
+
+          .logo {
+            img {
+              align-items: center;
+              width: 5rem;
+              display: grid;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 360px) and (max-width: 500px) {
+    #nav-title .nav-title h1 {
+      width: 100%;
+      font-size: 52.65px;
+    }
+
+    #navbar_background {
+      #navbar-area {
+        .navbar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px;
+          color: #fff;
+          border-radius: 56px;
+          background: linear-gradient(
+            180deg,
+            rgba(82, 82, 82, 0.2) 47.81%,
+            rgba(102, 102, 102, 0.08) 100%
+          );
+          -webkit-backdrop-filter: blur(50px);
+          backdrop-filter: blur(50px);
+          font-family: Montserrat-Regular;
+
+          .logo {
+            img {
+              align-items: center;
+              width: 5rem;
+              display: grid;
+            }
+          }
+        }
+      }
+    }
+  }
+  // ------------END HEADER------------
+
+  // ------------START MAIN------------
+
+  #offers_h {
+    padding-top: 10rem;
+
+    .container {
+      max-width: 80%;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .title {
+      padding-top: 10rem;
+      &::after {
+        content: "";
+        display: block;
+        background: linear-gradient(to right, #5200ff 0%, #00f0ff 100%);
+        height: 0.3rem;
+      }
+      h2 {
+        font-size: 45px;
+        color: white;
+        padding-bottom: 0.8rem;
+        font-family: Montserrat-Bold;
+      }
+    }
+
+    .card_offers {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-top: 5rem;
+      grid-row-gap: 1rem;
+      grid-column-gap: 2rem;
+
+      .card {
+        width: 100%;
+        height: 388px;
+        flex-shrink: 0;
+        border-radius: 14.722px;
+        background: linear-gradient(180deg, #fff 0.03%, #f5f5f5 114.89%);
+        padding: 45px;
+        display: grid;
+
+        .card_header {
+          display: grid;
+          grid-template-columns: auto auto;
+
+          .icon {
+            color: #5200ff;
+            font-family: Montserrat-Bold;
+            width: 120px;
+            height: 120px;
+          }
+
+          .info_title {
+            width: 285px;
+            height: 98px;
+            display: grid;
+            align-items: center;
+
+            h3 {
+              color: rgb(82, 0, 255);
+              text-align: center;
+              font-family: Montserrat;
+              font-size: 40px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: normal;
+            }
+          }
+        }
+
+        .card_info {
+          width: 100%;
+          p {
+            color: #323232;
+            font-family: Montserrat;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+          }
+        }
+
+        &:hover {
+          background: rgb(82, 0, 255);
+
+          .info_title {
+            width: 285px;
+            height: 98px;
+            display: grid;
+            align-items: center;
+            color: white;
+
+            h3 {
+              text-align: center;
+              font-family: Montserrat;
+              font-size: 40px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: normal;
+              color: white;
+            }
+
+       
+          }
+           
+          .card_info {
+            p {
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1570px) and (max-width: 1660px) {
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-top: 5rem;
+      grid-row-gap: 3rem;
+      grid-column-gap: 2rem;
+    }
+  }
+
+  @media (max-width: 1581px) {
+    #offers_h .card_offers .card {
+      width: 619px;
+    }
+  }
+
+  @media (min-width: 1560px) and (max-width: 1580px) {
+    #offers_h .card_offers .card {
+      width: 619px;
+    }
+
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-top: 5rem;
+      grid-row-gap: 2rem;
+      grid-column-gap: 2rem;
+    }
+  }
+
+  @media (min-width: 1490px) and (max-width: 1560px) {
+    #offers_h .card_offers .card {
+      width: 590px;
+    }
+
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-top: 5rem;
+      grid-row-gap: 3rem;
+      grid-column-gap: 2rem;
+    }
+  }
+
+  @media (min-width: 1435px) and (max-width: 1490px) {
+    #offers_h .card_offers .card {
+      width: 569px;
+    }
+
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-top: 5rem;
+      grid-row-gap: 3rem;
+      grid-column-gap: 2rem;
+    }
+    #offers_h .card_offers .card .card_header .info_title {
+      width: 285px;
+      display: grid;
+      align-items: center;
+    }
+    #offers_h .card_offers .card .card_header .icon img {
+      width: 100px;
+      height: 100px;
+    }
+    #offers_h .card_offers .card .card_header .info_title h3 {
+      color: rgb(82, 0, 255);
+      text-align: center;
+      font-family: Montserrat;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+  }
+
+  @media (max-width: 1436px) {
+    #offers_h .card_offers .card {
+      width: 569px;
+    }
+
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-top: 5rem;
+      grid-row-gap: 3rem;
+      grid-column-gap: 2rem;
+    }
+    #offers_h .card_offers .card .card_header .info_title {
+      width: 285px;
+      display: grid;
+      align-items: center;
+    }
+    #offers_h .card_offers .card .card_header .icon img {
+      width: 100px;
+      height: 100px;
+    }
+    #offers_h .card_offers .card .card_header .info_title h3 {
+      color: rgb(82, 0, 255);
+      text-align: center;
+      font-family: Montserrat;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+    #offers_h .card_offers .card .card_info p {
+      color: #323232;
+      font-family: Montserrat;
+      font-size: 17px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+
+  @media (max-width: 1435px) {
+    #offers_h .card_offers .card {
+      width: 565px;
+    }
+  }
+
+  @media (max-width: 1420px) {
+    #offers_h .card_offers .card {
+      width: 558px;
+    }
+  }
+
+  @media (max-width: 1400px) {
+    #offers_h .card_offers .card {
+      width: 552px;
+    }
+  }
+
+  @media (max-width: 1386px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .card_offers .card {
+      width: 545px;
+    }
+  }
+
+  @media (max-width: 1360px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .card_offers .card {
+      width: 535px;
+    }
+  }
+
+  @media (min-width: 1260px) and (max-width: 1350px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .title h2 {
+      font-size: 46px;
+      color: white;
+      padding-bottom: 0.8rem;
+      font-family: Montserrat-Bold;
+    }
+    #offers_h .card_offers .card {
+      width: 510px;
+    }
+  }
+
+  @media (min-width: 1240px) and (max-width: 1261px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .title h2 {
+      font-size: 46px;
+      color: white;
+      padding-bottom: 0.8rem;
+      font-family: Montserrat-Bold;
+    }
+    #offers_h .card_offers .card {
+      width: 491px;
+    }
+  }
+
+  @media (min-width: 1220px) and (max-width: 1241px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .title h2 {
+      font-size: 46px;
+      color: white;
+      padding-bottom: 0.8rem;
+      font-family: Montserrat-Bold;
+    }
+    #offers_h .card_offers .card {
+      width: 489px;
+    }
+  }
+
+  @media (min-width: 1180px) and (max-width: 1221px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .title h2 {
+      font-size: 46px;
+      color: white;
+      padding-bottom: 0.8rem;
+      font-family: Montserrat-Bold;
+    }
+    #offers_h .card_offers .card .card_header .info_title {
+      width: 230px;
+      display: grid;
+      align-items: center;
+    }
+    #offers_h .card_offers .card {
+      width: 474px;
+    }
+
+    #offers_h .card_offers .card .card_header .icon img {
+      width: 90px;
+      height: 90px;
+    }
+    #offers_h .card_offers .card .card_header .icon {
+      color: #5200ff;
+      font-family: Montserrat-Bold;
+      width: 100px;
+      height: 100px;
+    }
+    #offers_h .card_offers .card .card_header .info_title h3 {
+      color: rgb(82, 0, 255);
+      text-align: center;
+      font-family: Montserrat;
+      font-size: 38px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+  }
+
+  @media (min-width: 1140px) and (max-width: 1180px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .title h2 {
+      font-size: 46px;
+      color: white;
+      padding-bottom: 0.8rem;
+      font-family: Montserrat-Bold;
+    }
+    #offers_h .card_offers .card .card_header .info_title {
+      width: 230px;
+      display: grid;
+      align-items: center;
+    }
+    #offers_h .card_offers .card {
+      width: 455px;
+    }
+
+    #offers_h .card_offers .card .card_header .icon img {
+      width: 90px;
+      height: 90px;
+    }
+    #offers_h .card_offers .card .card_header .icon {
+      color: #5200ff;
+      font-family: Montserrat-Bold;
+      width: 100px;
+      height: 100px;
+    }
+    #offers_h .card_offers .card .card_header .info_title h3 {
+      color: rgb(82, 0, 255);
+      text-align: center;
+      font-family: Montserrat;
+      font-size: 35px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-top: 5rem;
+      grid-row-gap: 2rem;
+      grid-column-gap: 2rem;
+    }
+  }
+
+  @media (min-width: 1115px) and (max-width: 1139px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .title h2 {
+      font-size: 46px;
+      color: white;
+      padding-bottom: 0.8rem;
+      font-family: Montserrat-Bold;
+    }
+    #offers_h .card_offers .card .card_header .info_title {
+      width: 230px;
+      display: grid;
+      align-items: center;
+    }
+    #offers_h .card_offers .card {
+      width: 448px;
+    }
+
+    #offers_h .card_offers .card .card_header .icon img {
+      width: 90px;
+      height: 90px;
+    }
+    #offers_h .card_offers .card .card_header .icon {
+      color: #5200ff;
+      font-family: Montserrat-Bold;
+      width: 100px;
+      height: 100px;
+    }
+    #offers_h .card_offers .card .card_header .info_title h3 {
+      color: rgb(82, 0, 255);
+      text-align: center;
+      font-family: Montserrat;
+      font-size: 35px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-top: 5rem;
+      grid-row-gap: 2rem;
+      grid-column-gap: 2rem;
+    }
+  }
+
+  @media (min-width: 1090px) and (max-width: 1115px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .title h2 {
+      font-size: 43px;
+      color: white;
+      padding-bottom: 0.8rem;
+      font-family: Montserrat-Bold;
+    }
+    #offers_h .card_offers .card .card_header .info_title {
+      width: 230px;
+      display: grid;
+      align-items: center;
+    }
+    #offers_h .card_offers .card {
+      width: 435px;
+    }
+
+    #offers_h .card_offers .card .card_header .icon img {
+      width: 80px;
+      height: 80px;
+    }
+
+    #offers_h .card_offers .card .card_header .icon {
+      color: #5200ff;
+      font-family: Montserrat-Bold;
+      width: 100px;
+      height: 100px;
+    }
+    #offers_h .card_offers .card .card_header .info_title h3 {
+      color: rgb(82, 0, 255);
+      text-align: center;
+      font-family: Montserrat;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-top: 5rem;
+      grid-row-gap: 2rem;
+      grid-column-gap: 2rem;
+    }
+  }
+
+  @media (min-width: 1074px) and (max-width: 1089px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .title h2 {
+      font-size: 43px;
+      color: white;
+      padding-bottom: 0.8rem;
+      font-family: Montserrat-Bold;
+    }
+    s #offers_h .card_offers .card .card_header .info_title {
+      width: 230px;
+      display: grid;
+      align-items: center;
+    }
+    #offers_h .card_offers .card {
+      width: 430px;
+    }
+
+    #offers_h .card_offers .card .card_header .icon img {
+      width: 80px;
+      height: 80px;
+    }
+
+    #offers_h .card_offers .card .card_header .icon {
+      color: #5200ff;
+      font-family: Montserrat-Bold;
+      width: 100px;
+      height: 100px;
+    }
+    #offers_h .card_offers .card .card_header .info_title h3 {
+      color: rgb(82, 0, 255);
+      text-align: center;
+      font-family: Montserrat;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-top: 5rem;
+      grid-row-gap: 2rem;
+      grid-column-gap: 2rem;
+    }
+  }
+
+  @media (min-width: 1060px) and (max-width: 1074px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .title h2 {
+      font-size: 43px;
+      color: white;
+      padding-bottom: 0.8rem;
+      font-family: Montserrat-Bold;
+    }
+    #offers_h .card_offers .card .card_header .info_title {
+      width: 230px;
+      display: grid;
+      align-items: center;
+    }
+    #offers_h .card_offers .card {
+      width: 421px;
+    }
+
+    #offers_h .card_offers .card .card_header .icon img {
+      width: 80px;
+      height: 80px;
+    }
+
+    #offers_h .card_offers .card .card_header .icon {
+      color: #5200ff;
+      font-family: Montserrat-Bold;
+      width: 100px;
+      height: 100px;
+    }
+    #offers_h .card_offers .card .card_header .info_title h3 {
+      color: rgb(82, 0, 255);
+      text-align: center;
+      font-family: Montserrat;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-top: 5rem;
+      grid-row-gap: 2rem;
+      grid-column-gap: 2rem;
+    }
+  }
+
+  @media (min-width: 1030px) and (max-width: 1060px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .title h2 {
+      font-size: 43px;
+      color: white;
+      padding-bottom: 0.8rem;
+      font-family: Montserrat-Bold;
+    }
+    #offers_h .card_offers .card .card_header .info_title {
+      width: 230px;
+      display: grid;
+      align-items: center;
+    }
+    #offers_h .card_offers .card {
+      width: 421px;
+    }
+
+    #offers_h .card_offers .card .card_header .icon img {
+      width: 80px;
+      height: 80px;
+    }
+
+    #offers_h .card_offers .card .card_header .icon {
+      color: #5200ff;
+      font-family: Montserrat-Bold;
+      width: 100px;
+      height: 100px;
+    }
+    #offers_h .card_offers .card .card_header .info_title h3 {
+      color: rgb(82, 0, 255);
+      text-align: center;
+      font-family: Montserrat;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-top: 5rem;
+      grid-row-gap: 2rem;
+      grid-column-gap: 2rem;
+    }
+    #offers_h .card_offers .card {
+      padding: 30px;
+    }
+  }
+
+  @media (min-width: 1020px) and (max-width: 1031px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .title h2 {
+      font-size: 46px;
+      color: white;
+      padding-bottom: 0.8rem;
+      font-family: Montserrat-Bold;
+    }
+    #offers_h .card_offers .card .card_header .info_title {
+      width: 230px;
+      display: grid;
+      align-items: center;
+    }
+    #offers_h .card_offers .card {
+      width: 421px;
+    }
+
+    #offers_h .card_offers .card .card_header .icon img {
+      width: 80px;
+      height: 80px;
+    }
+
+    #offers_h .card_offers .card .card_header .icon {
+      color: #5200ff;
+      font-family: Montserrat-Bold;
+      width: 100px;
+      height: 100px;
+    }
+    #offers_h .card_offers .card .card_header .info_title h3 {
+      color: rgb(82, 0, 255);
+      text-align: center;
+      font-family: Montserrat;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto auto;
+      padding-top: 5rem;
+      grid-row-gap: 2rem;
+      grid-column-gap: 2rem;
+    }
+    #offers_h .card_offers .card {
+      padding: 32px;
+    }
+  }
+
+  @media (min-width: 900px) and (max-width: 1020px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .title h2 {
+      font-size: 40px;
+      color: white;
+      padding-bottom: 0.8rem;
+      font-family: Montserrat-Bold;
+    }
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto;
+      padding-top: 5rem;
+      grid-row-gap: 3rem;
+      grid-column-gap: 2rem;
+    }
+
+    #offers_h .card_offers .card {
+      width: 100%;
+    }
+
+    #offers_h .card_offers .card .card_header .icon img {
+      width: 120px;
+      height: 120px;
+    }
+
+    #offers_h .card_offers .card .card_header .info_title h3 {
+      color: rgb(82, 0, 255);
+      font-family: Montserrat;
+      font-size: 45px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    #offers_h .card_offers .card .card_info p {
+      color: #323232;
+      font-family: Montserrat;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+    #offers_h .card_offers .card .card_header .info_title {
+      padding-top: 30px;
+      width: 100%;
+      display: grid;
+      justify-items: start;
+    }
+  }
+
+  @media (min-width: 710px) and (max-width: 899px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .title h2 {
+      font-size: 40px;
+      color: white;
+      padding-bottom: 0.8rem;
+      font-family: Montserrat-Bold;
+    }
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto;
+      padding-top: 5rem;
+      grid-row-gap: 3rem;
+      grid-column-gap: 2rem;
+    }
+
+    #offers_h .card_offers .card {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+      border-radius: 14.722px;
+      background: linear-gradient(180deg, #fff 0.03%, #f5f5f5 114.89%);
+      padding: 45px;
+      display: grid;
+    }
+
+    #offers_h .card_offers .card .card_header .icon img {
+      width: 100px;
+      height: 100px;
+    }
+
+    #offers_h .card_offers .card .card_header .info_title h3 {
+      color: rgb(82, 0, 255);
+      font-family: Montserrat;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    #offers_h .card_offers .card .card_info p {
+      color: #323232;
+      font-family: Montserrat;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+    #offers_h .card_offers .card .card_header .info_title {
+      padding-top: 30px;
+      width: 100%;
+      display: grid;
+      justify-items: start;
+    }
+  }
+
+  @media (min-width: 525px) and (max-width: 710px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .title h2 {
+      font-size: 38px;
+      color: white;
+      padding-bottom: 0.8rem;
+      font-family: Montserrat-Bold;
+    }
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto;
+      padding-top: 5rem;
+      grid-row-gap: 3rem;
+      grid-column-gap: 2rem;
+    }
+
+    #offers_h .card_offers .card {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+      border-radius: 14.722px;
+      background: linear-gradient(180deg, #fff 0.03%, #f5f5f5 114.89%);
+      padding: 45px;
+      display: grid;
+    }
+
+    #offers_h .card_offers .card .card_header .icon img {
+      width: 90px;
+      height: 90px;
+    }
+    #offers_h .card_offers .card .card_header .info_title h3 {
+      color: rgb(82, 0, 255);
+      font-family: Montserrat;
+      font-size: 35px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    #offers_h .card_offers .card .card_info p {
+      color: #323232;
+      font-family: Montserrat;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+    #offers_h .card_offers .card .card_header .info_title {
+      padding-top: 25px;
+      width: 100%;
+      display: grid;
+      justify-items: start;
+    }
+  }
+
+  @media (min-width: 487px) and (max-width: 525px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .title h2 {
+      font-size: 38px;
+      color: white;
+      padding-bottom: 0.8rem;
+      font-family: Montserrat-Bold;
+    }
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto;
+      padding-top: 5rem;
+      grid-row-gap: 3rem;
+      grid-column-gap: 2rem;
+    }
+
+    #offers_h .card_offers .card {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+      border-radius: 14.722px;
+      background: linear-gradient(180deg, #fff 0.03%, #f5f5f5 114.89%);
+      padding: 45px;
+      display: grid;
+    }
+
+    #offers_h .card_offers .card .card_header .icon img {
+      width: 80px;
+      height: 80px;
+    }
+    #offers_h .card_offers .card .card_header .info_title h3 {
+      color: rgb(82, 0, 255);
+      font-family: Montserrat;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    #offers_h .card_offers .card .card_info p {
+      color: #323232;
+      font-family: Montserrat;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+    #offers_h .card_offers .card .card_header .info_title {
+      padding-top: 2px;
+      width: 100%;
+      display: grid;
+      justify-items: start;
+    }
+  }
+
+  @media (min-width: 420px) and (max-width: 487px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .title h2 {
+      font-size: 36px;
+      color: white;
+      padding-bottom: 0.8rem;
+      font-family: Montserrat-Bold;
+    }
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto;
+      padding-top: 5rem;
+      grid-row-gap: 3rem;
+      grid-column-gap: 2rem;
+    }
+
+    #offers_h .card_offers .card {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+      border-radius: 14.722px;
+      background: linear-gradient(180deg, #fff 0.03%, #f5f5f5 114.89%);
+      padding: 35px;
+      display: grid;
+    }
+
+    #offers_h .card_offers .card .card_header .icon img {
+      width: 80px;
+      height: 80px;
+    }
+    #offers_h .card_offers .card .card_header .info_title h3 {
+      color: rgb(82, 0, 255);
+      font-family: Montserrat;
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    #offers_h .card_offers .card .card_info p {
+      color: #323232;
+      font-family: Montserrat;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+    #offers_h .card_offers .card .card_header .info_title {
+      padding-top: 2px;
+      width: 100%;
+      display: grid;
+      justify-items: start;
+      height: 9rem;
+    }
+    #offers_h .card_offers .card .card_header .icon {
+      color: #5200ff;
+      font-family: Montserrat-Bold;
+      width: 120px;
+      height: 70px;
+    }
+    #offers_h .card_offers .card .card_header {
+      display: grid;
+      grid-template-columns: auto;
+    }
+  }
+  @media (min-width: 400px) and (max-width: 420px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .title h2 {
+      font-size: 30px;
+      color: white;
+      padding-bottom: 0.8rem;
+      font-family: Montserrat-Bold;
+    }
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto;
+      padding-top: 5rem;
+      grid-row-gap: 3rem;
+      grid-column-gap: 2rem;
+    }
+
+    #offers_h .card_offers .card {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+      border-radius: 14.722px;
+      background: linear-gradient(180deg, #fff 0.03%, #f5f5f5 114.89%);
+      padding: 35px;
+      display: grid;
+    }
+
+    #offers_h .card_offers .card .card_header .icon img {
+      width: 80px;
+      height: 80px;
+    }
+    #offers_h .card_offers .card .card_header .info_title h3 {
+      color: rgb(82, 0, 255);
+      font-family: Montserrat;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    #offers_h .card_offers .card .card_info p {
+      color: #323232;
+      font-family: Montserrat;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+    #offers_h .card_offers .card .card_header .info_title {
+      padding-top: 2px;
+      width: 100%;
+      display: grid;
+      justify-items: start;
+      height: 9rem;
+    }
+    #offers_h .card_offers .card .card_header .icon {
+      color: #5200ff;
+      font-family: Montserrat-Bold;
+      width: 120px;
+      height: 70px;
+    }
+    #offers_h .card_offers .card .card_header {
+      display: grid;
+      grid-template-columns: auto;
+    }
+  }
+  @media (min-width: 360px) and (max-width: 400px) {
+    #offers_h .title {
+      padding-top: 7rem;
+    }
+    #offers_h .title h2 {
+      font-size: 26px;
+      color: white;
+      padding-bottom: 0.8rem;
+      font-family: Montserrat-Bold;
+    }
+    #offers_h .card_offers {
+      display: grid;
+      grid-template-columns: auto;
+      padding-top: 5rem;
+      grid-row-gap: 3rem;
+      grid-column-gap: 2rem;
+    }
+
+    #offers_h .card_offers .card {
+      width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+      border-radius: 14.722px;
+      background: linear-gradient(180deg, #fff 0.03%, #f5f5f5 114.89%);
+      padding: 35px;
+      display: grid;
+    }
+
+    #offers_h .card_offers .card .card_header .icon img {
+      width: 70px;
+      height: 70px;
+    }
+    #offers_h .card_offers .card .card_header .info_title h3 {
+      color: rgb(82, 0, 255);
+      font-family: Montserrat;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    #offers_h .card_offers .card .card_info p {
+      color: #323232;
+      font-family: Montserrat;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+    #offers_h .card_offers .card .card_header .info_title {
+      padding-top: 2px;
+      width: 100%;
+      display: grid;
+      justify-items: start;
+      height: 6rem;
+    }
+    #offers_h .card_offers .card .card_header .icon {
+      color: #5200ff;
+      font-family: Montserrat-Bold;
+      width: 120px;
+      height: 70px;
+    }
+    #offers_h .card_offers .card .card_header {
+      display: grid;
+      grid-template-columns: auto;
+    }
+  }
+
+  // ------------END MAIN------------
+
+  // ------------START FOOTER------------
+
+  #footer {
+    padding-top: 12rem;
+
+    .container {
+      max-width: 80%;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    ul {
+      list-style: none;
+    }
+    .footer {
+      background-color: #24262b;
+      padding: 7rem 0;
+      font-family: Montserrat-Regular;
+    }
+    .footer-col {
+      width: 25%;
+      padding: 0 1.5rem;
+      font-family: Montserrat-Regular;
+
+      .footer-contact {
+        ul {
+          display: grid;
+          grid-template-columns: auto;
+          grid-row-gap: 2.9rem;
+
+          li {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+
+            p {
+              color: white;
+              font-size: 1.8rem;
+              font-weight: 300;
+              color: #bbbbbb;
+              transition: all 0.3s ease;
+
+              &:hover {
+                color: #ffffff;
+                padding-left: 0.8rem;
+              }
+            }
+          }
+        }
+      }
+
+      .social-links {
+        padding-top: 1.6rem;
+      }
+    }
+    .footer-col h4 {
+      font-family: Montserrat-Bold;
+      font-size: 2rem;
+      color: #dddddd;
+      text-transform: capitalize;
+      margin-bottom: 3.5rem;
+      font-weight: 500;
+      position: relative;
+    }
+    .footer-col h4::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.1rem;
+      background: linear-gradient(to right, #5200ff 0%, #00f0ff 100%);
+      height: 0.2rem;
+      box-sizing: border-box;
+      width: 14rem;
+    }
+    .footer-col ul li:not(:last-child) {
+      margin-bottom: 10px;
+    }
+    .footer-col ul li a {
+      font-family: Montserrat-Regular;
+      font-size: 1.8rem;
+      text-transform: capitalize;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 300;
+      color: #bbbbbb;
+      display: block;
+      transition: all 0.3s ease;
+    }
+    .footer-col ul li a:hover {
+      color: #ffffff;
+      padding-left: 0.8rem;
+    }
+
+    /*responsive*/
+    @media (max-width: 76.7rem) {
+      .footer-col {
+        width: 50%;
+        margin-bottom: 3rem;
+      }
+    }
+    @media (max-width: 57.4rem) {
+      .footer-col {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (min-width: 735px) and (max-width: 918px) {
+    #footer .footer-col {
+      width: 50%;
+    }
+  }
+
+  #footer_part2 {
+    padding-top: 12rem;
+    .conatiner {
+      max-width: 80%;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: auto auto auto auto auto;
+      grid-column-gap: 4rem;
+      text-align: center;
+      font-size: 1.6rem;
+      font-family: Montserrat-Regular;
+      justify-content: center;
+
+      li {
+        color: #dddddd;
+      }
+    }
+    p {
+      padding: 4rem 0 3.2rem;
+      color: #dddddd;
+      text-align: center;
+      font-size: 1.6rem;
+      font-family: Montserrat-Regular;
+      justify-content: center;
+      display: grid;
+    }
+  }
+
+  @media (min-width: 360px) and (max-width: 450px) {
+    #footer_part2 ul {
+      grid-row-gap: 15px;
+      list-style: none;
+      display: grid;
+      grid-template-columns: auto auto auto;
+      grid-column-gap: 4rem;
+      text-align: center;
+      font-size: 12px;
+      font-family: Montserrat-Regular;
+      justify-content: center;
+    }
+
+    #footer_part2 p {
+      padding: 4rem 0 3.2rem;
+      color: #dddddd;
+      text-align: center;
+      font-size: 13px;
+      font-family: Montserrat-Regular;
+      justify-content: center;
+      display: grid;
+    }
+  }
+
+  // ------------END FOOTER------------
+}

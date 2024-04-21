@@ -1,0 +1,50 @@
+﻿@using DMS.az.Areas.Admin.ViewModels.Portfolio
+@model PortfolioDetailsVM
+
+<div class="card-body">
+    <h4 class="card-title">Basic Table</h4>
+    <p class="card-description">
+        Add class <code>.table</code>
+    </p>
+
+
+    <div class="px-4">
+        @if (Model is not null)
+        {
+            <h3 class="">Şəkil  `</h3>
+            <span>
+                <img src="~/Users/images/@Model.Photo" style="width: 100px" />
+            </span>
+
+            <h3>Başlıq</h3>
+            <span>@Model.Title</span>
+
+            <h3>Təsvir</h3>
+            <span>@Model.Description</span>
+
+            <h3>Qısa Təsvir</h3>
+            <span>@Model.ShortDesc</span>
+
+            <h3>Yaranma tarixi</h3>
+            <span>@Model.CreatedAt</span>
+
+            if (Model.ModifiedAt.ToString() is not null)
+            {
+                <h3>Düzəliş tarixi</h3>
+                <span>@Model.ModifiedAt</span>
+            }
+        }
+    </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+

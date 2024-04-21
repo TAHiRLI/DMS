@@ -1,0 +1,64 @@
+﻿@using DMS.az.Areas.Admin.ViewModels.AboutUs
+@model AboutUsUpdateVM
+
+<div class="main-panel">
+    <div class="">
+        <div class="card-body">
+            <h4 class="card-title">Service Update</h4>
+
+
+            <form class="forms-sample" enctype="multipart/form-data" asp-action="update" asp-controller="AboutUs" method="post">
+                <div asp-validation-summary="ModelOnly"></div>
+
+                <div class="form-group">
+                    <label asp-for="Photo1"></label>
+                    <input asp-for="Photo1" class="form-control imgInput1" placeholder="Link" />
+                    <span asp-validation-for="Photo1"></span>
+
+                    <div id="imgPreview1" class="mt-1"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="Photo2"></label>
+                    <input asp-for="Photo2" class="form-control imgInput2" placeholder="Link" />
+                    <span asp-validation-for="Photo2"></span>
+
+                    <div id="imgPreview2" class="mt-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Photo3"></label>
+                    <input asp-for="Photo3" class="form-control imgInput3" placeholder="Link" />
+                    <span asp-validation-for="Photo3"></span>
+
+                    <div id="imgPreview3" class="mt-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <textarea class="form-control" asp-for="Description"> </textarea>
+                    <span asp-validation-for="Description"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary mr-2"> Update </button>
+
+                <a asp-action="index" asp-controller="aboutus" class="btn btn-light">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    @await Html.PartialAsync("_ImgUploadPartial")
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#Description'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}

@@ -1,0 +1,245 @@
+﻿@using DMS.az.ViewModels.Home
+@model HomeIndexVM
+
+@section links{
+    <title>@ViewBag.Title - DMS.az</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="~/Users/assets/slick-1.8.1/slick/slick-theme.css">
+    <link rel="stylesheet" href="~/Users/assets/slick-1.8.1/slick/slick.css">
+    <link rel="stylesheet" href="~/Users/assets/css/index/index.css" />
+
+    <!-- Toastr JS-->
+            @*    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="~/Users/assets/Toastr.css">*@
+    <!-- -------- -->
+}
+
+<!-- START MAIN -->
+<main>
+
+    <section id="slider_header">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                @foreach (var item in Model.Sliders)
+                {
+                    @if (item.Type.ToString() == "Photo")
+                    {
+                        <div class="swiper-slide">
+                            <img src="~/Users/images/@item.MediaPath" alt="">
+                            <p>@item.Title</p>
+                        </div>
+                    }
+
+                    @if (item.Type.ToString() == "Video")
+                    {
+                        <div class="swiper-slide">
+                            <video autoplay muted loop id="slider"><source src="~/Users/assets/images/index/header/Galaxy Motion Background Video [HD] ~ FREE.mp4" type="video/mp4"></video>            
+                            <p>Digital Marketing Solution1 </p>
+                        </div>
+                    }
+                }
+
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section id="about_h">
+        <div class="container">
+            @if (Model.AboutUs is not null)
+            {
+                <div class="title"><h2>HAQQIMIZDA</h2></div>
+
+                <div class="images">
+                    @foreach (var item in Model.AboutUs)
+                    {
+                        <div class="images-teamwork"><img src="~/Users/images/@item.Photo1" alt=""></div>
+
+                        <div class="images-office">
+                            <img src="~/Users/images/@item.Photo2" alt="">
+                            <img src="~/Users/images/@item.Photo3" alt="">
+                        </div>
+                    }
+                </div>
+            }
+
+            <div class="content">
+                <div class="about_us">
+                    <h5>Who we are</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore.
+                    </p>
+                </div>
+                <div class="about_us">
+                    <h5>Our Philosophy</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore.
+                    </p>
+                </div>
+                <div class="about_us">
+                    <h5>How we work</h5>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio_h">
+        @if (Model.Portfolios.Count != 0)
+        {
+            <div class="container">
+                <div class="title"><h2>PORTFOLİO</h2></div>
+
+                <div class="slider">
+                    @foreach (var item in Model.Portfolios)
+                    {
+
+                        <img src="~/Users/images/@item.Photo" alt="">
+                    }
+                </div>
+            </div>
+        }
+
+    </section>
+
+    <section id="services_h">
+        <div class="container">
+            <div class="title"><h2>XİDMƏTLƏR</h2></div>
+
+            <div id="services-container" class="services_info" style="grid-row-gap: 1rem;">
+                @{
+                    var i = 0;
+                }
+                @foreach (var item in Model.Services)
+                {
+                    <a href="./offers.html" onclick="setSelectedService(@i)">
+                        <div class="info">
+                            <img src="~/Users/images/@item.Icon" alt="">
+                            <h3>@item.Name</h3>
+                            <p>
+                                @item.ShortDesc
+                            </p>
+                        </div>
+                    </a>
+                    i++;
+                }
+            </div>
+            <div class="more"><a id="loadMore" data-count="@ViewBag.ServicesCount" style="display: flex; align-items: center; justify-content:center" class="more_bttn">Daha çox</a></div>
+
+        </div>
+    </section>
+
+    <section id="colleagues_h">
+        @if (Model.OurEmployees is not null)
+        {
+            <div class="container">
+                <div class="title"><h2>ƏMƏKDAŞLARIMIZ</h2></div>
+
+                <div class="slider">
+                    @foreach (var item in Model.OurEmployees)
+                    {
+                        <img src="~/Users/images/@item.Photo" alt="">
+                    }
+                </div>
+            </div>
+        }
+    </section>
+
+    <section id="contact_h">
+        <div class="container">
+            <div class="title"><h2>BİZİMLƏ ƏLAQƏ</h2></div>
+
+            <div class="contact_info">
+                <div class="info">
+                    <ul>
+                        @foreach (var item in Model.Contact)
+                        {
+                            <li>
+                                <div class="icon"><img src="~/Users/assets/images/index/contact/location.png" alt=""></div>
+                                <div class="text">
+                                    <h4>Address</h4>
+                                    <p>@item.Address</p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="icon"><img src="~/Users/assets/images/index/contact/phone.png" alt=""></div>
+                                <div class="text">
+                                    <h4>Phone</h4>
+                                    <p>@item.PhoneNumber</p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="icon"><img src="~/Users/assets/images/index/contact/mail.png" alt=""></div>
+                                <div class="text">
+                                    <h4>Email</h4>
+                                    <p>@item.Email</p>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+                <div class="contact_box">
+                    <form id="contact" asp-action="index" asp-controller="home" method="post">
+                        <fieldset>
+                            <input asp-for="SenderName" placeholder="Your name" type="text" tabindex="1">
+                            <span asp-validation-for="SenderName" style="font-size: 16px; color:red"></span>
+                        </fieldset>
+                        <fieldset>
+                            <input asp-for="SenderEmail" placeholder="Your Email Address" type="email" tabindex="2">
+                            <span asp-validation-for="SenderEmail" style="font-size: 16px; color:red"></span>
+                        </fieldset>
+                        <fieldset>
+                            <textarea asp-for="Content" placeholder="Type your message here...." tabindex="5"></textarea>
+                            <span asp-validation-for="Content" style="font-size: 16px; color:red"></span>
+                        </fieldset>
+
+                        <fieldset class="bttn_submit">
+                            <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+<!-- END MAIN -->
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/Users/assets/slick-1.8.1/slick/slick.min.js"></script>
+    <script src="~/Users/assets/js/index/index.js"></script>
+    <script src="~/Users/assets/HomeLoadMore.js"></script>
+    <script>
+        var successMessage = '@TempData["SuccessMessage"]';
+        var unsuccessMessage = '@TempData["UnSuccessMessage"]';
+        if (successMessage) {
+            document.getElementById('contact_h').scrollIntoView({ behavior: 'smooth' });
+
+            document.getElementById("SenderName").value = "";
+            document.getElementById("SenderEmail").value = "";
+            document.getElementById("Content").value = "";
+            //console.log("okey")
+            swal("Successfully!");
+        }
+        else if (unsuccessMessage) {
+            swal("Please fill in all fields!");
+            document.getElementById('contact_h').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+}
