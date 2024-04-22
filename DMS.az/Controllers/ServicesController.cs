@@ -24,5 +24,9 @@ namespace DMS.az.Controllers
 
 			return View(model);
 		}
+		public IActionResult Details(int id)
+		{
+			return View();
+		}
 	}
 }

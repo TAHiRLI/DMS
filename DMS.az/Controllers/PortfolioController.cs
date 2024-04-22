@@ -3,6 +3,7 @@ using DMS.az.Models;
 using DMS.az.ViewModels.Portfolio;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol;
 
 namespace DMS.az.Controllers
 {
@@ -42,6 +43,9 @@ namespace DMS.az.Controllers
 
             return PartialView("_PortfolioTabMenuPartial", model.Portfolios);
         }
-
+        public IActionResult Details(int id)
+        {
+            return View();
+        }
     }
 }
