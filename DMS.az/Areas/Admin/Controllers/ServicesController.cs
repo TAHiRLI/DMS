@@ -69,7 +69,7 @@ namespace DMS.az.Areas.Admin.Controllers
                 Name = model.Name,
                 Description = model.Description,
                 ShortDesc = model.ShortDesc,
-                Icon= _fileService.Upload(model.Icon),
+                Icon= await _fileService.Upload(model.Icon),
                 CreatedAt = DateTime.Now
             };
 
@@ -121,7 +121,7 @@ namespace DMS.az.Areas.Admin.Controllers
                     return View();
                 }
                 _fileService.Delete(service.Icon);
-                service.Icon = _fileService.Upload(model.Icon);
+                service.Icon = await _fileService.Upload(model.Icon);
             }
 
             service.Name = model.Name;

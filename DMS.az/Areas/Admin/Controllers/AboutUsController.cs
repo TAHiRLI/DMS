@@ -72,7 +72,7 @@ namespace DMS.az.Areas.Admin.Controllers
                     return View();
                 }
                 _fileService.Delete(aboutUs.Photo1);
-                aboutUs.Photo1 = _fileService.Upload(model.Photo1);
+                aboutUs.Photo1 =await _fileService.Upload(model.Photo1);
             }
 
             if (model.Photo2 is not null)
@@ -89,7 +89,7 @@ namespace DMS.az.Areas.Admin.Controllers
                     return View();
                 }
                 _fileService.Delete(aboutUs.Photo2);
-                aboutUs.Photo2 = _fileService.Upload(model.Photo2);
+                aboutUs.Photo2 = await _fileService.Upload(model.Photo2);
             }
 
             if (model.Photo3 is not null)
@@ -106,7 +106,7 @@ namespace DMS.az.Areas.Admin.Controllers
                     return View();
                 }
                 _fileService.Delete(aboutUs.Photo3);
-                aboutUs.Photo3 = _fileService.Upload(model.Photo3);
+                aboutUs.Photo3 = await _fileService.Upload(model.Photo3);
             }
 
             aboutUs.Description = model.Description;

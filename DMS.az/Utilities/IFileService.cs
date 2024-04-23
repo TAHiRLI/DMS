@@ -2,7 +2,7 @@
 {
     public interface IFileService
     {
-        string Upload(IFormFile file);
+         Task<string> Upload(IFormFile file);
         void Delete(string photoName);
         bool IsImage(IFormFile file);
         bool IsVideo(IFormFile file);

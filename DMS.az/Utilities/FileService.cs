@@ -1,4 +1,13 @@
-﻿namespace DSM.az.Utilities
+﻿
+
+
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats.Webp;
+using SixLabors.ImageSharp.Processing;
+
+namespace DSM.az.Utilities
+
+
 {
     public class FileService : IFileService
     {
@@ -8,14 +17,29 @@
         {
             _webHostEnvironment = webHostEnvironment;
         }
-        public string Upload(IFormFile file)
+        public async Task<string>  Upload(IFormFile file)
         {
-            var fileName = Guid.NewGuid() + "_" + file.FileName;
+            var fileName = Guid.NewGuid() + "_" + file.FileName+".webp";
             var path = Path.Combine(_webHostEnvironment.WebRootPath, "Users/images", fileName);
 
-            using (FileStream fileStream = new FileStream(path, FileMode.Create, FileAccess.ReadWrite))
+            
+
+            using (var image = Image.Load(file.OpenReadStream()))
             {
-                file.CopyTo(fileStream);
+              
+                var encoder = new WebpEncoder
+                {
+                    Quality = 75
+                };
+
+                var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "Users/images", fileName);
+
+
+                // Save the image in WebP format
+                await using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await image.SaveAsWebpAsync(fileStream, encoder);
+                }
             }
             return fileName;
         }
