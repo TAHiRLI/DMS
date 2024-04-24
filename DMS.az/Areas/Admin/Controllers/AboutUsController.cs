@@ -42,9 +42,6 @@ namespace DMS.az.Areas.Admin.Controllers
             var model = new AboutUsUpdateVM
             {
                 PhotoName1 = aboutUs.Photo1,
-                PhotoName2 = aboutUs.Photo2,
-                PhotoName3 = aboutUs.Photo3,
-                Description = aboutUs.Description,
             };
 
             return View(model);

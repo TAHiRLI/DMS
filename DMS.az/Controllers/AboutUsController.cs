@@ -21,9 +21,12 @@ namespace DMS.az.Controllers
             var model = new AboutUsIndexVM
             {
                 AboutUs = await _context.AboutUs.ToListAsync(),
+                TeamMembers = await _context.TeamMembers.ToListAsync(),
             };
 
             return View(model);
         }
+
+
     }
 }

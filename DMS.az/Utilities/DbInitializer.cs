@@ -25,9 +25,6 @@ namespace DSM.az.Utilities
                 var newAboutUs = new AboutUs()
                 {
                     Photo1 = "asdasd",
-                    Photo2 = "sdasdas",
-                    Photo3 = "sdasdas",
-                    Description = "asdasdadsdasdasdasdadssdasdasdadsdasdasdasdadssdasdasdadsdasdasdasdadssdasdasdadsdasdasdasdadssdasdasdadsdasdasdasdadssd",
                     CreatedAt = DateTime.Now,
                 };
 

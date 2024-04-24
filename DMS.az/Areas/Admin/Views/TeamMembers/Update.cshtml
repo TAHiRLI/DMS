@@ -1,0 +1,55 @@
+﻿@using DMS.az.Areas.Admin.ViewModels.TeamMembers
+@model TeamMemberUpdateVM
+
+<div class="main-panel">
+    <div class="">
+        <div class="card-body">
+            <h4 class="card-title">Team Members Update</h4>
+
+
+            <form class="forms-sample" enctype="multipart/form-data" asp-action="update" asp-controller="teammembers" method="post">
+                <div asp-validation-summary="ModelOnly"></div>
+
+                <div class="form-group">
+                    <label asp-for="Photo">Şəkil</label>
+                    <input asp-for="Photo" class="form-control imgInput" placeholder="Link" />
+                    <span asp-validation-for="Photo"></span>
+
+                    <div id="imgPreview" class="mt-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Name">Ad</label>
+                    <input asp-for="Name" type="text" class="form-control" id="exampleInputName1" placeholder="" />
+                    <span asp-validation-for="Name"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Surname">Soyad</label>
+                    <input asp-for="Surname" type="text" class="form-control" id="exampleInputName1" placeholder="" />
+                    <span asp-validation-for="Surname"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description">Təsvir</label>
+                    <input asp-for="Description" type="text" class="form-control" id="exampleInputName1" placeholder="" />
+                    <span asp-validation-for="Description"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Duty">Vəzifə</label>
+                    <input asp-for="Duty" type="text" class="form-control" id="exampleInputName1" placeholder="" />
+                    <span asp-validation-for="Duty"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary mr-2"> Update </button>
+                <a asp-action="index" asp-controller="teammembers" class="btn btn-light">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    @await Html.PartialAsync("_ImgUploadPartial")
+}
