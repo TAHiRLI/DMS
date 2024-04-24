@@ -21,9 +21,15 @@
                         </ol>
                     </nav>
                 </div>
-                <div class="col-md-5">
-                    <img src="~/Users/newAssets/images/breadcrumb/about.png" class="img-fluid" alt="">
-                </div>
+                @if (Model.AboutUs is not null)
+                {
+                    @foreach (var aboutUs in Model.AboutUs)
+                    {
+                        <div class="col-md-5">
+                            <img src="~/Users/images/@aboutUs.Photo1" class="img-fluid" alt="">
+                        </div>
+                    }
+                }
             </div>
         </div>
     </div>
@@ -46,98 +52,41 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-box mb-4">
-                        <div class="team-img text-center">
-                            <img src="~/Users/newAssets/images/team/01.jpg" class="img-fluid rounded-circle" alt="image">
-                        </div>
-                        <div class="team-detail">
-                            <a class="team-plus" href="#"><i class="fas fa-plus"></i></a>
-                            <div class="team-info">
-                                <h6 class="mb-0 text-white "><a href="team-detail.html">JD Scot</a></h6>
-                                <span class="mb-0 text-white text-gray iq-fw-4">Web Designer</span>
+
+                @if (Model.TeamMembers is not null)
+                {
+                    @foreach (var member in Model.TeamMembers)
+                    {
+                        <div class="col-lg-3 col-md-6">
+                            <div class="team-box mb-4">
+                                <div class="team-img text-center">
+                                    <img src="~/Users/images/@member.Photo" class="img-fluid rounded-circle" alt="image">
+                                </div>
+                                <div class="team-detail">
+                                    <a class="team-plus" href="#"><i class="fas fa-plus"></i></a>
+                                    <div class="team-info">
+                                        <h6 class="mb-0 text-white "><a href="team-detail.html">@member.Name @member.Surname</a></h6>
+                                        <span class="mb-0 text-white text-gray iq-fw-4">@member.Duty</span>
+                                    </div>
+                                </div>
+
+                                <div class="team-hover">
+                                    <p>
+                                        @member.Description
+                                        @* Progravida nibh vel velit auctor alinean sollicitudin nisi elit consequat ipsum. *@
+                                    </p>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                        <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                        <div class="team-hover">
-                            <p>Progravida nibh vel velit auctor alinean sollicitudin nisi elit consequat ipsum.</p>
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-box mb-4">
-                        <div class="team-img text-center">
-                            <img src="~/Users/newAssets/images/team/02.jpg" class="img-fluid rounded-circle" alt="image">
-                        </div>
-                        <div class="team-detail">
-                            <a class="team-plus" href="#"><i class="fas fa-plus"></i></a>
-                            <div class="team-info">
-                                <h6 class="mb-0 text-white"><a href="team-detail.html">Kips Leo</a></h6>
-                                <span class="mb-0 text-white text-gray iq-fw-4">Web Designer</span>
-                            </div>
-                        </div>
-                        <div class="team-hover">
-                            <p>Progravida nibh vel velit auctor alinean sollicitudin nisi elit consequat ipsum.</p>
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-box mb-4">
-                        <div class="team-img text-center">
-                            <img src="~/Users/newAssets/images/team/03.jpg" class="img-fluid rounded-circle" alt="image">
-                        </div>
-                        <div class="team-detail">
-                            <a class="team-plus" href="#"><i class="fas fa-plus"></i></a>
-                            <div class="team-info">
-                                <h6 class="mb-0 text-white"><a href="team-detail.html">Nik Jorden</a></h6>
-                                <span class="mb-0 text-white text-gray iq-fw-4">Web Designer</span>
-                            </div>
-                        </div>
-                        <div class="team-hover">
-                            <p>Progravida nibh vel velit auctor alinean sollicitudin nisi elit consequat ipsum.</p>
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-box mb-4">
-                        <div class="team-img text-center">
-                            <img src="~/Users/newAssets/images/team/04.jpg" class="img-fluid rounded-circle" alt="image">
-                        </div>
-                        <div class="team-detail">
-                            <a class="team-plus" href="#"><i class="fas fa-plus"></i></a>
-                            <div class="team-info">
-                                <h6 class="mb-0 text-white"><a href="team-detail.html">Glen Jax</a></h6>
-                                <span class="mb-0 text-white text-gray iq-fw-4">Zane Wills</span>
-                            </div>
-                        </div>
-                        <div class="team-hover">
-                            <p>Progravida nibh vel velit auctor alinean sollicitudin nisi elit consequat ipsum.</p>
-                            <ul class="list-inline">
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                    }
+                }
+
                 <div class="col-lg-12 text-center">
                     <a class="slide-button button mb-0 mt-5" href="team.html">
                         <div class="first">Explore All Team</div>
@@ -260,7 +209,7 @@
         </div>
     </section>
     <!-- Choose From END -->
-   
-   
+
+
 
 </div>

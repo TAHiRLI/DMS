@@ -8,5 +8,6 @@
         }
 
         public List<Models.AboutUs> AboutUs { get; set; }
+        public List<Models.TeamMember> TeamMembers { get; set; }
     }
 }
