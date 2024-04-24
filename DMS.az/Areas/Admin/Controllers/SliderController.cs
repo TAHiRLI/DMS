@@ -95,7 +95,7 @@ namespace DSM.az.Areas.Admin.Controllers
             {
                 Title = model.Title,
                 Type = model.Type,
-                MediaPath = await _fileService.Upload(model.MediaName),
+                MediaPath = await _fileService.Upload(model.MediaName, "Users/images"),
                 CreatedAt = DateTime.Now
             };
 
@@ -182,7 +182,7 @@ namespace DSM.az.Areas.Admin.Controllers
 
 
                 _fileService.Delete(slider.MediaPath);
-                slider.MediaPath =  await _fileService.Upload(model.MediaName);
+                slider.MediaPath =  await _fileService.Upload(model.MediaName, "Users/images");
             }
 
             slider.Title = model.Title;
