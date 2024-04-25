@@ -1,7 +1,9 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using DMS.az.ViewModels.Blogs
+@model BlogDetailsVM
+
 @{
+    // Set the culture to Azerbaijani (Azeri)
+    System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("az");
 }
 <!-- Breadcrumb -->
 <section class="iq-breadcrumb">
@@ -42,64 +44,35 @@
                                 <input type="search" placeholder="Search" class="form-control placeholder">
                             </div>
                         </div>
-                        
+
                         <div class="iq-mt-80">
                             <h5 class="iq-widget-title iq-fw-8 mb-4">Recent Posts</h5>
-                            <div class="media mb-3">
-                                <img class="mr-3" src="~/Users/newAssets/images/blog/blog-detail/01.jpg" alt="image">
-                                <div class="media-body">
-                                    <a href="javascript:void(0)">
-                                        <h6 class="mt-0 iq-fw-8">Fully dedicated finding.</h6>
-                                    </a>
-                                    February 2019
+
+                            @foreach (var blog in Model.Blogs)
+                            {
+                                <div class="media mb-3">
+                                    <img class="mr-3" src="~/Users/Uploads/Blogs/@blog.Photo" alt="image">
+                                    <div class="media-body">
+                                        <a href="javascript:void(0)">
+                                            <h6 class="mt-0 iq-fw-8">@blog.Title</h6>
+                                        </a>
+                                        <span>@blog.PostDate.ToString("MMMM yyyy", culture)</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="media mb-3">
-                                <img class="mr-3" src="~/Users/newAssets/images/blog/blog-detail/02.jpg" alt="image">
-                                <div class="media-body">
-                                    <a href="javascript:void(0)">
-                                        <h6 class="mt-0 iq-fw-8">Progravida nibh vel.</h6>
-                                    </a>
-                                    February 2019
-                                </div>
-                            </div>
-                            <div class="media mb-3">
-                                <img class="mr-3" src="~/Users/newAssets/images/blog/blog-detail/03.jpg" alt="image">
-                                <div class="media-body">
-                                    <a href="javascript:void(0)">
-                                        <h6 class="mt-0 iq-fw-8">Auctor alinean</h6>
-                                    </a>
-                                    February 2019
-                                </div>
-                            </div>
-                            <div class="media mb-3">
-                                <img class="mr-3" src="~/Users/newAssets/images/blog/blog-detail/04.jpg" alt="image">
-                                <div class="media-body">
-                                    <a href="javascript:void(0)">
-                                        <h6 class="mt-0 iq-fw-8">Alinean sollicitudin.</h6>
-                                    </a>
-                                    February 2019
-                                </div>
-                            </div>
+                            }
+
                         </div>
-                     
+
                     </div>
                 </div>
                 <div class="col-lg-8 order-lg-1 order-2 iq-rmt-40">
                     <div class="blog-img">
-                        <img src="~/Users/newAssets/images/blog/01.jpg" class="img-fluid mb-4" alt="image">
+                        <img src="~/Users/Uploads/Blogs/@Model.Blog.Photo" class="img-fluid mb-4" alt="image">
                         <ul class="d-inline-block">
-                            <li class="d-inline-block"><a href="javascript:void(0)" class="mr-3"><i class="far fa-calendar-alt"></i> 01 January 2019</a></li>
-                            <li class="d-inline-block">|<a href="javascript:void(0)"><span class="ml-3">Creative</span> </a></li>
+                            <li class="d-inline-block"><a href="javascript:void(0)" class="mr-3"><i class="far fa-calendar-alt"></i> @Model.Blog.PostDate.ToShortDateString()</a></li>
                         </ul>
-                        <h3 class="title iq-fw-8 mt-3">Fully dedicated finding</h3>
-                        <p class="mb-3">Progravida nibh vel velit auctor alinean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,Lorem Ipsum.lorem quis bibendum auctor. Progravida nibh vel velit auctor alinean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,Lorem Ipsum.lorem quis bibendum auctor. Progravida nibh vel velit auctor alinean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,Lorem Ipsum.lorem quis bibendum auctor. Progravida nibh vel velit auctor alinean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,Lorem Ipsum.lorem quis bibendum auctor. Progravida nibh vel velit auctor alinean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,Lorem Ipsum.lorem quis bibendum auctor.</p>
-                        <p class="mb-4">Progravida nibh vel velit auctor alinean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,Lorem Ipsum.lorem quis bibendum auctor.</p>
-                       
-                       
-                     
-                        
-                  
+                        <h3 class="title iq-fw-8 mt-3">@Model.Blog.Title</h3>
+                        <p>@Model.Blog.Description</p>
                     </div>
                 </div>
 

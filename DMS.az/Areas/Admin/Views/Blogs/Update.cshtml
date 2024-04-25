@@ -1,0 +1,61 @@
+﻿@using DMS.az.Areas.Admin.ViewModels.Blogs
+@model BlogsUpdateVM
+
+<div class="main-panel">
+    <div class="">
+        <div class="card-body">
+            <h4 class="card-title">Blogs Update</h4>
+
+
+            <form class="forms-sample" enctype="multipart/form-data" asp-action="update" asp-controller="blogs" method="post">
+                <div asp-validation-summary="ModelOnly"></div>
+
+                <div class="form-group">
+                    <label asp-for="Photo">Şəkil</label>
+                    <input asp-for="Photo" class="form-control imgInput" placeholder="" />
+                    <span asp-validation-for="Photo"></span>
+
+                    <div id="imgPreview" class="mt-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Title">Title</label>
+                    <input asp-for="Title" type="text" class="form-control" id="exampleInputName1" placeholder="" />
+                    <span asp-validation-for="Title"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description">Description</label>
+                    <input asp-for="Description" type="text" class="form-control" id="exampleInputName1" placeholder="" />
+                    <span asp-validation-for="Description"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ShortDesc">Short Description</label>
+                    <input asp-for="ShortDesc" type="text" class="form-control" id="exampleInputName1" placeholder="" />
+                    <span asp-validation-for="ShortDesc"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PostDate">Post Date</label>
+                    <input asp-for="PostDate" type="text" class="form-control" id="exampleInputName1" placeholder="" />
+                    <span asp-validation-for="PostDate"></span>
+                </div>
+
+                <div class="form-group">
+                <label asp-for="ViewCount">View Count</label>
+                <input asp-for="ViewCount" type="text" class="form-control" id="exampleInputName1" placeholder="" />
+                <span asp-validation-for="ViewCount"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary mr-2"> Update </button>
+                <a asp-action="index" asp-controller="Blogs" class="btn btn-light">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    @await Html.PartialAsync("_ImgUploadPartial")
+}

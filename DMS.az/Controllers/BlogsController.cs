@@ -1,4 +1,6 @@
 ﻿using DMS.az.DAL;
+using DMS.az.Models;
+using DMS.az.Utilities.Pagination;
 using DMS.az.ViewModels.Blogs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,23 +10,40 @@ namespace DMS.az.Controllers
     public class BlogsController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IPaginator _paginator;
 
-        public BlogsController(AppDbContext context)
+        public BlogsController(AppDbContext context, IPaginator paginator)
         {
             _context = context;
+            _paginator = paginator;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(BlogIndexVM model)
         {
-            var model = new BlogIndexVM
+            var blogs = await _context.Blogs.OrderByDescending(b => b.Id).Where(b => !b.IsDeleted).ToListAsync();
+
+             model = new BlogIndexVM
             {
-                Blogs = await _context.Blogs.OrderByDescending(b => b.Id).Where(b => !b.IsDeleted).ToListAsync(),
+                Blogs = _paginator.GetPagedList(blogs, model.CurrentPage, model.PageSize),
             };
 
             return View(model);
         }
-        public IActionResult Details(int id)
+
+        public async Task<IActionResult> Details(int id)
         {
-            return View();
+            var blogs = await _context.Blogs.Where(b => !b.IsDeleted).OrderByDescending(x => x.Id).Take(4).ToListAsync();
+            var blog = _context.Blogs.Where(b => !b.IsDeleted).FirstOrDefault(x => x.Id == id);
+            if (blog == null)
+            {
+                return NotFound();
+            }
+            var model = new BlogDetailsVM()
+            {
+                Blog = blog,
+                Blogs = blogs
+            };
+
+            return View(model);
         }
     }
 }

@@ -60,7 +60,7 @@ namespace DMS.az.Areas.Admin.Controllers
 
             var teamMember = new TeamMember
             {
-                Photo = await _fileService.Upload(model.Photo),
+                Photo = await _fileService.Upload(model.Photo, "Users/Uploads/Team"),
                 Name = model.Name,
                 Surname = model.Surname,
                 Description = model.Description,
@@ -117,7 +117,7 @@ namespace DMS.az.Areas.Admin.Controllers
                     return View();
                 }
                 _fileService.Delete(teamMember.Photo);
-                teamMember.Photo = await _fileService.Upload(model.Photo);
+                teamMember.Photo = await _fileService.Upload(model.Photo, "Users/Uploads/Team");
             }
 
             teamMember.Name = model.Name;

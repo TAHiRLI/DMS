@@ -1,5 +1,6 @@
 using DMS.az.DAL;
 using DMS.az.Utilities;
+using DMS.az.Utilities.Pagination;
 using DSM.az.Models;
 using DSM.az.Utilities;
 using Microsoft.AspNetCore.Http.Features;
@@ -19,6 +20,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddSingleton<IFileService, FileService>();
 builder.Services.AddSingleton<IEmailSender, EmailSender>();
+builder.Services.AddScoped<IPaginator, Paginator>();
 
 
 builder.Services.AddIdentity<User, IdentityRole>(options =>

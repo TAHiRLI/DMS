@@ -1,0 +1,56 @@
+﻿@using DMS.az.Areas.Admin.ViewModels.Blogs
+@model BlogsDetailsVM
+
+<div class="card-body">
+    <h4 class="card-title">Basic Table</h4>
+    <p class="card-description">
+        Add class <code>.table</code>
+    </p>
+
+
+    <div class="px-4">
+        @if (Model is not null)
+        {
+            <h3 class="">Şəkil  </h3>
+            <span>
+                <img src="~/Users/Uploads/Blogs/@Model.Photo" style="width: 100px" />
+            </span>
+
+            <h3 class="mt-2">Title</h3>
+            <span class="mb-2">@Model.Title</span>
+
+            <h3 class="mt-2">Description</h3>
+            <span>@Model.Description</span>
+
+            <h3 class="mt-2">Short Description</h3>
+            <span>@Model.ShortDesc</span>
+
+            <h3 class="mt-2">Post Date</h3>
+            <span>@Model.PostDate</span>
+
+            <h3 class="mt-2">View Count</h3>
+            <span>@Model.ViewCount</span>
+
+            <h3 class="mt-2">Created Date</h3>
+            <span>@Model.CreatedAt</span>
+
+            if (Model.ModifiedAt.ToString() is not null)
+            {
+                <h3 class="mt-2">Modified Date</h3>
+                <span>@Model.ModifiedAt</span>
+            }
+        }
+    </div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
