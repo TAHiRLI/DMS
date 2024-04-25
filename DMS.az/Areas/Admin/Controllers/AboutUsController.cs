@@ -69,9 +69,44 @@ namespace DMS.az.Areas.Admin.Controllers
                     return View();
                 }
                 _fileService.Delete(aboutUs.Photo1);
-                aboutUs.Photo1 =await _fileService.Upload(model.Photo1);
+                aboutUs.Photo1 =await _fileService.Upload(model.Photo1, "Users/images");
             }
-                
+
+            if (model.Photo2 is not null)
+            {
+                if (!_fileService.IsImage(model.Photo2))
+                {
+                    ModelState.AddModelError("Photo2", "Fayl formatı yalnışdır");
+                    return View();
+                }
+
+                if (!_fileService.IsBiggerThanSize(model.Photo2, 2000))
+                {
+                    ModelState.AddModelError("Photo2", "Faylın ölçüsü 2MB-dan böyükdür");
+                    return View();
+                }
+                _fileService.Delete(aboutUs.Photo2);
+                aboutUs.Photo2 = await _fileService.Upload(model.Photo2, "Users/images");
+            }
+
+            if (model.Photo3 is not null)
+            {
+                if (!_fileService.IsImage(model.Photo3))
+                {
+                    ModelState.AddModelError("Photo3", "Fayl formatı yalnışdır");
+                    return View();
+                }
+
+                if (!_fileService.IsBiggerThanSize(model.Photo3, 2000))
+                {
+                    ModelState.AddModelError("Photo3", "Faylın ölçüsü 2MB-dan böyükdür");
+                    return View();
+                }
+                _fileService.Delete(aboutUs.Photo3);
+                aboutUs.Photo3 = await _fileService.Upload(model.Photo3, "Users/images");
+            }
+
+            aboutUs.Description = model.Description;
 
             _context.AboutUs.Update(aboutUs);
             _context.SaveChanges();

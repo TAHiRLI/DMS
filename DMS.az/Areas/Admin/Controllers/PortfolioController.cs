@@ -82,7 +82,7 @@ namespace DSM.az.Areas.Admin.Controllers
                 Title = model.Title,
                 Description = model.Description,
                 ShortDesc = model.ShortDesc,
-                Photo = await _fileService.Upload(model.Photo),
+                Photo = await _fileService.Upload(model.Photo, "Users/Uploads/Projects"),
                 PortfolioCategoryId = model.PortfolioCategoryId,
                 CreatedAt = DateTime.Now
             };
@@ -148,7 +148,7 @@ namespace DSM.az.Areas.Admin.Controllers
                     return View();
                 }
                 _fileService.Delete(portfolio.Photo);
-                portfolio.Photo = await _fileService.Upload(model.Photo);
+                portfolio.Photo = await _fileService.Upload(model.Photo, "Users/Uploads/Projects");
             }
 
             portfolio.Title = model.Title;

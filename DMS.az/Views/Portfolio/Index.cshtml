@@ -1,6 +1,8 @@
 ﻿@using DMS.az.ViewModels.Portfolio
 @model PortfolioIndexVM
-
+@{
+    var i = 0;
+}
 @section links{
     <title>@ViewBag.Title - DMS.az</title>
 }
@@ -21,7 +23,7 @@
                     </nav>
                 </div>
                 <div class="col-md-5">
-                    <img src="~/Users/newAssets/images/breadcrumb/Portfolio.png" class="img-fluid" alt="image">
+                    <img src="~/Users/images/Images-bro.svg" class="img-fluid" alt="image">
                 </div>
             </div>
         </div>
@@ -37,124 +39,33 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="isotope-filters isotope-tooltip ">
-                        <button data-filter="" class="active">All </button>
-                        <button data-filter=".creative">Creative</button>
-                        <button data-filter=".digital">Digital Marketing</button>
-                        <button data-filter=".business">Business</button>
-                        <button data-filter=".seo">Seo</button>
+                        @foreach (var category in Model.PortfolioCategories)
+                        {
+                            if(category.Portfolios?.Count > 0)
+                            {
+                                
+                            <button data-filter="" class="@(i ==0 ? "active":"")">@category.Name </button>
+                            i++; 
+                            }
+                        }
                     </div>
                     <div class="isotope iq-columns-3  infinite-scrolling">
 
-                      
-                        <a asp-action="details" asp-controller="portfolio" asp-route-id="1">
-                            <div class="iq-grid-item creative">
-                                <div class="d-block iq-portfolio">
-                                    <img src="~/Users/newAssets/images/project/1.png" class="img-fluid" alt="IMAGE.ALT">
-                                    <div class="portfolio-info">
-                                        <p class="mb-0"><span class="text-black">Layihe adi</span></p>
-
+                      @foreach (var project in Model.Portfolio)
+                        {
+                            <a asp-action="details" asp-controller="portfolio" asp-route-id="@project.Id" class="d-block">
+                                <article class="iq-grid-item @project.PortfolioCategory?.Name">
+                                    <div class="d-block iq-portfolio">
+                                        <img src="~/Users/Uploads/Projects/@project.Photo" class=" object-fit-cover" style="object-fit:cover" width="362" height="453" alt="DMS Azerbiajian @project.Title">
+                                        <div class="portfolio-info">
+                                            <p class="mb-0"><span class="text-black portfolio-title">@project.Title</span></p>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="iq-grid-item digital">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/2.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="iq-grid-item business">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/3.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="iq-grid-item seo business">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/4.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                </div>
-                            </div>
-                        </div><div class="iq-grid-item creative">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/1.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="iq-grid-item digital">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/2.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="iq-grid-item creative">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/3.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="iq-grid-item digital">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/4.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="iq-grid-item business">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/1.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="iq-grid-item seo business">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/2.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                </div>
-                            </div>
-                        </div><div class="iq-grid-item creative">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/3.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="iq-grid-item digital">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/4.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                </div>
-                            </div>
-                        </div>
-
+                                    <header class="d-none">@project.Title</header>
+                                </article>
+                            </a>
+                        }
+                      
                     </div>
                 </div>
             </div>

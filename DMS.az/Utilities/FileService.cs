@@ -17,10 +17,10 @@ namespace DSM.az.Utilities
         {
             _webHostEnvironment = webHostEnvironment;
         }
-        public async Task<string>  Upload(IFormFile file)
+        public async Task<string>  Upload(IFormFile file, string folderPath)
         {
             var fileName = Guid.NewGuid() + "_" + file.FileName+".webp";
-            var path = Path.Combine(_webHostEnvironment.WebRootPath, "Users/images", fileName);
+            var path = Path.Combine(_webHostEnvironment.WebRootPath, folderPath, fileName);
 
             
 
@@ -32,7 +32,7 @@ namespace DSM.az.Utilities
                     Quality = 75
                 };
 
-                var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "Users/images", fileName);
+                var filePath = Path.Combine(_webHostEnvironment.WebRootPath,folderPath, fileName);
 
 
                 // Save the image in WebP format

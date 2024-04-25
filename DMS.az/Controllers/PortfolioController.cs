@@ -45,7 +45,17 @@ namespace DMS.az.Controllers
         }
         public IActionResult Details(int id)
         {
-            return View();
+            var portfolio = _context.Portfolios.Include(x=> x.PortfolioCategory).FirstOrDefault(x => x.Id == id);
+            if (portfolio == null)
+            {
+                return NotFound();
+            }
+            var Model = new PortfolioDetailsVM()
+            {
+                Portfolio = portfolio,
+            };
+
+            return View(Model);
         }
     }
 }

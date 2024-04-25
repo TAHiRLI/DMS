@@ -1479,7 +1479,7 @@ h2 > sup {
 	bottom: 15px;
 }
 
-.iq-portfolio .portfolio-info a span {
+.portfolio-title {
 	font-size: 16px;
 	-webkit-transition: all 0.5s ease-out 0s;
 	-moz-transition: all 0.5s ease-out 0s;
@@ -1487,8 +1487,7 @@ h2 > sup {
 	-o-transition: all 0.5s ease-out 0s;
 	transition: all 0.5s ease-out 0s;
 }
-
-.iq-portfolio .portfolio-info a:hover span {
+.portfolio-title:hover {
 	color: #33e2a0;
 }
 

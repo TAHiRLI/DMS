@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Users\images\" />
+    <Folder Include="wwwroot\Users\Uploads\Services\" />
+    <Folder Include="wwwroot\Users\Uploads\Projects\" />
   </ItemGroup>
 
   <ItemGroup>
