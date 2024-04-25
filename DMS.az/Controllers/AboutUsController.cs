@@ -1,5 +1,6 @@
 ﻿using DMS.az.DAL;
 using DMS.az.ViewModels.AboutUs;
+using DMS.az.ViewModels.Home;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +28,16 @@ namespace DMS.az.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> LoadMore(int skipRow)
+        {
+
+            var model = new AboutUsLoadMore
+            {
+                TeamMembers = await _context.TeamMembers.OrderByDescending(x => x.Id).Skip(4 * skipRow).Take(4).ToListAsync()
+            };
+
+            return PartialView("_ServicesComponentPartial", model);
+        }
 
     }
 }
