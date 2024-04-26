@@ -37,6 +37,11 @@ namespace DMS.az.Controllers
             {
                 return NotFound();
             }
+            blog.ViewCount++;
+
+            _context.Blogs.Update(blog);
+            _context.SaveChanges();
+
             var model = new BlogDetailsVM()
             {
                 Blog = blog,
