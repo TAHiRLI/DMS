@@ -78,12 +78,12 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=home}/{action=index}/{id?}");
 
-//using (var scope = app.Services.CreateScope())
-//{
-//    var roleManager = scope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
-//    var userManager = scope.ServiceProvider.GetService<UserManager<User>>();
-//    var context = scope.ServiceProvider.GetService<AppDbContext>();
-//    await DbInitializer.SeedAsync(roleManager, userManager, context);
-//}
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
+    var userManager = scope.ServiceProvider.GetService<UserManager<User>>();
+    var context = scope.ServiceProvider.GetService<AppDbContext>();
+    await DbInitializer.SeedAsync(roleManager, userManager, context);
+}
 
 app.Run();

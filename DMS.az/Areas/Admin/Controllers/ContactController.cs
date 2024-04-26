@@ -17,7 +17,7 @@ namespace DMS.az.Areas.Admin.Controllers
             _context = context;
         }
 
-        #region PortfolioList
+        #region ContactList
         [HttpGet]
         public async Task<IActionResult> Index(ContactIndexVM model)
         {

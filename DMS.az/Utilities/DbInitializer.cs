@@ -15,6 +15,25 @@ namespace DSM.az.Utilities
             await SeedUsersAsync(userManager);
             await SeedContactAsync(context);
             await SeedAboutUsAsync(context);
+            await SeedVideoAsync(context);
+        }
+
+        private static async Task SeedVideoAsync(AppDbContext context)
+        {
+            var video = await context.Video.ToListAsync();
+
+            if (video.Count == 0)
+            {
+                var newVideo = new Video()
+                {
+                    Link = "asdas",
+                    CoverPhoto = "asdasd",
+                    CreatedAt = DateTime.Now,
+                };
+
+                context.Video.Add(newVideo);
+                await context.SaveChangesAsync();
+            }
         }
 
         private static async Task SeedAboutUsAsync(AppDbContext context)

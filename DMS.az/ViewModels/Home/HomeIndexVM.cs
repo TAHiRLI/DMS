@@ -6,7 +6,8 @@ namespace DMS.az.ViewModels.Home
 {
     public class HomeIndexVM
     {
-        public List<Slider> Sliders { get; set; }
+        //public List<Slider> Sliders { get; set; }
+        public Video Video { get; set; }
         public List<Models.AboutUs> AboutUs { get; set; }
         public List<Models.Portfolio> Portfolios { get; set; }
         public List<Service> Services { get; set; }

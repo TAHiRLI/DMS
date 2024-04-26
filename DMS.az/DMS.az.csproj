@@ -16,6 +16,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\Users\images\" />
     <Folder Include="wwwroot\Users\Uploads\Blogs\" />
+    <Folder Include="wwwroot\Users\Uploads\Video\" />
     <Folder Include="wwwroot\Users\Uploads\Team\" />
     <Folder Include="wwwroot\Users\Uploads\Projects\" />
   </ItemGroup>

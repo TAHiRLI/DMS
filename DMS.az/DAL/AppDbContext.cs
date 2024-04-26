@@ -23,6 +23,7 @@ namespace DMS.az.DAL
         public DbSet<Message> Messages { get; set; }
         public DbSet<TeamMember> TeamMembers { get; set; }
         public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Video> Video { get; set; }
 
     }
 }
