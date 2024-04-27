@@ -24,9 +24,17 @@ namespace DMS.az.Controllers
 
 			return View(model);
 		}
-		public IActionResult Details(int id)
+		public async Task <IActionResult> Details(int id)
 		{
-			return View();
+			var service = await _context.Services.Where(s => !s.IsDeleted).FirstOrDefaultAsync(s => s.Id == id);
+			if (service == null) return NotFound();
+
+			var model = new ServiceDetailsVM()
+			{
+				Service = service
+			};
+
+			return View(model);
 		}
 	}
 }

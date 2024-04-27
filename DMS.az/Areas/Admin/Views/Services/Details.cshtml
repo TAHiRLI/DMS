@@ -11,25 +11,32 @@
     <div class="px-4">
         @if (Model is not null)
         {
-            <h3 class="">Icon</h3>
+            <h3 class="">Photo</h3>
             <span>
-                <img src="~/Users/images/@Model.Icon" style="width: 100px" />
+                <img src="~/Users/Uploads/Services/@Model.Photo" style="width: 100px" />
             </span>
 
-            <h3>Name</h3>
+            <h3 class="mt-3">Icon</h3>
+            <span>
+                <img src="~/Users/Uploads/Services/@Model.Icon" style="width: 100px" />
+            </span>
+
+            <h3 class="mt-3">Name</h3>
             <span>@Model.Name</span>
 
-            <h3>Description</h3>
+            <h3 class="mt-3">Description</h3>
             <span>@Html.Raw(@Model.Description)</span>
 
-            <h3>Short Description</h3>
+            <h3 class="mt-3">Short Description</h3>
             <span>@Model.ShortDesc</span>
 
-            <h3>Created Time</h3>
+            <h3 class="mt-3">Service Qualification</h3>
+            <span>@Html.Raw(Model.ServiceQualification)</span>
+
+            <h3 class="mt-3">Created Time</h3>
             <span>@Model.CreatedAt</span>
 
-
-            <h3>Modified Time</h3>
+            <h3 class="mt-3">Modified Time</h3>
             <span>@Model.ModifiedAt</span>
         }
     </div>

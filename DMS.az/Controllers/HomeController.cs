@@ -28,7 +28,7 @@ namespace DMS.az.Controllers
                 Video = await _context.Video.FirstOrDefaultAsync(),
                 AboutUs = await _context.AboutUs.Where(x => !x.IsDeleted).ToListAsync(),
                 Portfolios = await _context.Portfolios.Where(x => !x.IsDeleted).ToListAsync(),
-                Services = await _context.Services.Where(x => !x.IsDeleted).OrderByDescending(x => x.Id).Take(3).ToListAsync(),
+                //Services = await _context.Services.Where(x => !x.IsDeleted).OrderByDescending(x => x.Id).Take(3).ToListAsync(),
                 OurEmployees = await _context.OurEmployees.Where(x => !x.IsDeleted).ToListAsync(),
                 Contact = await _context.Contact.ToListAsync(),
             };
@@ -51,7 +51,7 @@ namespace DMS.az.Controllers
                     //Sliders = await _context.Sliders.Where(x => !x.IsDeleted).ToListAsync(),
                     AboutUs = await _context.AboutUs.Where(x => !x.IsDeleted).ToListAsync(),
                     Portfolios = await _context.Portfolios.Where(x => !x.IsDeleted).ToListAsync(),
-                    Services = await _context.Services.Where(x => !x.IsDeleted).OrderByDescending(x => x.Id).Take(3).ToListAsync(),
+                    //Services = await _context.Services.Where(x => !x.IsDeleted).OrderByDescending(x => x.Id).Take(3).ToListAsync(),
                     OurEmployees = await _context.OurEmployees.Where(x => !x.IsDeleted).ToListAsync(),
                     Contact = await _context.Contact.ToListAsync(),
                 };

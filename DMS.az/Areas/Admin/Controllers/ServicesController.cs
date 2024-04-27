@@ -4,6 +4,7 @@ using DMS.az.Models;
 using DSM.az.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
 
 namespace DMS.az.Areas.Admin.Controllers
 {
@@ -46,13 +47,13 @@ namespace DMS.az.Areas.Admin.Controllers
 
             if (!_fileService.IsImage(model.Icon))
             {
-                ModelState.AddModelError("İcon", "Fayl formatı yalnışdır");
+                ModelState.AddModelError("Icon", "Fayl formatı yalnışdır");
                 return View();
             }
 
             if (!_fileService.IsBiggerThanSize(model.Icon, 2000))
             {
-                ModelState.AddModelError("İcon", "Faylın ölçüsü 2MB-dan böyükdür");
+                ModelState.AddModelError("Icon", "Faylın ölçüsü 2MB-dan böyükdür");
                 return View();
             }
 
@@ -69,7 +70,9 @@ namespace DMS.az.Areas.Admin.Controllers
                 Name = model.Name,
                 Description = model.Description,
                 ShortDesc = model.ShortDesc,
-                Icon= await _fileService.Upload(model.Icon, "Users/images"),
+                ServiceQualification = model.ServiceQualification,
+                Icon= await _fileService.Upload(model.Icon, "Users/Uploads/Services"),
+                Photo = await _fileService.Upload(model.Photo, "Users/Uploads/Services"),
                 CreatedAt = DateTime.Now
             };
 
@@ -92,6 +95,8 @@ namespace DMS.az.Areas.Admin.Controllers
                 Name = service.Name,
                 Description = service.Description,
                 ShortDesc = service.ShortDesc,
+                ServiceQualification = service.ServiceQualification,
+                PhotoName = service.Photo,
                 İconPath = service.Icon
             };
 
@@ -121,12 +126,17 @@ namespace DMS.az.Areas.Admin.Controllers
                     return View();
                 }
                 _fileService.Delete(service.Icon);
-                service.Icon = await _fileService.Upload(model.Icon, "Users/images");
+                service.Icon = await _fileService.Upload(model.Icon, "Users/Uploads/Services");
             }
-
+            if (model.Photo is not null)
+            {
+                _fileService.Delete(service.Photo);
+                service.Photo = await _fileService.Upload(model.Photo, "Users/Uploads/Services");
+            }
             service.Name = model.Name;
             service.Description = model.Description;
             service.ShortDesc = model.ShortDesc;
+            service.ServiceQualification = model.ServiceQualification;
             service.ModifiedAt = DateTime.Now;
 
             _context.Services.Update(service);
@@ -164,6 +174,8 @@ namespace DMS.az.Areas.Admin.Controllers
                 Description = service.Description,
                 ShortDesc = service.ShortDesc,
                 Icon = service.Icon,
+                Photo = service.Photo,
+                ServiceQualification = service.ServiceQualification,
                 CreatedAt = service.CreatedAt,
                 ModifiedAt = service.ModifiedAt,
             };

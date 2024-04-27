@@ -11,12 +11,6 @@
                 <div asp-validation-summary="ModelOnly"></div>
 
                 <div class="form-group">
-                    <label asp-for="Name"></label>
-                    <input asp-for="Name" type="text" class="form-control" id="exampleInputName1" placeholder="Title" />
-                    <span asp-validation-for="Name"></span>
-                </div>
-
-                <div class="form-group">
                     <label asp-for="Icon"></label>
                     <input asp-for="Icon" class="form-control file-upload-info imgInput" placeholder="" />
                     <span asp-validation-for="Icon"></span>
@@ -25,15 +19,36 @@
                 </div>
 
                 <div class="form-group">
+                    <label asp-for="Photo"></label>
+                    <input asp-for="Photo" class="form-control file-upload-info imgInput" placeholder="" />
+                    <span asp-validation-for="Photo"></span>
+
+                    <div id="imgPreview" class="mt-1"></div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" type="text" class="form-control" id="exampleInputName1" placeholder="" />
+                    <span asp-validation-for="Name"></span>
+                </div>
+
+
+                <div class="form-group">
                     <label asp-for="Description"></label>
-                    <input asp-for="Description" type="text" class="form-control" id="exampleInputName1" placeholder="Title" />
+                    <input asp-for="Description" type="text" class="form-control" id="exampleInputName1" placeholder="" />
                     <span asp-validation-for="Description"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="ShortDesc"></label>
-                    <input asp-for="ShortDesc" type="text" class="form-control" id="exampleInputName1" placeholder="Title" />
+                    <input asp-for="ShortDesc" type="text" class="form-control" id="exampleInputName1" placeholder="" />
                     <span asp-validation-for="ShortDesc"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ServiceQualification"></label>
+                    <textarea class="form-control" asp-for="ServiceQualification"> </textarea>
+                    <span asp-validation-for="ServiceQualification"></span>
                 </div>
 
                 <button type="submit" class="btn btn-primary mr-2"> Create </button>
@@ -47,12 +62,12 @@
 @section scripts{
     @await Html.PartialAsync("_ImgUploadPartial")
 
-@*    <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+   <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
     <script>
         ClassicEditor
-            .create(document.querySelector('#Description'))
+            .create(document.querySelector('#ServiceQualification'))
             .catch(error => {
                 console.error(error);
             });
-    </script>*@
+    </script>
 }
