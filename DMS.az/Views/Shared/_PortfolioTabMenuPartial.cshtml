@@ -3,12 +3,15 @@
 
 @foreach (var item in Model)
 {
-    <!--  *****  Card 1 Starts  *****  -->
-    <div class="item design">
-        <img src="~/Users/images/@item.Photo">
-        <div class="overlay">
-            <a href="#"><p>@item.ShortDesc</p></a>
-        </div>
-    </div>
-    <!--  *****  Card 1 Ends  *****  -->
+    <a asp-action="details" asp-controller="portfolio" asp-route-id="@item.Id" class="d-block">
+        <article class="iq-grid-item @item.PortfolioCategory?.Name">
+            <div class="d-block iq-portfolio">
+                <img src="~/Users/Uploads/Projects/@item.Photo" class=" object-fit-cover" style="object-fit:cover" width="362" height="453" alt="DMS Azerbaijian @item.Title">
+                <div class="portfolio-info">
+                    <p class="mb-0"><span class="text-black portfolio-title">@item.Title</span></p>
+                </div>
+            </div>
+            <header class="d-none">@item.Title</header>
+        </article>
+    </a>
 }

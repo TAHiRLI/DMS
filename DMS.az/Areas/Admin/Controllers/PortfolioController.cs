@@ -81,7 +81,6 @@ namespace DSM.az.Areas.Admin.Controllers
             {
                 Title = model.Title,
                 Description = model.Description,
-                ShortDesc = model.ShortDesc,
                 Photo = await _fileService.Upload(model.Photo, "Users/Uploads/Projects"),
                 PortfolioCategoryId = model.PortfolioCategoryId,
                 CreatedAt = DateTime.Now
@@ -112,7 +111,6 @@ namespace DSM.az.Areas.Admin.Controllers
 
                 Title = portfolio.Title,
                 Description = portfolio.Description,
-                ShortDesc = portfolio.ShortDesc,
                 PhotoPath = portfolio.Photo,
                 PortfolioCategoryId = portfolio.PortfolioCategoryId,
             };
@@ -132,7 +130,8 @@ namespace DSM.az.Areas.Admin.Controllers
                 Value = pc.Id.ToString(),
             }).ToList();
 
-            if (!ModelState.IsValid) return View();
+
+            if (!ModelState.IsValid) return View(model);
 
             if (model.Photo is not null)
             {
@@ -153,7 +152,6 @@ namespace DSM.az.Areas.Admin.Controllers
 
             portfolio.Title = model.Title;
             portfolio.Description = model.Description;
-            portfolio.ShortDesc = model.ShortDesc;
             portfolio.PortfolioCategoryId = model.PortfolioCategoryId;
             portfolio.ModifiedAt = DateTime.Now;
 
@@ -165,6 +163,7 @@ namespace DSM.az.Areas.Admin.Controllers
 
         #endregion
 
+        #region Details
         public async Task<IActionResult> Details(int id)
         {
             var portfolio = await _context.Portfolios.FirstOrDefaultAsync(p => p.Id == id);
@@ -174,7 +173,6 @@ namespace DSM.az.Areas.Admin.Controllers
             {
                 Title = portfolio.Title,
                 Description = portfolio.Description,
-                ShortDesc = portfolio.ShortDesc,
                 PortfolioCategory = portfolio.PortfolioCategory,
                 Photo = portfolio.Photo,
                 CreatedAt = portfolio.CreatedAt,
@@ -183,6 +181,7 @@ namespace DSM.az.Areas.Admin.Controllers
 
             return  View(selectedPortfolio);
         }
+        #endregion
 
         #region Delete
         [HttpGet]

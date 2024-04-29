@@ -799,7 +799,6 @@
         </div>
     </section>
     <!-- Choose From END -->
-
     <!-- Choose From  -->
     <section class="iq-solutions position-relative iq-rmt-40">
         <div class="container">
@@ -834,7 +833,6 @@
         </div>
     </section>
     <!-- Choose From END -->
-
     <!-- Project  -->
     <section class="iq-project position-relative pt-0">
         <div class="scrollme">
@@ -851,7 +849,7 @@
                     <h3 class="d-inline-block  iq-fw-8">Project Done.</h3>
                 </div>
                 <div class="col-lg-6 ">
-                    <a class="slide-button button float-right explore-btn" href="portfolio.html">
+                    <a class="slide-button button float-right explore-btn" asp-controller="portfolio" asp-action="index">
                         <div class="first">Explore All</div>
                         <div class="second">Explore All</div>
                     </a>
@@ -862,78 +860,20 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div id="portfolio-carousel" class="owl-carousel" data-autoplay="true" data-loop="true" data-nav="false" data-dots="false" data-items="4" data-items-laptop="3" data-items-tab="3" data-items-mobile="1" data-items-mobile-sm="1" data-margin="30">
-                        <div class="item">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/1.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
+                        @foreach (var portfolio in Model.Portfolios)
+                        {
+                            <div class="item">
+                                <div class="iq-portfolio">
+                                    <img src="~/Users/Uploads/Projects/@portfolio.Photo" class="img-fluid" alt="DMS Azerbaijan @portfolio.Title">
+                                    <div class="portfolio-info">
+                                        <a href=""><span class="text-black">Design Concept</span></a>
+                                        <a href="#" class="text-uppercase text-gray float-right">@portfolio.PortfolioCategory.Name</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/2.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/3.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/4.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/1.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/2.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/3.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="iq-portfolio">
-                                <img src="~/Users/newAssets/images/project/4.png" class="img-fluid" alt="image">
-                                <div class="portfolio-info">
-                                    <a href=""><span class="text-black">Design Concept</span></a>
-                                    <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                </div>
-                            </div>
-                        </div>
+
+                        }
+
                     </div>
                 </div>
             </div>
@@ -941,7 +881,6 @@
     </section>
 
     <!-- Project END -->
-
     <!-- Works -->
     <section class="iq-works position-relative pt-0">
         <div class="container">
@@ -960,7 +899,6 @@
         <img src="~/Users/newAssets/images/others/16.png" class="img-fluid iqwork-two" alt="image">
     </section>
     <!-- Works END -->
-
     @* Display None *@
 
     <!-- Our Clients -->
@@ -1039,7 +977,6 @@
         </div>
     </section>
     <!-- Our Clients END -->
-
     @* Display None *@
 
     <!-- Pricing -->
@@ -1167,7 +1104,6 @@
         </div>
     </section>
     <!-- Pricing END -->
-
     <!-- Our Blog -->
     <section class="iq-blogs position-relative iq-rmt-40 mb-5">
         <div class="container">
