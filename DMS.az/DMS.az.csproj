@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\Users\images\" />
     <Folder Include="wwwroot\Users\Uploads\Blogs\" />
+    <Folder Include="wwwroot\Users\Uploads\OurCustomers\" />
     <Folder Include="wwwroot\Users\Uploads\Services\" />
     <Folder Include="wwwroot\Users\Uploads\Video\" />
     <Folder Include="wwwroot\Users\Uploads\Team\" />

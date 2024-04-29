@@ -59,7 +59,7 @@ namespace DMS.az.Areas.Admin.Controllers
             var employee = new OurEmployee
             {
                 RedirectLink = model.RedirectLink,
-                Photo = await _fileService.Upload(model.Photo, "Users/images"),
+                Photo = await _fileService.Upload(model.Photo, "Users/Uploads/OurCustomers"),
                 CreatedAt = DateTime.Now
             };
 
@@ -109,7 +109,7 @@ namespace DMS.az.Areas.Admin.Controllers
                     return View();
                 }
                 _fileService.Delete(employee.Photo);
-                employee.Photo = await _fileService.Upload(model.Photo, "Users/images");
+                employee.Photo = await _fileService.Upload(model.Photo, "Users/Uploads/OurCustomers");
             }
 
             employee.RedirectLink = model.RedirectLink;

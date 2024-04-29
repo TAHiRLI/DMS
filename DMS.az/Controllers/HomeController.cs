@@ -25,9 +25,10 @@ namespace DMS.az.Controllers
             var model = new HomeIndexVM
             {
                 //Sliders = await _context.Sliders.Where(x => !x.IsDeleted).ToListAsync(),
-                Video = await _context.Video.FirstOrDefaultAsync(),
+                Video = await _context.Video.SingleAsync(),
                 AboutUs = await _context.AboutUs.Where(x => !x.IsDeleted).ToListAsync(),
                 Portfolios = await _context.Portfolios.Where(x => !x.IsDeleted).ToListAsync(),
+                Blogs = await _context.Blogs.OrderByDescending(b => b.Id).Where(x => !x.IsDeleted).ToListAsync(), //HomePage Bloq Sayi?
                 //Services = await _context.Services.Where(x => !x.IsDeleted).OrderByDescending(x => x.Id).Take(3).ToListAsync(),
                 OurEmployees = await _context.OurEmployees.Where(x => !x.IsDeleted).ToListAsync(),
                 Contact = await _context.Contact.ToListAsync(),
