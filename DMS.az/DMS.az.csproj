@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\**" />
+    <Content Remove="Areas\**" />
+    <EmbeddedResource Remove="Areas\**" />
+    <None Remove="Areas\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\Users\images\" />
     <Folder Include="wwwroot\Users\Uploads\Blogs\" />
     <Folder Include="wwwroot\Users\Uploads\OurCustomers\" />
