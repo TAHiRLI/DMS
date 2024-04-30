@@ -2,7 +2,7 @@
 
 namespace DMS.az.Models
 {
-    public class OurEmployee : BaseEntity
+    public class Client : BaseEntity
     {
         public string Photo { get; set; }
         public string? RedirectLink { get; set; }
