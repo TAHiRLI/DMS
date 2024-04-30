@@ -39,68 +39,42 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="isotope-filters isotope-tooltip ">
+                        <button data-filter="" class="active">Hamısı </button>
 
-                        <a asp-controller="portfolio" asp-action="TabMenu" asp-route-id="0" class="active tabs all-tab defaultOpen">All</a>
                         @foreach (var category in Model.PortfolioCategories)
                         {
-                            if (category.Portfolios?.Count > 0)
+                            if(category.Portfolios?.Count > 0)
                             {
-                                <a asp-controller="portfolio" asp-action="TabMenu" asp-route-id="@category.Id" class="tabs @(i ==0 ? "active":"")">@category.Name </a>
-                                i++;
-                                @*<a class="button tabs" asp-action="TabMenu" asp-controller="portfolio" asp-route-id="@category.Id" style="text-decoration:none">@category.Name</a>
-                        *@
+                                
+                            <button data-filter=".@category.Name?.Trim()?.Replace(' ', '_')" class="@(i ==0 ? "active":"")">@category.Name </button>
+                            i++; 
                             }
                         }
                     </div>
-                    <div class="isotope iq-columns-3  infinite-scrolling" id="tab-content">
+                    <div class="isotope iq-columns-3  infinite-scrolling">
 
-                        @* @foreach (var project in Model.Portfolio)
+                      @foreach (var project in Model.Portfolio)
                         {
-                        <a asp-action="details" asp-controller="portfolio" asp-route-id="@project.Id" class="d-block">
-                        <article class="iq-grid-item @project.PortfolioCategory?.Name">
-                        <div class="d-block iq-portfolio">
-                        <img src="~/Users/Uploads/Projects/@project.Photo" class=" object-fit-cover" style="object-fit:cover" width="362" height="453" alt="DMS Azerbaijian @project.Title">
-                        <div class="portfolio-info">
-                        <p class="mb-0"><span class="text-black portfolio-title">@project.Title</span></p>
-                        </div>
-                        </div>
-                        <header class="d-none">@project.Title</header>
-                        </article>
-                        </a>
-                        } *@
-
+                            <a asp-action="details" asp-controller="portfolio" asp-route-id="@project.Id" class="d-block">
+                                <article class="iq-grid-item @project.PortfolioCategory?.Name?.Trim()?.Replace(' ', '_')">
+                                    <div class="d-block iq-portfolio">
+                                        <img src="~/Users/Uploads/Projects/@project.Photo" class=" object-fit-cover" style="object-fit:cover" width="362" height="453" alt="DMS Azerbiajian @project.Title">
+                                        <div class="portfolio-info">
+                                            <p class="mb-0"><span class="text-black portfolio-title">@project.Title</span></p>
+                                        </div>
+                                    </div>
+                                    <header class="d-none">@project.Title</header>
+                                </article>
+                            </a>
+                        }
+                      
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+
 </div>
-
-
-@section Scripts {
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
-
-    <script>
-
-        $(function () {
-            $('.tabs').on('click', function (e) {
-                e.preventDefault();
-
-                let link = $(this).attr("href");
-
-                if ($(this).hasClass('all-tab')) {
-                    link = '/portfolio/TabMenu/0';
-                }
-
-                fetch(link).then(res => res.text()).then(html => {
-                    let tab_content = document.getElementById('tab-content');
-                    tab_content.innerHTML = html;
-                    console.log(html)
-                });
-            });
-
-            document.getElementsByClassName("defaultOpen")[0].click();
-        });
-    </script>
-}
