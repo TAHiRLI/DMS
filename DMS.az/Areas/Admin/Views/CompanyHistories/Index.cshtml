@@ -1,5 +1,5 @@
-﻿@* @using DMS.az.Areas.Admin.ViewModels.OurEmployees
-@model OurEmployeesIndexVM
+﻿@using DMS.az.Areas.Admin.ViewModels.CompanyHistory
+@model HistoryIndexVM
 
 <div class="card-body">
     <h4 class="card-title">Basic Table</h4>
@@ -7,33 +7,32 @@
         Add class <code>.table</code>
     </p>
 
-    <a class="btn btn-info mb-3" asp-action="Create" asp-controller="OurEmployees">Create</a>
+    <a class="btn btn-info mb-3" asp-action="Create" asp-controller="companyhistories">Create</a>
 
 
     <div class="table-responsive">
         <table class="table">
             <thead>
                 <tr>
-                    <th>Şəkil</th>
-                    <th>Redirect Link</th>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Date as String</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
 
             <tbody>
-                @if (Model.OurEmployees is not null)
+                @if (Model.CompanyHistories is not null)
                 {
-                    @foreach (var item in Model.OurEmployees)
+                    @foreach (var companyHistory in Model.CompanyHistories)
                     {
                         <tr>
-
-                            <td class=""><img src="~/Users/images/@item.Photo" alt="image" /></td>
+                            <td>@companyHistory.Title</td>
+                            <td>@companyHistory.EventDate.ToShortDateString()</td>
+                            <td>@companyHistory.EventDateAsString</td>
                             <td>
-                                <a class="btn-links " href="@item.RedirectLink">ClickToRedirect</a>
-                            </td>
-                            <td>
-                                @if (!item.IsDeleted)
+                                @if (!companyHistory.IsDeleted)
                                 {
                                     <span class="text-success">Active</span>
                                 }
@@ -43,8 +42,9 @@
                                 }
                             </td>
                             <td>
-                                <a asp-action="Update" asp-controller="OurEmployees" asp-route-id="@item.Id" class="btn btn-primary"><i class="mdi mdi-pencil"></i></a>
-                                <a asp-action="Delete" asp-controller="OurEmployees" asp-route-id="@item.Id" class="btn btn-danger btn-delete"> <i class="mdi mdi-delete"></i> </a>
+                                <a asp-action="Details" asp-controller="companyHistories" asp-route-id="@companyHistory.Id" class="btn btn-info"><i class="mdi mdi-eye icon-lg"></i></a>
+                                <a asp-action="Update" asp-controller="companyHistories" asp-route-id="@companyHistory.Id" class="btn btn-primary"><i class="mdi mdi-pencil"></i></a>
+                                <a asp-action="Delete" asp-controller="companyHistories" asp-route-id="@companyHistory.Id" class="btn btn-danger btn-delete"> <i class="mdi mdi-delete"></i> </a>
                             </td>
                         </tr>
                     }
@@ -54,7 +54,7 @@
     </div>
 </div>
 
-@section scripts{
+@section scripts {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(".btn-delete").on("click", (e) => {
@@ -96,5 +96,6 @@
             })
         })
     </script>
+
+
 }
- *@

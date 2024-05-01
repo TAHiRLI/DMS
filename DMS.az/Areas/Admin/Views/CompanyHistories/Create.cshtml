@@ -1,0 +1,50 @@
+﻿@using DMS.az.Areas.Admin.ViewModels.CompanyHistory
+@model HistoryCreateVM
+
+<div class="main-panel">
+    <div class="">
+        <div class="card-body">
+            <h4 class="card-title">Company History Create</h4>
+
+
+            <form class="forms-sample" enctype="multipart/form-data" asp-action="create" asp-controller="companyhistories" method="post">
+                <div asp-validation-summary="ModelOnly"></div>
+
+
+                <div class="form-group">
+                    <label asp-for="Title">Title</label>
+                    <input asp-for="Title" type="text" class="form-control" id="exampleInputName1" placeholder="" />
+                    <span asp-validation-for="Title"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description">Description</label>
+                    <input asp-for="Description" type="text" class="form-control" id="exampleInputName1" placeholder="" />
+                    <span asp-validation-for="Description"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="EventDate">Post Date</label>
+                    <input asp-for="EventDate" type="date" class="form-control" id="exampleInputName1" placeholder="" />
+                    <span asp-validation-for="EventDate"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="EventDateAsString">Post Date As String</label>
+                    <input asp-for="EventDateAsString" type="text" class="form-control" id="exampleInputName1" placeholder="" />
+                    <span asp-validation-for="EventDateAsString"></span>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary mr-2"> Create </button>
+                <a asp-action="index" asp-controller="companyhistories" class="btn btn-light">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    @await Html.PartialAsync("_ImgUploadPartial")
+}

@@ -23,6 +23,7 @@ namespace DMS.az.Controllers
             {
                 AboutUs = await _context.AboutUs.ToListAsync(),
                 TeamMembers = await _context.TeamMembers.ToListAsync(),
+                CompanyHistories = await _context.CompanyHistories.ToListAsync(),
             };
 
             return View(model);
