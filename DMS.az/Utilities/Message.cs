@@ -8,6 +8,7 @@ namespace DMS.az.Utilities
         public string Subject { get; set; }
         public string Content { get; set; }
         public string SenderEmail { get; set; }
+        public string SenderPhoneNumber { get; set; }
         public Message(IEnumerable<string> to, string subject, string content, string senderEmail)
         {
             To = new List<MailboxAddress>();

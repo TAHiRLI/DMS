@@ -49,17 +49,20 @@ namespace DMS.az.Controllers
                 Content = model.Content,
                 SenderEmail = model.SenderEmail,
                 SenderName = model.SenderName,
+                SenderPhoneNumber = model.SenderPhoneNumber,
                 CreatedAt = DateTime.UtcNow,
             };
 
             _context.Messages.Add(message);
             _context.SaveChanges();
 
-            var emailMessage = new Utilities.Message(new[] { "İnfo@dms.az" }, "New Message", message.Content, message.SenderEmail);
+            var emailMessage = new Utilities.Message(new[] { "dmsmessages@gmail.com" }, "New Message", message.Content, message.SenderEmail);
             _emailSender.SendEmail(emailMessage);
 
 
             TempData["SuccessMessage"] = "Mesaj uğurla göndərildi";
+            //TempData["UnSuccessMessage"] = "Mesaj uğursuz göndərildi";
+
 
             model = new ContactIndexVM
             {

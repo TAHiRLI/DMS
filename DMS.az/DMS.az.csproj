@@ -17,6 +17,47 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Areas\Admin\Views\AboutUs\Index.cshtml" />
+    <None Include="Areas\Admin\Views\AboutUs\Update.cshtml" />
+    <None Include="Areas\Admin\Views\Account\Login.cshtml" />
+    <None Include="Areas\Admin\Views\Blogs\Create.cshtml" />
+    <None Include="Areas\Admin\Views\Blogs\Details.cshtml" />
+    <None Include="Areas\Admin\Views\Blogs\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Blogs\Update.cshtml" />
+    <None Include="Areas\Admin\Views\Contact\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Contact\Update.cshtml" />
+    <None Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Message\Details.cshtml" />
+    <None Include="Areas\Admin\Views\Message\Index.cshtml" />
+    <None Include="Areas\Admin\Views\OurEmployees\Create.cshtml" />
+    <None Include="Areas\Admin\Views\OurEmployees\Index.cshtml" />
+    <None Include="Areas\Admin\Views\OurEmployees\Update.cshtml" />
+    <None Include="Areas\Admin\Views\PortfolioCategory\Create.cshtml" />
+    <None Include="Areas\Admin\Views\PortfolioCategory\Index.cshtml" />
+    <None Include="Areas\Admin\Views\PortfolioCategory\Update.cshtml" />
+    <None Include="Areas\Admin\Views\Portfolio\Create.cshtml" />
+    <None Include="Areas\Admin\Views\Portfolio\Details.cshtml" />
+    <None Include="Areas\Admin\Views\Portfolio\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Portfolio\Update.cshtml" />
+    <None Include="Areas\Admin\Views\Services\Create.cshtml" />
+    <None Include="Areas\Admin\Views\Services\Details.cshtml" />
+    <None Include="Areas\Admin\Views\Services\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Services\Update.cshtml" />
+    <None Include="Areas\Admin\Views\Shared\_ImgUploadPartial.cshtml" />
+    <None Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <None Include="Areas\Admin\Views\Slider\Create.cshtml" />
+    <None Include="Areas\Admin\Views\Slider\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Slider\Update.cshtml" />
+    <None Include="Areas\Admin\Views\TeamMembers\Create.cshtml" />
+    <None Include="Areas\Admin\Views\TeamMembers\Index.cshtml" />
+    <None Include="Areas\Admin\Views\TeamMembers\Update.cshtml" />
+    <None Include="Areas\Admin\Views\Video\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Video\Update.cshtml" />
+    <None Include="Areas\Admin\Views\_ViewImports.cshtml" />
+    <None Include="Areas\Admin\Views\_ViewStart.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.13" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.13" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.13" />

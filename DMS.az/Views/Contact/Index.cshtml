@@ -1,10 +1,15 @@
 ﻿@using DMS.az.ViewModels.Contact
 @model ContactIndexVM
 
-@section links{
+@section links {
     <title>@ViewBag.Title - DMS.az</title>
     <link rel="stylesheet" href="~/Users/assets/css/contact-us/contact-us.css" />
 
+    <!-- Toastr JS-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="~/Users/assets/Toastr.css">
     <!-- -------- -->
 }
 <!-- Breadcrumb -->
@@ -17,7 +22,7 @@
                     <h2 class="iq-fw-8 mb-3">Contact Us</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a asp-action="index" asp-controller="home">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
                         </ol>
                     </nav>
@@ -45,47 +50,51 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="project-form mb-3">
-                        <div class="row">
+            <form id="contact" asp-action="index" asp-controller="contact" method="post">
+                <div class="row" id="contact_h">
+                    <div class="col-lg-12">
+                        <div class="project-form mb-3">
+                            <div class="row">
 
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input asp-for="SenderName" type="text" class="form-control contact-first-name" placeholder="First Name">
+                                        <span asp-validation-for="SenderName" style="font-size: 16px; color:red"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input asp-for="SenderPhoneNumber" type="text" class="form-control contact-phone" placeholder="Phone Number">
+                                        <span asp-validation-for="SenderPhoneNumber" style="font-size: 16px; color:red"></span>
 
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control contact-first-name" placeholder="First Name">
-
+                                    </div>
+                                    <div class="form-group">
+                                        <input asp-for="SenderEmail" type="email" class="form-control contact-email" placeholder="Email">
+                                        <span asp-validation-for="SenderEmail" style="font-size: 16px; color:red"></span>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control contact-phone" placeholder="Phone Number">
-
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control contact-email" placeholder="Email">
-
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <textarea class="form-control contact-message" placeholder="Type Your Requirement"></textarea>
-
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <textarea asp-for="Content" class="form-control contact-message" placeholder="Type Your Requirement"></textarea>
+                                        <span asp-validation-for="Content" style="font-size: 16px; color:red"></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                    <div class="col-lg-12">
+                        <a class="slide-button button contact-us-button" href="" onclick="submitForm(event)">
+                            <div class="first">Submit</div>
+                            <div class="second">Submit</div>
+                        </a>
+
                     </div>
 
                 </div>
-                <div class="col-lg-12">
-                    <a class="slide-button button contact-us-button" href="">
-                        <div class="first">Submit</div>
-                        <div class="second">Submit</div>
-                    </a>
-
-                </div>
-            </div>
+            </form>
 
         </div>
     </section>
+
     <section>
         <div class="container">
             <div class="row">
@@ -96,43 +105,47 @@
                             <h2 class="title iq-fw-8">Get in Touch</h2>
                             <p>Progravida nibh vel velit auctor alinean sollicitudin, lorem quis bibendum auctor.</p>
 
-                            <div class="iq-address mt-3">
-                                <div class="media ">
 
-                                    <div class="mr-3 contact-icon float-left"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
-                                    <div class="media-body">
+                            @foreach (var item in Model.Contact)
+                            {
+                                <div class="iq-address mt-3">
+                                    <div class="media ">
 
-                                        <p>Carol J. Stephens 1635 Franklin, Montgomery,<br><span class="iq-fw-5"> AL 36104 USA</span></p>
+                                        <div class="mr-3 contact-icon float-left"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+                                        <div class="media-body">
+
+                                            <p>@item.Address</p>
+                                        </div>
+                                    </div>
+                                    <div class="media ">
+
+                                        <div class="mr-3 contact-icon float-left"><i class="fas fa-envelope "></i> </div>
+                                        <div class="media-body">
+
+                                            <p class="iq-fw-5">@item.Email</p>
+                                        </div>
+                                    </div>
+                                    <div class="media ">
+                                        <div class="mr-3 contact-icon float-left"><i class="fa fa-phone"></i> </div>
+
+                                        <div class="media-body">
+
+                                            <p class="iq-fw-5">@item.PhoneNumber</p>
+                                        </div>
+                                    </div>
+                                    <div class="social-media mt-4 ">
+                                        <ul class="social">
+                                            <li><a href="#"><i class="fab fa-facebook-f "></i></a></li>
+                                            <li><a href="#"><i class="fab fa-twitter "></i></a></li>
+                                            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                        </ul>
                                     </div>
                                 </div>
-                                <div class="media ">
-
-                                    <div class="mr-3 contact-icon float-left"><i class="fas fa-envelope "></i> </div>
-                                    <div class="media-body">
-
-                                        <p class="iq-fw-5">Mail@digitalmarketing.com</p>
-                                    </div>
-                                </div>
-                                <div class="media ">
-                                    <div class="mr-3 contact-icon float-left"><i class="fa fa-phone"></i> </div>
-
-                                    <div class="media-body">
-
-                                        <p class="iq-fw-5">0 123 456 789</p>
-                                    </div>
-                                </div>
-                                <div class="social-media mt-4 ">
-                                    <ul class="social">
-                                        <li><a href="#"><i class="fab fa-facebook-f "></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter "></i></a></li>
-                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                            }
+                        </div>  
                         <div class="col-lg-6">
                             <iframe class="w-100 contact-ifream" src="~/Users/newAssets/https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.840289118572!2d144.95373631550405!3d-37.81720974201396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sin!4v1543402448828" allowfullscreen></iframe>
                         </div>
@@ -142,8 +155,74 @@
         </div>
     </section>
 
-
-
-
-
 </div>
+
+<script>
+    function submitForm(event) {
+        event.preventDefault(); 
+
+        document.getElementById("contact").submit();
+        event.preventDefault();
+    }
+</script>
+
+@section Scripts {
+    <script>
+        var successMessage = '@TempData["SuccessMessage"]';
+        var unsuccessMessage = '@TempData["UnSuccessMessage"]';
+        if (successMessage) {
+            toastr.success(successMessage, '', {
+                positionClass: 'toast-bottom-right', 
+                closeButton: true, 
+                progressBar: false,                
+                titleClass: 'toast-title', 
+                messageClass: 'toast-message', 
+                rtl: true, 
+            });
+            document.getElementById("SenderName").value = "";
+            document.getElementById("SenderEmail").value = "";
+            document.getElementById("Content").value = "";
+            document.getElementById('contact_h').scrollIntoView({ behavior: 'smooth' });
+        }
+        else if (unsuccessMessage) {
+            document.getElementById('contact_h').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+    <@* script>
+        var successMessage = '@TempData["SuccessMessage"]';
+        var unsuccessMessage = '@TempData["UnSuccessMessage"]';
+        if (successMessage) {
+            toastr.success(successMessage, '', {
+                positionClass: 'toast-bottom-right', 
+                closeButton: true, 
+                progressBar: false, 
+                titleClass: 'toast-title', 
+                messageClass: 'toast-message', 
+                rtl: true, 
+            });
+            document.getElementById("SenderName").value = "";
+            document.getElementById("SenderEmail").value = "";
+            document.getElementById("Content").value = "";
+            document.getElementById('contact_h').scrollIntoView({ behavior: 'smooth' });
+        }
+        else if (unsuccessMessage) {
+            toastr.error(unsuccessMessage, '', {
+                positionClass: 'toast-bottom-right', 
+                closeButton: true, 
+                progressBar: false, 
+
+                positionClass: 'toast-bottom-right',
+                titleClass: 'toast-title', 
+                messageClass: 'toast-message',
+                rtl: true, 
+                // Custom CSS for font size
+                messageClass: 'toast-message', 
+                "style": { "font-size": "40px" } 
+            });
+            document.getElementById('contact_h').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script> *@
+
+
+}

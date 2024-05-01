@@ -6,6 +6,7 @@ namespace DMS.az.Models
     {
         public string SenderName { get; set; }
         public string SenderEmail { get; set; }
+        public string SenderPhoneNumber { get; set; }
         public string Content { get; set; }
         public bool IsOpened { get; set; }
     }
