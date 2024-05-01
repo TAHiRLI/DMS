@@ -21,10 +21,9 @@ namespace DMS.az.Controllers
         {
             var blogs = await _context.Blogs.OrderByDescending(b => b.Id).Where(b => !b.IsDeleted).ToListAsync();
 
-             model = new BlogIndexVM
-            {
-                Blogs = _paginator.GetPagedList(blogs, model.CurrentPage, model.PageSize),
-            };
+
+            model.Blogs = _paginator.GetPagedList(blogs, model.CurrentPage, model.PageSize);
+        
 
             return View(model);
         }

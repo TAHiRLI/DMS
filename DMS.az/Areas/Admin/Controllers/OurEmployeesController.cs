@@ -25,7 +25,7 @@ namespace DMS.az.Areas.Admin.Controllers
         {
             model = new OurEmployeesIndexVM
             {
-                OurEmployees = await _context.OurEmployees.OrderByDescending(s => s.Id).Where(s => !s.IsDeleted).ToListAsync(),
+                Clients = await _context.OurEmployees.OrderByDescending(s => s.Id).Where(s => !s.IsDeleted).ToListAsync(),
             };
 
             return View(model);
@@ -56,7 +56,7 @@ namespace DMS.az.Areas.Admin.Controllers
                 return View();
             }
 
-            var employee = new OurEmployee
+            var employee = new Client
             {
                 RedirectLink = model.RedirectLink,
                 Photo = await _fileService.Upload(model.Photo, "Users/Uploads/OurCustomers"),

@@ -6,9 +6,9 @@ namespace DMS.az.Areas.Admin.ViewModels.OurEmployees
     {
         public OurEmployeesIndexVM()
         {
-            OurEmployees = new List<Models.OurEmployee>();
+            Clients = new List<Models.Client>();
         }
 
-        public List<OurEmployee> OurEmployees { get; set; }
+        public List<Client> Clients { get; set; }
     }
 }

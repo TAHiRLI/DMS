@@ -22,13 +22,13 @@
             </thead>
 
             <tbody>
-                @if (Model.OurEmployees is not null)
+                @if (Model.Clients is not null)
                 {
-                    @foreach (var item in Model.OurEmployees)
+                    @foreach (var item in Model.Clients)
                     {
                         <tr>
 
-                            <td class=""><img src="~/Users/images/@item.Photo" alt="image" /></td>
+                            <td class=""><img src="~/Users/Uploads/OurCustomers/@item.Photo" alt="image" /></td>
                             <td>
                                 <a class="btn-links " href="@item.RedirectLink">ClickToRedirect</a>
                             </td>

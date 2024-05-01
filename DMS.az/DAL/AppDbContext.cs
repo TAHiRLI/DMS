@@ -24,6 +24,7 @@ namespace DMS.az.DAL
         public DbSet<TeamMember> TeamMembers { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Video> Video { get; set; }
+        public DbSet<Subscriber> Subscribers { get; set; }
 
     }
 }

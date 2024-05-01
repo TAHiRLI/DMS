@@ -1,5 +1,15 @@
-﻿<!doctype html>
-<html lang="en">
+﻿
+@using DMS.az.Utilities
+
+@inject ILayoutService _layoutService
+
+@{
+    var contact = await _layoutService.GetContact();
+}
+
+
+<!doctype html>
+<html lang="az">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -44,14 +54,14 @@
                             <!-- menu search bar -->
                             <ul class="menu-search-bar">
                                 <li>
-                                    <form method="post" action="#">
+                                    <form method="get" asp-action="index" asp-controller="blogs">
                                         <label>
-                                            <input name="menu_search_bar" placeholder="Search" type="search">
+                                            <input name="search" placeholder="Axtar" type="search">
                                             <i class="fas fa-search"></i>
                                         </label>
                                     </form>
                                 </li>
-                                <li class="menu-contact iq-fw-5"><a href="tel:0123456789"><i class="fas fa-phone pr-1 "></i> +994 70 500 08 05</a></li>
+                                <li class="menu-contact iq-fw-5"><a href="tel:@contact.PhoneNumber"><i class="fas fa-phone pr-1 "></i> @contact.PhoneNumber</a></li>
                             </ul>
                             <!-- menu links -->
                             <ul class="menu-links">
@@ -98,19 +108,19 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-12">
                         <div class="title-box text-left ">
-                            <h2 class="title mb-3 text-white">Let's Discuss</h2>
-                            <p class="text-white iq-fw-4 mb-0">Progravida nibh vel velit auctor alinean sollicitudin, lorem quis bibendum auctor.</p>
+                            <h2 class="title mb-3 text-white">Bizi izlə</h2>
+                            <p class="text-white iq-fw-4 mb-0">Rəqəmsal marketinq ilə bağlı məqalələrimizi anında əldə etmək üçün Abunə Ol</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
-                        <form class="position-relative subscribe-form mt-5 mt-lg-0">
+                        <form  asp-action="Subscribe" asp-controller="home" id="subscription-form" method="post" class="position-relative subscribe-form mt-5 mt-lg-0" >
                             <div class="form-group mb-0">
-                                <input type="email" class="form-control position-relative subscription-email  mb-0" placeholder="Enter Email">
+                                <input type="email" name="email" class="form-control position-relative subscription-email  mb-0" placeholder="Email">
                             </div>
-                            <a class="slide-button button bt-subscribe subscription-button " href="javascript:void(0)">
-                                <div class="first">Subscribe</div>
-                                <div class="second">Subscribe</div>
-                            </a>
+                            <button type="submit" class="slide-button button bt-subscribe subscription-button " >
+                                <div class="first">Abunə Ol</div>
+                                <div class="second">Abunə Ol</div>
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -121,36 +131,26 @@
                 <div class="row ">
                     <div class="col-lg-4 col-md-6">
                         <div class="iq-footer-logo">
-                            <a href="index.html"><img src="~/Users/newAssets/images/footer/logo.png" class="img-fluid" alt="image"></a>
+                            <a asp-action="index" asp-controller="home"><img src="~/Users/newAssets/images/logoDMS.svg" class="img-fluid" alt="DMS Azerbaijan Logo svg"></a>
                         </div>
-                        <div class="footer-copyright mb-4 iq-fw-5 mt-3">©Copyrights 2019 Markethon</div>
+                        <div class="footer-copyright mb-4 iq-fw-5 mt-3">©Müəllif Hüquqları 2024 DMS Azerbaijan</div>
                         <div>
-                            <div class="lang float-left">
-                                <i class="fas fa-globe"></i>
-                                <select name="languagelist" class="iq-language iq-fw-4">
-                                    <option value="volvo">English</option>
-                                    <option value="saab">French</option>
-                                    <option value="opel">Persian</option>
-                                    <option value="audi">Arabic</option>
-                                </select>
-                            </div>
                             <div class="social-media d-inline-block float-left ml-4">
                                 <ul class="social">
-                                    <li><a href="javascript:void(0)"><i class="fab fa-facebook-f iq-fw-6"></i></a></li>
-                                    <li><a href="javascript:void(0)"><i class="fab fa-twitter iq-fw-6"></i></a></li>
-                                    <li><a href="javascript:void(0)"><i class="fab fa-linkedin iq-fw-6"></i></a></li>
+                                    <li><a href="https://www.instagram.com/dms_azerbaijan/"><i class="fab fa-instagram  iq-fw-6"></i></a></li>
+                                    <li><a href="https://www.linkedin.com/company/dms-azerbaijan/?viewAsMember=true"><i class="fab fa-linkedin iq-fw-6"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="contact mt-4 d-inline-block">
-                            <a href="tel:0123456789"> <i class="fa fa-phone"></i><span class="iq-fw-5"> 0 123 456 789</span></a>
-                            <div class="email d-inline-block"><a href="Mail:mail@markethon.com"> mail@markethon.com</a></div>
+                            <a href="tel:@contact.PhoneNumber"> <i class="fa fa-phone"></i><span class="iq-fw-5"> @contact.PhoneNumber</span></a>
+                            <div class="email d-inline-block"><a href="Mail:@contact.Email"> @contact.Email</a></div>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-6 footer-link">
-                        <h5 class="iq-fw-7 riq-mt-40">Links</h5>
+                        <h5 class="iq-fw-7 riq-mt-40">Keçidlər</h5>
                         <ul class="list-inline rmb-40">
-                            <li class="list-item"><a href="index.html">Home</a></li>
+                            <li class="list-item"><a asp-controller="home" asp-action="index">Ana Səhifə</a></li>
                             <li class="list-item"><a href="about-us.html">About us</a></li>
                             <li class="list-item"><a href="faq.html">FAQ</a></li>
                             <li class="list-item"><a href="service.html">Services</a></li>
@@ -336,6 +336,13 @@
             }
         }); /*ready*/
     </script>
+    <script>
+        function submitForm(e){
+            e.preventDefault();
+        }
+    </script>
+
+    </>
     @RenderSection("Scripts", false)
 </body>
 </html>  
