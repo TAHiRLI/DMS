@@ -4,11 +4,11 @@ namespace DMS.az.Areas.Admin.ViewModels.OurEmployees
 {
     public class OurEmployeesIndexVM
     {
-        //public OurEmployeesIndexVM()
-        //{
-        //    OurEmployees = new List<Models.OurEmployee>();
-        //}
+        public OurEmployeesIndexVM()
+        {
+            Clients = new List<Models.Client>();
+        }
 
-        //public List<OurEmployee> OurEmployees { get; set; }                 
+        public List<Client> Clients { get; set; }
     }
 }

@@ -24,6 +24,7 @@ Index Of Script
 1.Countdown
 14.Circle Progressbar
 15.Side Menu
+16.Subscribe Form
 
 ------------------------------------------------
 Index Of Script
@@ -422,6 +423,5 @@ $(document).ready(function() {
         })
     });
 
-
-
+   
 });

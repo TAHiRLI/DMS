@@ -3689,7 +3689,8 @@ Paging
 	color: #ffffff;
 }
 
-.page-item:first-child .page-link, .page-item:last-child .page-link {
+
+.page-item.PagedList-skipToPrevious .page-link, .page-item.PagedList-skipToPrevious .page-link {
 	padding: 10px 40px;
 	border-radius: 90px;
 	text-align: center;
@@ -3704,15 +3705,21 @@ Paging
 	-o-transition: all 0.5s ease-out 0s;
 	transition: all 0.5s ease-out 0s;
 }
+.page-item.PagedList-skipToPrevious .page-link {
+	border-top-left-radius: .25rem;
 
-.iq-blogs .page-link {
-	border-radius: 90px;
-	width: 45px;
-	height: 45px;
-	line-height: 28px;
-	text-align: center;
-	color: #000000;
+	padding: 6px 12px;
+	border-bottom-left-radius: .25rem;
 }
+
+	.iq-blogs .page-link {
+		border-radius: 90px;
+		width: 45px;
+		height: 45px;
+		line-height: 28px;
+		text-align: center;
+		color: #000000;
+	}
 
 .iq-blogs .page-item.active .page-link, .iq-blogs .page-item .page-link:hover, .iq-blogs .page-item .page-link:focus {
 	background: #33e2a0;
@@ -3735,7 +3742,7 @@ Paging
 /*--------------
 Iq Pproject Info
 ---------------*/
-.iq-project-info .media {
+	.iq-project-info .media {
 	z-index: 2;
 	background: #ffffff;
 	padding: 15px;

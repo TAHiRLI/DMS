@@ -157,16 +157,16 @@
 
 </div>
 
-<script>
-    function submitForm(event) {
-        event.preventDefault(); 
-
-        document.getElementById("contact").submit();
-        event.preventDefault();
-    }
-</script>
 
 @section Scripts {
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+
+            document.getElementById("contact").submit();
+            event.preventDefault();
+        }
+    </script>
     <script>
         var successMessage = '@TempData["SuccessMessage"]';
         var unsuccessMessage = '@TempData["UnSuccessMessage"]';
@@ -186,10 +186,9 @@
         }
         else if (unsuccessMessage) {
             document.getElementById('contact_h').scrollIntoView({ behavior: 'smooth' });
-        }
     </script>
 
-    @* script>
+    @*  <script>
         var successMessage = '@TempData["SuccessMessage"]';
         var unsuccessMessage = '@TempData["UnSuccessMessage"]';
         if (successMessage) {
@@ -221,8 +220,12 @@
                 "style": { "font-size": "40px" } 
             });
             document.getElementById('contact_h').scrollIntoView({ behavior: 'smooth' });
+    </script> 
+    
+    *@
+  
         }
-    </script> *@
 
 
-}
+
+    

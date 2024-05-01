@@ -8,6 +8,15 @@
 
 @model BlogIndexVM
 
+@using X.PagedList.Mvc.Core; @*import this so we get our HTML Helper*@
+@using X.PagedList; @*import this so we can cast our list to IPagedList (only necessary because ViewBag is dynamic)*@
+
+
+@section Links{
+    <link rel="stylesheet" href="~/Users/newAssets/css/Pagination.css">
+
+}
+
 <!-- Breadcrumb -->
 <section class="iq-breadcrumb">
 
@@ -15,16 +24,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-7 align-self-center">
-                    <h2 class="iq-fw-8 mb-3">Blog</h2>
+                    <h2 class="iq-fw-8 mb-3">Məqalələr</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">All Blog Grid</li>
+                            <li class="breadcrumb-item"><a asp-action="index" asp-controller="home">Ana Səhifə</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Bütün Məqalələr</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="col-md-5">
-                    <img src="~/Users/newAssets/images/breadcrumb/blog.png" class="img-fluid" alt="image">
+                    <img src="~/Users/newAssets/images/breadcrumb/blog.svg" class="img-fluid" alt="image">
                 </div>
             </div>
         </div>
@@ -43,57 +52,43 @@
 
                 @foreach (var blog in Model.Blogs)
                 {
-                    <div class="col-lg-4 col-md-6 col-sm-12">
+                    <article class="col-lg-4 col-md-6 col-sm-12">
                         <a asp-controller="blogs" asp-action="details" asp-route-id="@blog.Id" class="main-blog">
                             <div class="blog-img">
-                                <img src="~/Users/Uploads/Blogs/@blog.Photo" class="img-fluid" alt="image">
+                                <img src="~/Users/Uploads/Blogs/@blog.Photo" class="img-fluid" style="aspect-ratio:4/3; object-fit:cover" alt="DMS Azerbaijan Blog - @blog.Title">
                             </div>
-                            <div class="blog-detail">
+                            <div class="blog-detail d-block">
                                 <a asp-controller="blogs" asp-action="details" asp-route-id="1">
-                                    <h5 class="mt-1 iq-fw-8">@blog.Title</h5>
+                                    <h2 class="mt-1 iq-fw-8 h5">@blog.Title</h2>
                                 </a>
                                 <p class="mb-0">@blog.ShortDesc</p>
                             </div>
                         </a>
-                    </div>
+                    </article>
                 }
 
             </div>
 
 
-            <div class="row mt-5">
-                <div class="col-sm-12">
-                    <nav>
-                        @* <ul class="pagination justify-content-center">
-                            <li class="page-item">
-                                <span class="page-link"><i class="fas fa-arrow-left"></i></span>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
-                            <li class="page-item active" aria-current="page">
-                                <span class="page-link">
-                                    2
-                                    <span class="sr-only">(current)</span>
-                                </span>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#"><i class="fas fa-arrow-right"></i></a>
-                            </li>
-                            @Html.PagedListPager(Model.Blogs, currentPage => Url.Action("index", new { CurrentPage = currentPage, PageSize = Model.Blogs.PageSize }),
-                                     new PagedListRenderOptions
-                            {
-                                MaximumPageNumbersToDisplay = 5,
-                            })
-                        </ul> *@
+            <div class="row mt-5 d-flex align-items-center justify-content-center">
 
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item">
-                                @Html.PagedListPager(Model.Blogs, currentPage => Url.Action("index", new { page = currentPage }), new PagedListRenderOptions { /* options */ })
-                            </li>
-                        </ul>
+                  
 
-                    </nav>
-                </div>
+                    @Html.PagedListPager(Model.Blogs, page =>
+                    Url.Action("Index", new {
+                    CurrentPage = page,
+                    PageSize = Model.PageSize,
+                    Search =ViewBag.Search,
+                    }),
+
+                    new PagedListRenderOptions {
+                    MaximumPageNumbersToDisplay = 5,
+                    LiElementClasses = new string[] { "page-item" },
+                    PageClasses = new string[] { "page-link" },
+                ContainerDivClasses = new [] { "d-flex justify-content-center" },
+
+                    }
+                    )
             </div>
         </div>
     </section>

@@ -1,4 +1,5 @@
 ﻿using DMS.az.DAL;
+using DMS.az.Models;
 using DMS.az.Utilities;
 using DMS.az.ViewModels.Contact;
 using DMS.az.ViewModels.Home;
@@ -88,6 +89,28 @@ namespace DMS.az.Controllers
             };
 
             return PartialView("_ServicesComponentPartial", model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Subscribe(string email)
+        {
+
+            var existingSubscriber = await _context.Subscribers.FirstOrDefaultAsync(x => x.Email.ToLower() == email.Trim().ToLower());
+
+            if (existingSubscriber == null)
+            {
+                return RedirectToAction("index", "home");
+            };
+
+            var Subscriber = new Subscriber()
+            {
+                Email = email,
+            };
+
+            _context.Subscribers.Add(Subscriber);
+            _context.SaveChanges();
+
+            return RedirectToAction("index", "home");
         }
     }
 }

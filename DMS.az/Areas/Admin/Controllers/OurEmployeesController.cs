@@ -19,14 +19,14 @@
 //            _fileService = fileService;
 //        }
 
-//        #region OurEmployeesList
-//        [HttpGet]
-//        public async Task<IActionResult> Index(OurEmployeesIndexVM model)
-//        {
-//            model = new OurEmployeesIndexVM
-//            {
-//                OurEmployees = await _context.OurEmployees.OrderByDescending(s => s.Id).Where(s => !s.IsDeleted).ToListAsync(),
-//            };
+        #region OurEmployeesList
+        [HttpGet]
+        public async Task<IActionResult> Index(OurEmployeesIndexVM model)
+        {
+            model = new OurEmployeesIndexVM
+            {
+                Clients = await _context.OurEmployees.OrderByDescending(s => s.Id).Where(s => !s.IsDeleted).ToListAsync(),
+            };
 
 //            return View(model);
 //        }
@@ -56,12 +56,12 @@
 //                return View();
 //            }
 
-//            var employee = new OurEmployee
-//            {
-//                RedirectLink = model.RedirectLink,
-//                Photo = await _fileService.Upload(model.Photo, "Users/Uploads/OurCustomers"),
-//                CreatedAt = DateTime.Now
-//            };
+            var employee = new Client
+            {
+                RedirectLink = model.RedirectLink,
+                Photo = await _fileService.Upload(model.Photo, "Users/Uploads/OurCustomers"),
+                CreatedAt = DateTime.Now
+            };
 
 //            _context.OurEmployees.Add(employee);
 //            _context.SaveChanges();
