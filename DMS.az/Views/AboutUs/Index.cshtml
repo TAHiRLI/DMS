@@ -114,88 +114,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="cd-horizontal-timeline">
-                        <div class="timeline">
-                            <div class="events-wrapper">
-                                <div class="events">
-                                    <ol>
-
-                                           @foreach (var companyHistory in Model.CompanyHistories)
-                                        {
-
-                                            <li><a href="#" data-date="@companyHistory.EventDate.ToString("dd/MM/yyyy")" class="@(i ==1 ? "selected":"")">20 mart</a></li>
-                                        
-                                        
-                                        i++;
-                                        }
-                                    
-                                    </ol>
-                                    <span class="filling-line" aria-hidden="true"></span>
-                                </div>
+                    <div class="owl-carousel" data-autoplay="false" data-loop="true" data-items="1" data-nav="true" data-dots="false" data-items-laptop="1" data-items-tab="1" data-items-mobile="1" data-items-mobile-sm="1" data-margin="15">
+                        @foreach (var companyHistory in Model.CompanyHistories)
+                        {
+                            <div class="item" style="padding:60px 30px; text-align:center; background-color:#00e69d; border-radius:12px" >
+                                <h3 class="text-white iq-fw-8 mb-3 text-align-center">@companyHistory.Title</h3>
+                                <p class="text-white mb-0">@companyHistory.Description</p>
                             </div>
 
-                            <ul class="cd-timeline-navigation">
-                                <li><a href="#" class="prev inactive">Prev</a></li>
-                                <li><a href="#" class="next">Next</a></li>
-                            </ul>
-                        </div>
-                        <div class="events-content">
-                            <ol>
-                                @foreach (var companyHistory in Model.CompanyHistories)
-                                {
-                                    <li class=" @(j ==1 ? "selected":"") " data-date="@companyHistory.EventDate.ToString("dd/MM/yyyy")">
-                                        <p>@companyHistory.EventDate.ToShortDateString()</p>
-                                        <h3 class="text-white iq-fw-8 mb-3">Winners And Giving Prizes</h3>
-                                        <p class="text-white mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                    </li>
-                                    j++;
-                                }
-                               
-                               @* <li data-date="28/02/2014">
-                                    <h3 class="text-white iq-fw-8 mb-3">The standard Lorem Ipsum passage</h3>
-                                    <p class="text-white mb-0">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
-                                </li>
-                                <li data-date="20/04/2014">
-                                    <h3 class="text-white iq-fw-8 mb-3">Finibus Bonorum et Malorum</h3>
-                                    <p class="text-white mb-0">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi.</p>
-                                </li>
-                                <li data-date="20/05/2014">
-                                    <h3 class="text-white iq-fw-8 mb-3">Donec lacinia posuere rhoncus</h3>
-                                    <p class="text-white mb-0">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</p>
-                                </li>
-                                <li data-date="09/07/2014">
-                                    <h3 class="text-white iq-fw-8 mb-3">Neque porro quisquam dolorem ipsum</h3>
-                                    <p class="text-white mb-0">Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions.</p>
-                                </li>
-                                <li data-date="30/08/2014">
-                                    <h3 class="text-white iq-fw-8 mb-3">Lorem ipsum began as scrambled</h3>
-                                    <p class="text-white mb-0">Until recently, the prevailing view assumed lorem ipsum was born as a nonsense text. “It's not Latin, though it looks like it, and it actually says nothing,”</p>
-                                </li>
-                                <li data-date="15/09/2014">
-                                    <h3 class="text-white iq-fw-8 mb-3">Creation timelines for the standard </h3>
-                                    <p class="text-white mb-0">So how did the classical Latin become so incoherent? According to McClintock, a 15th century typesetter likely scrambled part of Cicero's De Finibus in order.</p>
-                                </li>
-                                <li data-date="01/11/2014">
-                                    <h3 class="text-white iq-fw-8 mb-3">Some claim lorem ipsum threatens</h3>
-                                    <p class="text-white mb-0">The strength of lorem ipsum is its weakness: it doesn't communicate. To some, designing a website around placeholder text is unacceptable, akin to sewing a custom.</p>
-                                </li>
-                                <li data-date="10/12/2014">
-                                    <h3 class="text-white iq-fw-8 mb-3">Coming full the internet's remixing </h3>
-                                    <p class="text-white mb-0">There was that time artists at Sequence opted to hand-Sharpie the lorem ipsum passage on a line of paper bags they designed for Chipotle—the result being a mixture of avant-garde.</p>
-                                </li>
-                                <li data-date="19/01/2015">
-                                    <h3 class="text-white iq-fw-8 mb-3">Below are the original Latin passages</h3>
-                                    <p class="text-white mb-0">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo.</p>
-                                </li>
-                                <li data-date="03/03/2015">
-                                    <h3 class="text-white iq-fw-8 mb-3">Where does it come from?</h3>
-                                    <p class="text-white mb-0">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making.</p>
-                                </li>
-*@
-
-
-                            </ol>
-                        </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -225,8 +152,3 @@
 
 
 </div>
-
-                        @section Scripts{
-    <script src="~/Users/newAssets/js/timeline.js"></script>
-
-                        }
