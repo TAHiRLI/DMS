@@ -131,9 +131,9 @@
                 <div class="row ">
                     <div class="col-lg-4 col-md-6">
                         <div class="iq-footer-logo">
-                            <a asp-action="index" asp-controller="home"><img src="~/Users/newAssets/images/logoDMS.svg" class="img-fluid" alt="DMS Azerbaijan Logo svg"></a>
+                            <a asp-action="index" asp-controller="home"><img src="~/Users/newAssets/images/logoDMS.svg" class="img-fluid" width="50" alt="DMS Azerbaijan Logo svg"></a>
                         </div>
-                        <div class="footer-copyright mb-4 iq-fw-5 mt-3">©Müəllif Hüquqları 2024 DMS Azerbaijan</div>
+                        <div class="footer-copyright mb-4 iq-fw-5 mt-3">©DMS Azerbaijan</div>
                         <div>
                             <div class="social-media d-inline-block float-left ml-4">
                                 <ul class="social">
@@ -151,11 +151,10 @@
                         <h5 class="iq-fw-7 riq-mt-40">Keçidlər</h5>
                         <ul class="list-inline rmb-40">
                             <li class="list-item"><a asp-controller="home" asp-action="index">Ana Səhifə</a></li>
-                            <li class="list-item"><a href="about-us.html">About us</a></li>
-                            <li class="list-item"><a href="faq.html">FAQ</a></li>
-                            <li class="list-item"><a href="service.html">Services</a></li>
-                            <li class="list-item"><a href="all-blog-grid.html">Blog</a></li>
-                            <li class="list-item"><a href="contact-us.html">Contact Us</a></li>
+                            <li class="list-item"><a asp-action="index" asp-controller="aboutus">Haqqımızda</a></li>
+                            <li class="list-item"><a asp-action="index" asp-controller="services">Services</a></li>
+                            <li class="list-item"><a asp-action="index" asp-controller="blogs">Məqalələr</a></li>
+                            <li class="list-item"><a asp-action="index" asp-controller="contac">Bizimlə Əlaqə</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-2 col-md-6 footer-link">
@@ -247,7 +246,6 @@
     <!-- Megamenu  -->
     <script src="~/Users/newAssets/js/mega_menu.min.js"></script>
     <!-- Timeline JavaScript -->
-    <script src="~/Users/newAssets/js/timeline.js"></script>
     <!-- Wow -->
     <script src="~/Users/newAssets/js/wow.min.js"></script>
     <!-- scrollme -->
