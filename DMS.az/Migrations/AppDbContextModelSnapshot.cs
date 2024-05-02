@@ -149,7 +149,7 @@ namespace DSM.az.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("OurEmployees");
-                });
+                }));
 
             modelBuilder.Entity("DMS.az.Models.CompanyHistory", b =>
                 {
