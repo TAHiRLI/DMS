@@ -19,7 +19,5 @@ namespace DMS.az.Utilities
         {
             return await _context.Contact.FirstAsync();
         }
-
-    
     }
 }
