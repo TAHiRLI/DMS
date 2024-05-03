@@ -23,9 +23,6 @@ namespace DMS.az.Areas.Admin.Controllers
 ////        }
 ////        #endregion
 
-            return View(model);
-        }
-        #endregion
 
         #region Create
         [HttpGet]
@@ -51,9 +48,11 @@ namespace DMS.az.Areas.Admin.Controllers
                 return View();
             }
 
-////            _context.OurEmployees.Add(employee);
-////            _context.SaveChanges();
-
+            var employee = new Client()
+            {
+                Photo =await _fileService.Upload(model.Photo, "Users/Uploads/OurCustomers"),
+                RedirectLink = model.RedirectLink,
+            };
             _context.OurEmployees.Add(employee);
             _context.SaveChanges();
 

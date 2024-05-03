@@ -5,6 +5,18 @@
 
 @{
     var contact = await _layoutService.GetContact();
+    var services = await _layoutService.GetServices();
+
+    string getClass(string actionName, string controllerName)
+    {
+        string action = ViewContext.RouteData.Values["Action"].ToString();
+        string controller = ViewContext.RouteData.Values["Controller"].ToString();
+        if (controller.ToLower() == controllerName.ToLower() && action.ToLower() == actionName.ToLower())
+            return "active";
+        return "";
+
+
+    }
 }
 
 
@@ -66,22 +78,22 @@
                             <!-- menu links -->
                             <ul class="menu-links">
                                 <!-- active class -->
-                                <li><a asp-action="index" asp-controller="home" class="active">Ana Səhifə</a></li>
-                                <li><a asp-action="index" asp-controller="aboutUs" class="">Haqqımızda</a></li>
+                                <li><a asp-action="index" asp-controller="home" class="@getClass("Index", "Home")">Ana Səhifə </a></li>
+                                <li><a asp-action="index" asp-controller="aboutUs" class="@getClass("Index", "AboutUs")">Haqqımızda</a></li>
 
                                 <li>
-                                    <a asp-action="index" asp-controller="services">Xidmətlər</a>
+                                    <a asp-action="index" asp-controller="services" class="@getClass("Index", "Services")">Xidmətlər</a>
                                 </li>
 
                                 <li>
-                                    <a asp-action="index" asp-controller="portfolio">Portfolio</a>
+                                    <a asp-action="index" asp-controller="portfolio" class="@getClass("Index", "Portfolio")">Portfolio</a>
                                 </li>
 
                                 <li>
-                                    <a asp-action="index" asp-controller="blogs">Blog</a>
+                                    <a asp-action="index" asp-controller="blogs" class="@getClass("Index", "Blogs")">Blog</a>
 
                                 </li>
-                                <li><a asp-action="index" asp-controller="Contact">Əlaqə</a></li>
+                                <li><a asp-action="index" asp-controller="Contact" class="@getClass("Index", "Contact")">Əlaqə</a></li>
                             </ul>
                         </div>
                     </div>
@@ -131,98 +143,42 @@
                 <div class="row ">
                     <div class="col-lg-4 col-md-6">
                         <div class="iq-footer-logo">
-                            <a asp-action="index" asp-controller="home"><img src="~/Users/newAssets/images/logoDMS.svg" class="img-fluid" width="50" alt="DMS Azerbaijan Logo svg"></a>
+                            <a asp-action="index" asp-controller="home"><img src="~/Users/newAssets/images/logoDMS.svg" class="img-fluid" width="100" alt="DMS Azerbaijan Logo svg"></a>
                         </div>
+                        <p>
+                            "DMS Azerbaijan" sosial media marketinqi və rəqəmsal marketinq xidmətləri üzrə ixtisaslaşmış yeni, iddialı və perspektivli agentlikdir.
+                        </p>
                         <div class="footer-copyright mb-4 iq-fw-5 mt-3">©DMS Azerbaijan</div>
-                        <div>
-                            <div class="social-media d-inline-block float-left ml-4">
-                                <ul class="social">
-                                    <li><a href="https://www.instagram.com/dms_azerbaijan/"><i class="fab fa-instagram  iq-fw-6"></i></a></li>
-                                    <li><a href="https://www.linkedin.com/company/dms-azerbaijan/?viewAsMember=true"><i class="fab fa-linkedin iq-fw-6"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="contact mt-4 d-inline-block">
-                            <a href="tel:@contact.PhoneNumber"> <i class="fa fa-phone"></i><span class="iq-fw-5"> @contact.PhoneNumber</span></a>
-                            <div class="email d-inline-block"><a href="Mail:@contact.Email"> @contact.Email</a></div>
-                        </div>
                     </div>
                     <div class="col-lg-2 col-md-6 footer-link">
                         <h5 class="iq-fw-7 riq-mt-40">Keçidlər</h5>
                         <ul class="list-inline rmb-40">
                             <li class="list-item"><a asp-controller="home" asp-action="index">Ana Səhifə</a></li>
                             <li class="list-item"><a asp-action="index" asp-controller="aboutus">Haqqımızda</a></li>
-                            <li class="list-item"><a asp-action="index" asp-controller="services">Services</a></li>
+                            <li class="list-item"><a asp-action="index" asp-controller="services">Xidmətlərimiz</a></li>
                             <li class="list-item"><a asp-action="index" asp-controller="blogs">Məqalələr</a></li>
                             <li class="list-item"><a asp-action="index" asp-controller="contac">Bizimlə Əlaqə</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-2 col-md-6 footer-link">
-                        <h5 class="iq-fw-7 ">Information</h5>
+                    <div class="col-lg-3 col-md-6 footer-link">
+                        <h5 class="iq-fw-7 ">Xidmətlərimiz</h5>
                         <ul class="list-inline">
-                            <li class="list-item"><a href="pricing.html">Pricing</a></li>
-                            <li class="list-item"><a href="client.html">Our Clients</a></li>
-                            <li class="list-item"><a href="portfolio.html">Portfolio</a></li>
-                            <li class="list-item"><a href="privacy-policy.html">Privacy Policy</a></li>
-                            <li class="list-item"><a href="team.html">The Team</a></li>
-                            <li class="list-item"><a href="service.html">Our Benefits</a></li>
+                            @foreach (var service in services)
+                            {
+                            <li class="list-item"><a asp-action="details" asp-controller="services" asp-route-id="@service.Id">@service.Name</a></li>
+                                
+                            }
+                         
                         </ul>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="testimonials">
-                            <div id="iqtestimonials" class="owl-carousel riq-mt-40" data-autoplay="true" data-loop="true" data-nav="false" data-dots="false" data-items="1" data-items-laptop="1" data-items-tab="1" data-items-mobile="1" data-items-mobile-sm="1" data-margin="15">
-                                <div class="item">
-                                    <div class="desc">
-                                        <p class="mb-0">Progravida <span class="text-black iq-fw-7">#nibh vel velit auctor</span> alinean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,Lorem Ipsum. <a href="javascript:void(0)#" class="text-black iq-fw-7">https://iqonicthemes.com</a></p>
-                                    </div>
-                                    <div class="author">
-                                        <div class="float-left d-flex mr-3">
-                                            <i class="fab fa-twitter text-white"></i>
-                                        </div>
-                                        <div class=" float-left ">
-                                            <div class="overview">
-                                                <a>
-                                                    <h6 class="name text-black mb-0">iqonicthemes</h6>
-                                                </a>
-                                                <div class="details">2 Months Ago</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="desc">
-                                        <p class="mb-0">Progravida <span class="text-black iq-fw-7">#nibh vel velit auctor</span> alinean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,Lorem Ipsum. <a href="javascript:void(0)" class="text-black iq-fw-7">https://iqonicthemes.com</a></p>
-                                    </div>
-                                    <div class="author">
-                                        <div class="float-left d-flex mr-3">
-                                            <i class="fab fa-twitter text-white"></i>
-                                        </div>
-                                        <div class=" float-left ">
-                                            <div class="overview">
-                                                <h6 class="name text-black mb-0">iqonicthemes</h6>
-                                                <div class="details">2 Months Ago</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="desc">
-                                        <p class="mb-0">Progravida <span class="text-black iq-fw-7">#nibh vel velit auctor</span> alinean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,Lorem Ipsum. <a href="javascript:void(0)" class="text-black iq-fw-7">https://iqonicthemes.com</a></p>
-                                    </div>
-                                    <div class="author">
-                                        <div class="float-left d-flex mr-3">
-                                            <i class="fab fa-twitter text-white"></i>
-                                        </div>
-                                        <div class=" float-left ">
-                                            <div class="overview">
-                                                <h6 class="name text-black mb-0">iqonicthemes</h6>
-                                                <div class="details">2 Months Ago</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-lg-3 col-md-6 footer-link">
+                        <h5 class="iq-fw-7 ">Əlaqə</h5>
+                        <ul class="list-inline">
+                            <li class="list-item"> <a href="tel:@contact.PhoneNumber"> <i class="fa fa-phone pe-2"></i><span class="iq-fw-5"> @contact.PhoneNumber</span></a></li>
+                            <li class="list-item"> <a href="Mail:@contact.Email"><i class="fa fa-envelope pe-2"></i> @contact.Email</a></li>
+                            <li class="list-item"><a href="https://www.instagram.com/dms_azerbaijan/"><i class="fab fa-instagram pe-2 iq-fw-6"></i>Instagram</a></li>
+                            <li class="list-item"><a href="https://www.linkedin.com/company/dms-azerbaijan/?viewAsMember=true"><i class="fab fa-linkedin  pe-2 iq-fw-6"></i>LinkedIn</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
