@@ -19,18 +19,10 @@ namespace DMS.az.Areas.Admin.Controllers
             _fileService = fileService;
         }
 
-        #region OurEmployeesList
-        [HttpGet]
-        public async Task<IActionResult> Index(OurEmployeesIndexVM model)
-        {
-            model = new OurEmployeesIndexVM
-            {
-                Clients = await _context.OurEmployees.OrderByDescending(s => s.Id).Where(s => !s.IsDeleted).ToListAsync(),
-            };
+////            return View(model);
+////        }
+////        #endregion
 
-            return View(model);
-        }
-        #endregion
 
         #region Create
         [HttpGet]
@@ -56,13 +48,11 @@ namespace DMS.az.Areas.Admin.Controllers
                 return View();
             }
 
-            var employee = new Client
+            var employee = new Client()
             {
+                Photo =await _fileService.Upload(model.Photo, "Users/Uploads/OurCustomers"),
                 RedirectLink = model.RedirectLink,
-                Photo = await _fileService.Upload(model.Photo, "Users/Uploads/OurCustomers"),
-                CreatedAt = DateTime.Now
             };
-
             _context.OurEmployees.Add(employee);
             _context.SaveChanges();
 
@@ -92,6 +82,7 @@ namespace DMS.az.Areas.Admin.Controllers
             var employee = _context.OurEmployees.FirstOrDefault(e => e.Id == id);
             if (employee is null) return NotFound("Əməkdaş Tapılmadı!");
 
+////            if (!ModelState.IsValid) return View();
 
             if (!ModelState.IsValid) return View();
 

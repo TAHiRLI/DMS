@@ -19,5 +19,10 @@ namespace DMS.az.Utilities
         {
             return await _context.Contact.FirstAsync();
         }
+        public async Task<List<Service>> GetServices()
+        {
+            return await _context.Services.Take(6).ToListAsync();
+        }
+    
     }
 }

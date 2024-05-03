@@ -17,7 +17,7 @@ builder.Services.AddControllersWithViews();
 //});
 
 
-builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("tahir")));
 builder.Services.AddSingleton<IFileService, FileService>();
 builder.Services.AddSingleton<IEmailSender, EmailSender>();
 builder.Services.AddScoped<ILayoutService, LayoutService>();
