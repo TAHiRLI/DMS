@@ -5,6 +5,10 @@
     // Set the culture to Azerbaijani (Azeri)
     System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo("az");
 }
+
+@section Links {
+    <title>@Model.Blog.Title</title>
+}
 <!-- Breadcrumb -->
 <section class="iq-breadcrumb">
 
@@ -12,16 +16,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-7 align-self-center">
-                    <h2 class="iq-fw-8 mb-3">Blog</h2>
+                    <h2 class="iq-fw-8 mb-3">Məqalə</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Blog Details Right Sidebar</li>
+                            <li class="breadcrumb-item"><a asp-action="index" asp-controller="Home">Ana Səhifə</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">@Model.Blog.Title</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="col-md-5">
-                    <img src="~/Users/newAssets/images/breadcrumb/blog.png" class="img-fluid" alt="">
+                    <img src="~/Users/newAssets/images/breadcrumb/blog.svg" class="img-fluid" alt="">
                 </div>
             </div>
         </div>
@@ -38,27 +42,28 @@
             <div class="row">
                 <div class="col-lg-4 order-lg-2 order-2">
                     <div class="right-side-blog">
-                        <div class="iq-sidebar-widget">
+                        <form asp-action="index" asp-controller="blogs" method="get" class="iq-sidebar-widget">
                             <div class="iq-widget-search position-relative">
-                                <a href="javascript:void(0)"> <i class="fa fa-search"></i></a>
-                                <input type="search" placeholder="Search" class="form-control placeholder">
+                               <button type="submit" class="search-btn">
+
+                                <i class="fa fa-search"></i>
+                               </button>
+                                <input type="search" name="Search" placeholder="Axtar" class="form-control placeholder">
                             </div>
-                        </div>
+                        </form>
 
                         <div class="iq-mt-80">
-                            <h5 class="iq-widget-title iq-fw-8 mb-4">Recent Posts</h5>
+                            <h5 class="iq-widget-title iq-fw-8 mb-4">Ən son Məqalələr</h5>
 
                             @foreach (var blog in Model.Blogs)
                             {
-                                <div class="media mb-3">
-                                    <img class="mr-3" src="~/Users/Uploads/Blogs/@blog.Photo" alt="image">
+                                <a asp-action="details" asp-controller="blogs" asp-route-id="@Model.Blog.Id" class="d-block media mb-3">
+                                    <img class="mr-3" src="~/Users/Uploads/Blogs/@blog.Photo" alt="DMS Azerbaijan - Blog - @Model.Blog.Title">
                                     <div class="media-body">
-                                        <a href="javascript:void(0)">
                                             <h6 class="mt-0 iq-fw-8">@blog.Title</h6>
-                                        </a>
                                         <span>@blog.PostDate.ToString("MMMM yyyy", culture)</span>
                                     </div>
-                                </div>
+                                </a>
                             }
 
                         </div>
@@ -67,7 +72,7 @@
                 </div>
                 <div class="col-lg-8 order-lg-1 order-2 iq-rmt-40">
                     <div class="blog-img">
-                        <img src="~/Users/Uploads/Blogs/@Model.Blog.Photo" class="img-fluid mb-4" alt="image">
+                        <img src="~/Users/Uploads/Blogs/@Model.Blog.Photo" class="img-fluid mb-4" alt="DMS Azerbaijan - Blog @Model.Blog.Title">
                         <ul class="d-inline-block">
                             <li class="d-inline-block"><a href="javascript:void(0)" class="mr-3"><i class="far fa-calendar-alt"></i> @Model.Blog.PostDate.ToShortDateString()</a></li>
                         </ul>

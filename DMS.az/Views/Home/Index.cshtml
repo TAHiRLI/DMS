@@ -822,7 +822,7 @@
                         {
                         <article class="item" >
                             <a asp-controller="portfolio" asp-action="details" asp-route-id="@portfolio.Id" class="iq-portfolio d-block h-full">
-                                <img src="~/Users/Uploads/Projects/@portfolio.Photo" class="oject-fit-cover" style="object-fit:cover; aspect-ratio:3/4" alt="DMS Azerbaijan- @portfolio.Title project">
+                                <img src="~/Users/Uploads/Projects/@portfolio.Photo" class="oject-fit-cover" style="object-fit:cover; aspect-ratio:1" alt="DMS Azerbaijan- @portfolio.Title project">
                                 <div class="portfolio-info">
                                     <h2 class="text-black h5">@portfolio.Title</h2>
                                 </div>
@@ -1112,7 +1112,7 @@
     <!-- Our Blog END -->
 
     <div class="iq-clients overview-block-ptb w-100  pt-0 d-inline-block mt-5">
-        <div class="container">
+        <div class="container d-none">
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <div class="section-title">
@@ -1121,15 +1121,15 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container d-none">
             <div class="row">
                 <div id="clients-slider" class="owl-carousel owl-theme owl-loaded " data-dots="false" data-nav="false" data-items="5" data-items-laptop="5" data-items-tab="4" data-items-mobile="3" data-items-mobile-sm="2" data-autoplay="true" data-margin="30">
 
                     @foreach (var item in Model.OurEmployees)
                     {
-                        <div class="clients-box">
-                            <a href="@item.RedirectLink">
-                                <img src="~/Users/Uploads/OurCustomers/@item.Photo" class="img-fluid " alt="DMS Azerbaijan Customer">
+                        <div class="clients-box" >
+                            <a href="@item.RedirectLink" style="display:flex; align-items:center; aspect-ratio:1">
+                                <img src="~/Users/Uploads/OurCustomers/@item.Photo" class="img-fluid" alt="DMS Azerbaijan Customer">
                             </a>
                         </div>
                     }

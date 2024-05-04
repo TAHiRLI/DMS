@@ -19,7 +19,19 @@ namespace DMS.az.Controllers
         }
         public async Task<IActionResult> Index(BlogIndexVM model)
         {
-            var blogs = await _context.Blogs.OrderByDescending(b => b.Id).Where(b => !b.IsDeleted).ToListAsync();
+            List<Blog> blogs;
+
+            if (model.Search != null && model.Search != "")
+            {
+             blogs = await _context.Blogs.OrderByDescending(b => b.Id).Where(b => !b.IsDeleted).Where(x=> x.Title.Contains(model.Search) || x.Description.Contains(model.Search)).ToListAsync();
+
+            }
+            else
+            {
+                blogs = await _context.Blogs.OrderByDescending(b => b.Id).Where(b => !b.IsDeleted).ToListAsync();
+
+            }
+
 
 
             model.Blogs = _paginator.GetPagedList(blogs, model.CurrentPage, model.PageSize);
