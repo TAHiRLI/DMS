@@ -1,4 +1,5 @@
-﻿using MailKit.Net.Smtp;
+﻿using DMS.az.DAL;
+using MailKit.Net.Smtp;
 using MimeKit;
 
 namespace DMS.az.Utilities
@@ -7,25 +8,36 @@ namespace DMS.az.Utilities
     {
         private readonly EmailConfiguration _emailConfiguration;
 
+
         public EmailSender(EmailConfiguration emailConfiguration)
         {
             _emailConfiguration = emailConfiguration;
         }
 
-        public void SendEmail(Message message)
+        public void SendEmail(Message message, string category)
         {
-            var emailMessage = CreateEmailMessage(message);
+            var emailMessage = CreateEmailMessage(message, category);
             Send(emailMessage);
         }
 
-        private MimeMessage CreateEmailMessage(Message message)
+        private MimeMessage CreateEmailMessage(Message message, string category)
         {
             var emailMessage = new MimeMessage();
             emailMessage.From.Add(new MailboxAddress(_emailConfiguration.UserName));
             emailMessage.To.AddRange(message.To);
             emailMessage.Subject = message.Subject;
+            var contentWithSenderEmail = ""; ;
 
-            var contentWithSenderEmail = $"{message.Content} - Sender's Email: {message.SenderEmail}";
+            //var blog = _context.Blogs.FirstOrDefault(x => x.Id == );
+            if (category == "contact")
+            {
+                contentWithSenderEmail = $"{message.Content} - Sender's Email: {message.SenderEmail}";
+            }
+            else
+            {
+                contentWithSenderEmail = $"{"subs"} - ";
+            }
+
             emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Text) { Text = contentWithSenderEmail };
             return emailMessage;
         }

@@ -72,7 +72,7 @@ namespace DMS.az.Controllers
             _context.SaveChanges();
 
             var emailMessage = new Utilities.Message(new[] { "a.mirheyder004@gmail.com" }, "New Message", message.Content, message.SenderEmail);
-            _emailSender.SendEmail(emailMessage);
+            _emailSender.SendEmail(emailMessage, "contact");
 
 
             TempData["SuccessMessage"] = "Mesaj uğurla göndərildi";
