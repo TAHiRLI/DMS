@@ -5,6 +5,7 @@ using DMS.az.ViewModels.Contact;
 using DMS.az.ViewModels.Home;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace DMS.az.Controllers
 {
@@ -29,7 +30,8 @@ namespace DMS.az.Controllers
                 Video = await _context.Video.SingleAsync(),
                 AboutUs = await _context.AboutUs.Where(x => !x.IsDeleted).ToListAsync(),
                 Portfolios = await _context.Portfolios.Where(x => !x.IsDeleted).ToListAsync(),
-                Blogs = await _context.Blogs.OrderByDescending(b => b.Id).Where(x => !x.IsDeleted).Take(10).ToListAsync(), //HomePage Bloq Sayi?
+                Services = await _context.Services.Where(x => !x.IsDeleted).Take(4).ToListAsync(),
+                Blogs = await _context.Blogs.OrderByDescending(b => b.Id).Where(x => !x.IsDeleted).Take(10).ToListAsync(),
                 OurEmployees = await _context.OurEmployees.Where(x => !x.IsDeleted).ToListAsync(),
                 Contact = await _context.Contact.ToListAsync(),
             };
@@ -51,7 +53,7 @@ namespace DMS.az.Controllers
                     //Sliders = await _context.Sliders.Where(x => !x.IsDeleted).ToListAsync(),
                     AboutUs = await _context.AboutUs.Where(x => !x.IsDeleted).ToListAsync(),
                     Portfolios = await _context.Portfolios.Where(x => !x.IsDeleted).OrderByDescending(x=> x.CreatedAt).Take(20).ToListAsync(),
-                    //Services = await _context.Services.Where(x => !x.IsDeleted).OrderByDescending(x => x.Id).Take(3).ToListAsync(),
+                    Services = await _context.Services.Where(x => !x.IsDeleted).OrderByDescending(x => x.Id).Take(3).ToListAsync(),
                     Contact = await _context.Contact.ToListAsync(),
                 };
 
