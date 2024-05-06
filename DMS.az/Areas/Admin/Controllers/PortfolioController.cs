@@ -71,9 +71,9 @@ namespace DSM.az.Areas.Admin.Controllers
                 return View(model);
             }
 
-            if (!_fileService.IsBiggerThanSize(model.Photo, 2000))
+            if (!_fileService.IsBiggerThanSize(model.Photo, 10000))
             {
-                ModelState.AddModelError("MediaName", "Faylın ölçüsü 2MB-dan böyükdür");
+                ModelState.AddModelError("MediaName", "Faylın ölçüsü 10MB-dan böyükdür");
                 return View(model);
             }
 
@@ -141,9 +141,9 @@ namespace DSM.az.Areas.Admin.Controllers
                     return View();
                 }
 
-                if (!_fileService.IsBiggerThanSize(model.Photo, 2000))
+                if (!_fileService.IsBiggerThanSize(model.Photo, 10000))
                 {
-                    ModelState.AddModelError("MediaName", "Faylın ölçüsü 2MB-dan böyükdür");
+                    ModelState.AddModelError("MediaName", "Faylın ölçüsü 10MB-dan böyükdür");
                     return View();
                 }
                 _fileService.Delete(portfolio.Photo);

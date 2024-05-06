@@ -19,9 +19,18 @@ namespace DMS.az.Areas.Admin.Controllers
             _fileService = fileService;
         }
 
-////            return View(model);
-////        }
-////        #endregion
+        #region OurEmployeesList
+        [HttpGet]
+        public async Task<IActionResult> Index(OurEmployeesIndexVM model)
+        {
+            model = new OurEmployeesIndexVM
+            {
+                Clients = await _context.OurEmployees.OrderByDescending(s => s.Id).Where(s => !s.IsDeleted).ToListAsync(),
+            };
+            return View(model);
+        }
+        #endregion
+
 
 
         #region Create

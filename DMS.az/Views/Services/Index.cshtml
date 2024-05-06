@@ -1,9 +1,60 @@
 ﻿@using DMS.az.ViewModels.Services
+@using Newtonsoft.Json;
+
 @model ServicesIndexVM
 
 @section links{
-    <title>@ViewBag.Title - DMS.az</title>
+    <title>Xidmətlər - DMS.az</title>
     <link rel="stylesheet" href="~/Users/assets/css/offers/offers.css" />
+
+    <script type="application/ld+json">
+        @Html.Raw(JsonConvert.SerializeObject(new
+    {
+        @context = "https://schema.org",
+        @type = "ProfessionalService",
+        name = "DMS Azerbaijan Services",
+        url = "https://www.dms.az/services",
+        logo = "https://www.dms.az/path/to/logo.png",
+        image = "https://www.dms.az/Users/newAssets/images/breadcrumb/services.png",
+        description = "DMS Azerbaijan offers a comprehensive range of digital marketing and development services tailored to meet the needs of modern businesses in Azerbaijan and beyond.",
+        provider = new
+        {
+            @type = "Organization",
+            name = "DMS Azerbaijan",
+            address = new
+            {
+                @type = "PostalAddress",
+                streetAddress = "Fəzail Bayramov 1156",
+                addressLocality = "Bakı",
+                postalCode = "1100",
+                addressCountry = "Azerbaijan"
+            },
+            contactPoint = new
+            {
+                @type = "ContactPoint",
+                telephone = "+994 70 500 08 05",
+                contactType = "customer support",
+                areaServed = "AZ",
+                availableLanguage = new[] { "Azerbaijani", "English" }
+            }
+        },
+        hasOfferCatalog = new
+        {
+            @type = "OfferCatalog",
+            name = "Services Offered",
+            itemListElement = Model.Services.Select(service => new
+            {
+                @type = "Offer",
+                itemOffered = new
+                {
+                    @type = "Service",
+                    name = service.Name,
+                    description = service.Description
+                }
+            }).ToList()
+        }
+    }, Newtonsoft.Json.Formatting.Indented))
+    </script>
 }
 
 <!-- Breadcrumb -->
@@ -13,16 +64,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-7 align-self-center">
-                    <h2 class="iq-fw-8 mb-3">Services</h2>
+                    <h2 class="iq-fw-8 mb-3">Xidmətlər</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Services</li>
+                            <li class="breadcrumb-item"><a asp-action="index" asp-controller="Home">Ana Səhifə</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Xidmətlər</li>
                         </ol>
                     </nav>
                 </div>
-                <div class="col-md-5">
-                    <img src="~/Users/newAssets/images/breadcrumb/service.png" class="img-fluid" alt="image">
+                <div class="col-md-3">
+                    <img src="~/Users/newAssets/images/breadcrumb/services.png" class="img-fluid" alt="image">
                 </div>
             </div>
         </div>
@@ -39,7 +90,7 @@
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <div class="section-title">
-                        <p class="mt-2 text-uppercase  iq-fw-3 iq-ls-3">About Services</p>
+                        <p class="mt-2 text-uppercase  iq-fw-3 iq-ls-3">X</p>
                         <h2 class="title iq-fw-8">Digital Marketing Services</h2>
                     </div>
                 </div>
@@ -132,8 +183,8 @@
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <div class="section-title">
-                        <p class="mb-0 text-uppercase iq-fw-5 iq-ls-2">Best Ever Services</p>
-                        <h1 class="title iq-fw-8">Best Services</h1>
+                        <p class="mb-0 text-uppercase iq-fw-5 iq-ls-2">DMS Azerbaijan</p>
+                        <h1 class="title iq-fw-8">Xidmətlərimiz</h1>
                     </div>
                 </div>
             </div>

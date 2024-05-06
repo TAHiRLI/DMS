@@ -17,7 +17,7 @@
                     <h2 class="iq-fw-8 mb-3">Portfolio</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a asp-action="index" asp-controller="Home">Ana Səhifə</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Portfolio</li>
                         </ol>
                     </nav>
@@ -58,7 +58,7 @@
                             <a asp-action="details" asp-controller="portfolio" asp-route-id="@project.Id" class="d-block">
                                 <article class="iq-grid-item @project.PortfolioCategory?.Name?.Trim()?.Replace(' ', '_')">
                                     <div class="d-block iq-portfolio">
-                                        <img src="~/Users/Uploads/Projects/@project.Photo" class=" object-fit-cover" style="object-fit:cover" width="362" height="453" alt="DMS Azerbiajian @project.Title">
+                                        <img src="~/Users/Uploads/Projects/@project.Photo" class=" object-fit-cover" style="object-fit:cover;aspect-ratio:1"  alt="DMS Azerbiajian @project.Title">
                                         <div class="portfolio-info">
                                             <p class="mb-0"><span class="text-black portfolio-title">@project.Title</span></p>
                                         </div>
