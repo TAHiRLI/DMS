@@ -28,7 +28,7 @@
                     @foreach (var member in Model.TeamMembers)
                     {
                         <tr>
-                            <td class=""><img src="~/Users/images/@member.Photo" alt="image" /></td>
+                            <td class=""><img src="~/Users/Uploads/Team/@member.Photo" alt="@member.Name @member.Surname" /></td>
                             <td>@member.Name @member.Surname</td>
                             <td>@member.Duty</td>
                             <td>@member.Description</td>

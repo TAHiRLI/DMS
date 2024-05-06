@@ -1,6 +1,52 @@
 ﻿@using DMS.az.ViewModels.Services
 @model ServiceDetailsVM
 
+@section links{
+    <title>@Model.Service.Name - DMS.az</title>
+
+    <script type="application/ld+json">
+        {
+          "@@context": "https://schema.org",
+          "@@type": "Service",
+          "serviceType": "@Model.Service.Name",
+          "provider": {
+            "@@type": "Organization",
+            "name": "DMS Azerbaijan",
+            "url": "https://www.dms.az",
+            "logo": "https://www.dms.az/path/to/logo.png",
+            "sameAs": ["https://www.facebook.com/dmsazerbaijan", "https://www.twitter.com/dmsazerbaijan"]
+          },
+          "areaServed": {
+            "@@type": "Country",
+            "name": "Azerbaijan"
+          },
+          "description": "@Html.Raw(Model.Service.Description)",
+          "image": "https://www.dms.az/Users/Uploads/Services/@Model.Service.Photo",
+          "offers": {
+            "@@type": "Offer",
+            "url": "https://www.dms.az/service/@Model.Service.Id",
+            "priceCurrency": "AZN",
+            "price": "Price or Price Range"
+          },
+          "hasOfferCatalog": {
+            "@@type": "OfferCatalog",
+            "name": "Services Offered by DMS Azerbaijan",
+            "itemListElement": [
+              {
+                "@@type": "Offer",
+                "itemOffered": {
+                  "@@type": "Service",
+                  "name": "@Model.Service.Name",
+                  "description": "@Model.Service.Description"
+                }
+              },
+             
+              }
+            ]
+          }
+        }
+    </script>
+}
 <!-- Breadcrumb -->
 <section class="iq-breadcrumb">
 
@@ -8,16 +54,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-md-7 align-self-center">
-                    <h2 class="iq-fw-8 mb-3">Service Detail</h2>
+                    <h2 class="iq-fw-8 mb-3">@Model.Service.Name</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Service Detail</li>
+                            <li class="breadcrumb-item"><a asp-controller="home" asp-action="index">Ana Səhifə</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">@Model.Service.Name</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="col-md-5">
-                    <img src="~/Users/newAssets/images/breadcrumb/service.png" class="img-fluid" alt="image">
+                    <img src="~/Users/newAssets/images/breadcrumb/services.png" class="img-fluid" alt="image">
                 </div>
             </div>
         </div>
@@ -66,8 +112,8 @@
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <div class="section-title">
-                        <p class="mb-0 text-uppercase iq-fw-5 iq-ls-2">Best Ever Services</p>
-                        <h2 class="title iq-fw-8">Best Services</h2>
+                        <p class="mb-0 text-uppercase iq-fw-5 iq-ls-2">DMS Azerbaijan</p>
+                        <h2 class="title iq-fw-8">Xidmətlərimiz</h2>
                     </div>
                 </div>
             </div>

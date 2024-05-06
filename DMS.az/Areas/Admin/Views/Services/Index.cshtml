@@ -1,6 +1,8 @@
 ﻿@using DMS.az.Areas.Admin.ViewModels.Services
 @model ServiceIndexVM
 
+
+
 <div class="card-body">
     <h4 class="card-title">Basic Table</h4>
     <p class="card-description">
@@ -28,7 +30,7 @@
                     {
                         <tr>
 
-                            <td class=""><img src="~/Users/images/@item.Icon" alt="image" /></td>
+                            <td class=""><img src="~/Users//Uploads/Services/@item.Photo" alt="image" /></td>
                             <td>@item.Name</td>
                             <td>
                                 @if (!item.IsDeleted)
