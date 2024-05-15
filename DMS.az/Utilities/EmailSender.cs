@@ -60,9 +60,9 @@ namespace DMS.az.Utilities
             // Construct HTML content
             htmlContent.AppendLine("<html>");
             htmlContent.AppendLine("<body>");
+            htmlContent.AppendLine($"<img src='https://dms.az/Users/Uploads/Blogs/{blog.Photo}' alt='image' style=\"width: 95%; height: auto;\" />");
             htmlContent.AppendLine($"<h2>{blog.Title}</h2>");
-            htmlContent.AppendLine($"<img src='https://dms.az/Users/Uploads/Blogs/{blog.Photo}' alt='image' style=\"width: 150px; height: 150px;\" />");
-            htmlContent.AppendLine("<p>New blog shared</p>");
+            htmlContent.AppendLine($"<p>{blog.Description}</p>");
             htmlContent.AppendLine("</body>");
             htmlContent.AppendLine("</html>");
 
