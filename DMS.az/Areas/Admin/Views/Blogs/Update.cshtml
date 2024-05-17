@@ -26,8 +26,7 @@
 
                 <div class="form-group">
                     <label asp-for="Description">Description</label>
-                    <textarea class="form-control" asp-for="Description"> </textarea>
-
+                    <input asp-for="Description" type="text" class="form-control" id="exampleInputName1" placeholder="" />
                     <span asp-validation-for="Description"></span>
                 </div>
 
@@ -59,12 +58,4 @@
 
 @section scripts {
     @await Html.PartialAsync("_ImgUploadPartial")
-    <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#Description'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
 }
