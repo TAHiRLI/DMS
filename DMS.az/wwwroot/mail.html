@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: rgb(114, 0, 196); /* Indigo header background */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        .content {
+            padding: 40px 30px;
+            background-color: white;
+            margin: 30px auto;
+            max-width: 600px;
+
+        }
+        .title{
+            text-align: center;
+        }
+        .wrapper{
+            background-color: #7c60d5;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .btn{
+            display: flex;
+            justify-content: center !important;
+            align-items: center !important;
+            background-color: #7c60d5;
+            text-wrap: nowrap;
+            padding: 10px 30px;
+            width: 100px;
+            text-align: center;
+            text-decoration: none;
+            color: white !important;
+            margin: auto;
+            margin-top: 40px;
+            border-radius: 10px;
+        }
+        .btn:hover{
+            background-color: #522fc7;
+            transition: 0.5s ease-in-out;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+
+        <div class="header">
+            {{HeaderContent}} <!-- Placeholder for header content -->
+        </div>
+        <div class="content">
+            <img src="{{ImageUrl}}" alt="Blog Image" style="width: 100%; height: auto;">
+            <h1 class="title">{{Title}}</h1>
+            <p>{{Description}}</p>
+            <a class="btn" href="{{BlogUrl}}">Daha Çox</a>
+        </div>
+    </div>
+</body>
+</html>

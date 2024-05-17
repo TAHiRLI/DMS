@@ -167,7 +167,7 @@ namespace DMS.az.Areas.Admin.Controllers
 
             foreach (var subcriber in _context.Subscribers)
             {
-                var emailMessage = new Utilities.Message(new[] { subcriber.Email }, "New Message", "New blog created", "dmsmessages@gmail.com");
+                var emailMessage = new Utilities.Message(new[] { subcriber.Email }, blog.Title, "New blog created", "dmsmessages@gmail.com");
                 _emailSender.SendEmail(emailMessage, "subs", blog);
             }   
 
