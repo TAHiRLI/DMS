@@ -15,13 +15,13 @@ namespace DMS.az.Utilities
         {
             _context = context;
         }
-        public async Task<Contact>  GetContact()
+        public async Task<Contact>?  GetContact()
         {
             return await _context.Contact.FirstAsync();
         }
         public async Task<List<Service>> GetServices()
         {
-            return await _context.Services.Take(6).ToListAsync();
+            return await _context.Services.Take(6).Where(x=> !x.IsDeleted).ToListAsync();
         }
     
     }

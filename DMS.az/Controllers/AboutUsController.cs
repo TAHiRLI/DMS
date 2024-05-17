@@ -40,5 +40,8 @@ namespace DMS.az.Controllers
             return PartialView("_ServicesComponentPartial", model);
         }
 
+
+       
+
     }
 }

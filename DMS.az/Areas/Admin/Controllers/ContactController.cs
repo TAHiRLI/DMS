@@ -3,11 +3,13 @@ using DMS.az.DAL;
 using DMS.az.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace DMS.az.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles ="Admin, SuperAdmin")]
     public class ContactController : Controller
     {
         private readonly AppDbContext _context;

@@ -16,8 +16,6 @@
                 <tr>
                     <th>Photo</th>
                     <th>Title</th>
-                    <th>Short Description</th>
-                    <th>Post Date</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
@@ -31,8 +29,6 @@
                         <tr>
                             <td class=""><img src="~/Users/Uploads/Blogs/@blog.Photo" alt="image" /></td>
                             <td>@blog.Title</td>
-                            <td>@blog.ShortDesc</td>
-                            <td>@blog.PostDate.ToShortDateString()</td>
                             <td>
                                 @if (!blog.IsDeleted)
                                 {

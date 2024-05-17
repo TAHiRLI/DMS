@@ -14,7 +14,7 @@
 
 @section Links{
     <link rel="stylesheet" href="~/Users/newAssets/css/Pagination.css">
-
+    <title>Məqalələr</title>
 }
 
 <!-- Breadcrumb -->
@@ -55,10 +55,10 @@
                     <article class="col-lg-4 col-md-6 col-sm-12">
                         <a asp-controller="blogs" asp-action="details" asp-route-id="@blog.Id" class="main-blog">
                             <div class="blog-img">
-                                <img src="~/Users/Uploads/Blogs/@blog.Photo" class="img-fluid" style="aspect-ratio:4/3; object-fit:cover" alt="DMS Azerbaijan Blog - @blog.Title">
+                                <img loading="lazy" src="~/Users/Uploads/Blogs/@blog.Photo" class="img-fluid" style="aspect-ratio:4/3; object-fit:cover" alt="DMS Azerbaijan Blog - @blog.Title">
                             </div>
                             <div class="blog-detail d-block">
-                                <a asp-controller="blogs" asp-action="details" asp-route-id="1">
+                                <a asp-controller="blogs" asp-action="details" asp-route-id="@blog.Id">
                                     <h2 class="mt-1 iq-fw-8 h5">@blog.Title</h2>
                                 </a>
                                 <p class="mb-0">@blog.ShortDesc</p>

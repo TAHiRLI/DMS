@@ -3,11 +3,13 @@ using DMS.az.DAL;
 using DMS.az.Models;
 using DSM.az.Utilities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 
 namespace DMS.az.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles ="Admin, SuperAdmin")]
     public class AboutUsController : Controller
     {
         private readonly AppDbContext _context;

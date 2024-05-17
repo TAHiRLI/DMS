@@ -2,12 +2,14 @@
 using DMS.az.Areas.Admin.ViewModels.PortfolioCategory;
 using DMS.az.DAL;
 using DMS.az.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace DMS.az.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles ="Admin, SuperAdmin")]
     public class PortfolioCategoryController : Controller
     {
         private readonly AppDbContext _context;

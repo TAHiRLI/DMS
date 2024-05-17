@@ -23,15 +23,16 @@ namespace DMS.az.Controllers
             ViewBag.Title = "Əsas Səhifə";
             ViewBag.ServicesCount = _context.Services.Count();
 
-            var model = new HomeIndexVM
+            var model = new HomeIndexVM()
             {
                 //Sliders = await _context.Sliders.Where(x => !x.IsDeleted).ToListAsync(),
-                Video = await _context.Video.SingleAsync(),
+                Video = await _context.Video.FirstAsync(),
                 AboutUs = await _context.AboutUs.Where(x => !x.IsDeleted).ToListAsync(),
                 Portfolios = await _context.Portfolios.Where(x => !x.IsDeleted).ToListAsync(),
                 Blogs = await _context.Blogs.OrderByDescending(b => b.Id).Where(x => !x.IsDeleted).Take(10).ToListAsync(), //HomePage Bloq Sayi?
                 OurEmployees = await _context.OurEmployees.Where(x => !x.IsDeleted).ToListAsync(),
                 Contact = await _context.Contact.ToListAsync(),
+
             };
 
             return View(model);

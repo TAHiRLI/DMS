@@ -4,7 +4,7 @@ namespace DMS.az.Utilities
 {
     public interface ILayoutService
     {
-        Task<Contact> GetContact();
+        Task<Contact>? GetContact();
         Task<List<Service>> GetServices();
     }
 }

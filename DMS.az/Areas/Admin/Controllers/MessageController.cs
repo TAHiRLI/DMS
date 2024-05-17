@@ -1,4 +1,5 @@
 ﻿using DMS.az.Areas.Admin.ViewModels.Message;
+using Microsoft.AspNetCore.Authorization;
 using DMS.az.Areas.Admin.ViewModels.Portfolio;
 using DMS.az.DAL;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace DMS.az.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles ="Admin, SuperAdmin")]
     public class MessageController : Controller
     {
         private readonly AppDbContext _context;

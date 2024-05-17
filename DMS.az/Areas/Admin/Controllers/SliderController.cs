@@ -2,6 +2,7 @@
 using DSM.az.Areas.Admin.ViewModels.Slider;
 using DSM.az.Models;
 using DSM.az.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer.Diagnostics.Internal;
@@ -9,6 +10,7 @@ using Microsoft.EntityFrameworkCore.SqlServer.Diagnostics.Internal;
 namespace DSM.az.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles ="Admin, SuperAdmin")]
     public class SliderController : Controller
     {
         private readonly AppDbContext _context;

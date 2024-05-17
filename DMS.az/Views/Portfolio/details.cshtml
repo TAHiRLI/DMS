@@ -4,7 +4,7 @@
 <!-- Breadcrumb -->
 @section Links{
     <title>DMS Azerbaijan - @Model.Portfolio.Title</title>
-
+    <meta name="description" content="@Model.Portfolio.Description" />
     <script type="application/ld+json">
         {
           "@@context": "https://schema.org",
@@ -127,88 +127,27 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="owl-carousel" data-autoplay="true" data-loop="true" data-nav="true" data-dots="false" data-items="3" data-items-laptop="3" data-items-tab="2" data-items-mobile="1" data-items-mobile-sm="1" data-margin="30">
-                            <div class="item">
-
-                                <div class="iq-portfolio">
-                                    <img src="~/Users/newAssets/images/project/1.png" class="img-fluid" alt="image">
-                                    <div class="portfolio-info">
-                                        <a href=""><span class="text-black">Design Concept</span></a>
-                                        <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-
-                                <div class="iq-portfolio">
-                                    <img src="~/Users/newAssets/images/project/2.png" class="img-fluid" alt="image">
-                                    <div class="portfolio-info">
-                                        <a href=""><span class="text-black">Design Concept</span></a>
-                                        <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-
-                                <div class="iq-portfolio">
-                                    <img src="~/Users/newAssets/images/project/3.png" class="img-fluid" alt="image">
-                                    <div class="portfolio-info">
-                                        <a href=""><span class="text-black">Design Concept</span></a>
-                                        <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-
-                                <div class="iq-portfolio">
-                                    <img src="~/Users/newAssets/images/project/4.png" class="img-fluid" alt="image">
-                                    <div class="portfolio-info">
-                                        <a href=""><span class="text-black">Design Concept</span></a>
-                                        <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-
-                                <div class="iq-portfolio">
-                                    <img src="~/Users/newAssets/images/project/1.png" class="img-fluid" alt="image">
-                                    <div class="portfolio-info">
-                                        <a href=""><span class="text-black">Design Concept</span></a>
-                                        <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-
-                                <div class="iq-portfolio">
-                                    <img src="~/Users/newAssets/images/project/2.png" class="img-fluid" alt="image">
-                                    <div class="portfolio-info">
-                                        <a href=""><span class="text-black">Design Concept</span></a>
-                                        <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-
-                                <div class="iq-portfolio">
-                                    <img src="~/Users/newAssets/images/project/3.png" class="img-fluid" alt="image">
-                                    <div class="portfolio-info">
-                                        <a href=""><span class="text-black">Design Concept</span></a>
-                                        <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="item">
-
-                                <div class="iq-portfolio">
-                                    <img src="~/Users/newAssets/images/project/4.png" class="img-fluid" alt="image">
-                                    <div class="portfolio-info">
-                                        <a href=""><span class="text-black">Design Concept</span></a>
-                                        <a href="#" class="text-uppercase text-gray float-right">Design</a>
-                                    </div>
-                                </div>
-                            </div>
-
+                         @foreach (var blog in Model.Blogs)
+                            {
+                                <article class="item">
+                                    <a asp-controller="blogs" asp-action="details" asp-route-id="@blog.Id" class="main-blog d-block">
+                                        <div class="blog-img">
+                                            <img src="~/Users/Uploads/Blogs/@blog.Photo" class="img-fluid" style="aspect-ratio:4/3; object-fit:cover" alt="DMS Azerbaijan @blog.Title">
+                                        </div>
+                                        <div class="blog-detail">
+                                            <div>
+                                                <p class="main-color iq-fw-8">@blog.PostDate.ToShortDateString()</p>
+                                                <a asp-controller="blogs" asp-action="details" asp-route-id="@blog.Id"><h5 class="mt-1 iq-fw-8">@blog.Title</h5></a>
+                                                <div class="bg-transparent">
+                                                    <p class="mb-0">@blog.ShortDesc</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </article>
+                                
+                            }
+                           
                         </div>
                     </div>
                 </div>

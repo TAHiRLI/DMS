@@ -3,6 +3,7 @@ using DMS.az.Areas.Admin.ViewModels.Video;
 using DMS.az.DAL;
 using DMS.az.Models;
 using DSM.az.Utilities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Drawing;
@@ -10,6 +11,7 @@ using System.Drawing;
 namespace DMS.az.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles ="Admin, SuperAdmin")]
     public class VideoController : Controller
     {
         private readonly AppDbContext _context;

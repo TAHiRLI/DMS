@@ -1391,7 +1391,7 @@ header.header-four .mega-menu .menu-links {padding-left: 0px;}
 
 @media(max-width:767px) {
 	header {
-		position: relative;
+		position: absolute;
 	}
 
 	.technical {
@@ -1697,6 +1697,7 @@ header.header-four .mega-menu .menu-links {padding-left: 0px;}
 	header .mega-menu .menu-logo > li > a img {
 		height: 46px;
 		margin-top: 0;
+		transform:scale(1)
 	}
 
 	.footer-top {
@@ -1818,6 +1819,7 @@ header.header-four .mega-menu .menu-links {padding-left: 0px;}
 
 	header .mega-menu .menu-logo > li > a img {
 		height: 30px;
+		transform: scale(1)
 	}
 
 	header .mega-menu .menu-links {

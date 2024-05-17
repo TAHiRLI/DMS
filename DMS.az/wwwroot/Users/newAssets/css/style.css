@@ -92,6 +92,8 @@ header .mega-menu .menu-logo > li > a img {
 	bottom: 0;
 	height: 40px;
 	margin-top: 6px;
+	margin-left:10px;
+	transform:scale(2.1)
 }
 
 header .mega-menu.desktopTopFixed .menu-logo > li > a img {
@@ -2043,6 +2045,7 @@ footer .fshap-after {
 	margin: 0 auto;
 	position: relative;
 	background: url('../images/footer/5.jpg')no-repeat 0 bottom;
+	background-size:cover;
 }
 
 .footer .social-media {

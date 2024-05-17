@@ -53,6 +53,7 @@ namespace DMS.az.Controllers
             var Model = new PortfolioDetailsVM()
             {
                 Portfolio = portfolio,
+                Blogs = _context.Blogs.Where(x=> !x.IsDeleted).Take(10).ToList()
             };
 
             return View(Model);

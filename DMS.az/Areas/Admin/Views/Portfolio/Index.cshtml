@@ -45,7 +45,7 @@
                             <td>
                                 <a asp-action="Details" asp-controller="Portfolio" asp-route-id="@item.Id" class="btn btn-info"><i class="mdi mdi-eye icon-lg"></i></a>
                                 <a asp-action="Update" asp-controller="Portfolio" asp-route-id="@item.Id" class="btn btn-primary"><i class="mdi mdi-pencil"></i></a>
-                                <a asp-action="Delete" asp-controller="Portfolio" asp-route-id="@item.Id" class="btn btn-danger btn-delete"> <i class="mdi mdi-delete"></i> </a>
+                                <a asp-action="Delete" asp-controller="Portfolio" asp-route-id="@item.Id" class="btn btn-danger btn-delete"> <i class="mdi mdi-delete"style="pointer-events:none"></i> </a>
                             </td>
                         </tr>
                     }
@@ -74,7 +74,6 @@
 
                     let link = e.target.getAttribute("href")
                     fetch(link).then(res => {
-                        //console.log(res.ok)
                         if (res.ok == true) {
                             Swal.fire(
                                 'Deleted!',

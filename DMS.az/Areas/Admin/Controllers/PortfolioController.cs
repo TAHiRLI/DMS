@@ -1,6 +1,7 @@
 ﻿using DMS.az.Areas.Admin.ViewModels.Portfolio;
 using DMS.az.DAL;
 using DMS.az.Models;
+using Microsoft.AspNetCore.Authorization;
 using DSM.az.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 namespace DSM.az.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles ="Admin, SuperAdmin")]
     public class PortfolioController : Controller
     {
 

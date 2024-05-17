@@ -17,7 +17,7 @@ builder.Services.AddControllersWithViews();
 //});
 
 
-builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("tahir")));
+builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddSingleton<IFileService, FileService>();
 builder.Services.AddSingleton<IEmailSender, EmailSender>();
 builder.Services.AddScoped<ILayoutService, LayoutService>();
@@ -63,6 +63,13 @@ builder.Services.AddSingleton<EmailConfiguration>(configuration);
 
 
 var app = builder.Build();
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
@@ -79,12 +86,12 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=home}/{action=index}/{id?}");
 
-using (var scope = app.Services.CreateScope())
-{
-    var roleManager = scope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
-    var userManager = scope.ServiceProvider.GetService<UserManager<User>>();
-    var context = scope.ServiceProvider.GetService<AppDbContext>();
-    await DbInitializer.SeedAsync(roleManager, userManager, context);
-}
+//using (var scope = app.Services.CreateScope())
+//{
+//    var roleManager = scope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
+//    var userManager = scope.ServiceProvider.GetService<UserManager<User>>();
+//    var context = scope.ServiceProvider.GetService<AppDbContext>();
+//   // await DbInitializer.SeedAsync(roleManager, userManager, context);
+//}
 
 app.Run();
