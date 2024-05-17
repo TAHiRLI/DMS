@@ -17,6 +17,7 @@
                     <th>Photo</th>
                     <th>Title</th>
                     <th>Status</th>
+                    <th>Share With Subs</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -37,6 +38,16 @@
                                 else
                                 {
                                     <span class="text-danger">Non-Active</span>
+                                }
+                            </td>
+                            <td>
+                                @if (!blog.IsSent)
+                                {
+                                    <a asp-action="sharewithsubs" asp-controller="blogs" asp-route-id="@blog.Id" class="btn btn-info">Share</a>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-info" disabled>Already Shared</button>
                                 }
                             </td>
                             <td>

@@ -2,6 +2,7 @@
 using DMS.az.Areas.Admin.ViewModels.TeamMembers;
 using DMS.az.DAL;
 using DMS.az.Models;
+using DMS.az.Utilities;
 using DSM.az.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
@@ -15,11 +16,13 @@ namespace DMS.az.Areas.Admin.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IFileService _fileService;
+        private readonly IEmailSender _emailSender;
 
-        public BlogsController(AppDbContext context, IFileService fileService)
+        public BlogsController(AppDbContext context, IFileService fileService, IEmailSender emailSender)
         {
             _context = context;
             _fileService = fileService;
+            _emailSender = emailSender;
         }
 
         #region BlogsList
@@ -149,5 +152,30 @@ namespace DMS.az.Areas.Admin.Controllers
             return Ok();
         }
         #endregion
+
+        public IActionResult ShareWithSubs(int id)
+        {
+            //var message = new Models.Message
+            //{
+            //    Content = "Blog Created"
+            //};
+
+            //_context.Messages.Add(message);
+            //_context.SaveChanges();
+            var blog = _context.Blogs.FirstOrDefault(x => x.Id == id);
+            if (blog is null) return NotFound("Blog Not Found!");
+
+            foreach (var subcriber in _context.Subscribers)
+            {
+                var emailMessage = new Utilities.Message(new[] { subcriber.Email }, "New Message", "New blog created", "dmsmessages@gmail.com");
+                _emailSender.SendEmail(emailMessage, "subs", blog);
+            }   
+
+            blog.IsSent = true;
+            _context.Update(blog);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

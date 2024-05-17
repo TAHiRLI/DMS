@@ -102,10 +102,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <div class="owl-carousel" data-autoplay="false" data-loop="true" data-items="1" data-nav="true" data-dots="false" data-items-laptop="1" data-items-tab="1" data-items-mobile="1" data-items-mobile-sm="1" data-margin="15">
+                    <div class="owl-carousel" style="border-radius:12px" data-autoplay="false" data-loop="true" data-items="1" data-nav="true" data-dots="false" data-items-laptop="1" data-items-tab="1" data-items-mobile="1" data-items-mobile-sm="1" data-margin="15">
                         @foreach (var companyHistory in Model.CompanyHistories)
                         {
-                            <div class="item" style="padding:60px 30px; text-align:center; background-color:#00e69d; border-radius:12px" >
+                            <div class="item" style="padding:60px 30px; text-align:center; background-color:#00e69d; border-radius:12px">
                                 <h3 class="text-white iq-fw-8 mb-3 text-align-center">@companyHistory.Title</h3>
                                 <p class="text-white mb-0">@companyHistory.Description</p>
                             </div>

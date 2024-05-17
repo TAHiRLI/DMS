@@ -37,6 +37,7 @@ namespace DMS.az.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(ContactIndexVM model)
         {
+            
             if (!ModelState.IsValid)
             {
                 model.Contact = await _context.Contact.ToListAsync();
@@ -57,7 +58,7 @@ namespace DMS.az.Controllers
             _context.SaveChanges();
 
             var emailMessage = new Utilities.Message(new[] { "dmsmessages@gmail.com" }, "New Message", message.Content, message.SenderEmail);
-            _emailSender.SendEmail(emailMessage);
+            _emailSender.SendEmail(emailMessage, "contact");
 
 
             TempData["SuccessMessage"] = "Mesaj uğurla göndərildi";

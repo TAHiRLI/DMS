@@ -851,8 +851,34 @@
                 </div>
             </div>
 
-            @await Component.InvokeAsync("Services")
+            <div class="row">
+                @foreach (var service in Model.Services)
+                {
+                    <div class="col-lg-6">
+                        <article class="services purple ">
+                            <div class="services-info">
+                                <header class="service-shap purple">
+                                    @*@<i class="ion-ios-cloud-download-outline"></i>*@
+                                    <img src="~/Users/Uploads/Services/@service.Icon " alt="DMS Azerbaijan Service= @service.Name ">
+                                </header>
+                                <h2 class="float-left mt-4 h3 text-black">@service.Name</h2>
+                                <div class="clearfix"></div>
+                                <p class="mt-3 mb-0">@service.ShortDesc</p>
 
+                            </div>
+                            <a asp-controller="services" asp-action="details" asp-route-id="@service.Id" class="button-info">Daha Çox <span class="float-right">. . .</span></a>
+                        </article>
+                    </div>
+                }
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <a asp-controller="portfolio" asp-action="index" class="slide-button button float-none explore-btn">
+                        <div class="first">Daha Çox</div>
+                        <div class="second">Daha Çox</div>
+                    </a>
+                </div>
+            </div>
         </div>
         <img src="~/Users/newAssets/images/others/16.png" class="img-fluid iqwork-two" alt="image">
     </section>

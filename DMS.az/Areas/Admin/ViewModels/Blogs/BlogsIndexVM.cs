@@ -8,6 +8,8 @@ namespace DMS.az.Areas.Admin.ViewModels.Blogs
         {
             Blogs = new List<Blog>();
         }
-        public List<Blog> Blogs {  get; set; } 
+        public List<Blog> Blogs {  get; set; }
+
+        public bool IsSent { get; set; }
     }
 }
